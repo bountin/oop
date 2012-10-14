@@ -8,6 +8,7 @@ package Aufgabe1;
  *
  * @author Jotschi
  */
-public class Musikgruppe {
+public class Musikgruppe  {
+    
     
 }
