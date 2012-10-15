@@ -3,7 +3,7 @@ import java.util.Date;
 public class Musikgruppe {
     private TerminContainer termincontainer;
     private MitgliedContainer mitgliedcontainer;
-    // pirvate Musikstueckcontainer musikstueckcontainer;
+    private MusikstueckContainer musikstueckcontainer;
 
     private String name;
     private String ausrichtung;
@@ -13,7 +13,7 @@ public class Musikgruppe {
         this.ausrichtung = ausrichtung;
         this.termincontainer = new TerminContainer();
         this.mitgliedcontainer = new MitgliedContainer();
-        //this.musikstueckcontainer = new Musikstueckcontainer();
+        this.musikstueckcontainer = new MusikstueckContainer();
     }
 
     public String getName() {
@@ -32,9 +32,9 @@ public class Musikgruppe {
         return termincontainer;
     }
 
-   /* public Musikstueckcontainer getMusikstueckcontainer() {
+    public MusikstueckContainer getMusikstueckContainer() {
         return musikstueckcontainer;
-    }*/
+    }
 
     @Override
     public String toString() {
