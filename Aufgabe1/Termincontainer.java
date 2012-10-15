@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Termincontainer {
 
-    private List<Termin> terminlist;
+    private ArrayList<Termin> terminlist;
 
     public Termincontainer() {
         terminlist = new ArrayList<Termin>();
@@ -25,12 +25,12 @@ public class Termincontainer {
      * @return List von Proben
      */
     public List<Probe> getProben(Date from, Date to) {
-        List l = new ArrayList();
+        List<Probe> l = new ArrayList<Probe>();
         for (Termin t : terminlist) {
             if (t instanceof Probe
                     && t.getDatum().after(from)
                     && t.getDatum().before(to)) {
-                l.add(t);
+                l.add((Probe)t);
             }
         }
         return l;
@@ -43,12 +43,12 @@ public class Termincontainer {
      * @return Liste von Auftritten
      */
     public List<Auftritt> getAuftritte(Date from, Date to) {
-        List l = new ArrayList();
+        List<Auftritt> l = new ArrayList<Auftritt>();
         for (Termin t : terminlist) {
             if (t instanceof Auftritt
                     && t.getDatum().after(from)
                     && t.getDatum().before(to)) {
-                l.add(t);
+                l.add((Auftritt)t);
             }
         }
         return l;
@@ -61,7 +61,7 @@ public class Termincontainer {
      * @return List von Terminen
      */
     public List<Termin> getTermine(Date from, Date to) {
-        List l = new ArrayList();
+        List<Termin> l = new ArrayList<Termin>();
         for (Termin t : terminlist) {
             if (t.getDatum().after(from)
                     && t.getDatum().before(to)) {
