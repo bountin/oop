@@ -22,9 +22,9 @@ public class Mitglied {
 	 * Das Datum des Beitritts wird automatisch als der Zeitpunkt der
 	 * Erstellung der Klasse festgesetzt. Das Datum des Austritts bleibt frei</p>
 	 * 
-	 * @param name
-	 * @param telnum
-	 * @param instrument
+	 * @param String name
+	 * @param long telnum
+	 * @param String instrument
 	 */
 	public Mitglied(String name, long telnum, String instrument){
 		super();
@@ -33,6 +33,7 @@ public class Mitglied {
 		this.instrument = instrument;
 		//Nimmt die momentane Systemzeit beim Zeitpunkt der Erstellung
 		this.beitritt = new Date();		
+		this.austritt = null;
 	}
 
 	public String getName() {
