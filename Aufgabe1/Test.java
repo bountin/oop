@@ -17,38 +17,38 @@ public class Test {
         Auftritt a1 = new Auftritt(150.0f, "Saal", sdf.parse("24.12.2012 21:00"), 60);
         Auftritt a2 = new Auftritt(135.0f, "Halle", sdf.parse("3.9.2012 14:30"), 120);
 
-        m.getTermincontainer().addTermin(p1);
+        m.getTerminContainer().addTermin(p1);
         System.out.println("Add: " + p1);
-        m.getTermincontainer().addTermin(p2);
+        m.getTerminContainer().addTermin(p2);
         System.out.println("Add: " + p2);
-        m.getTermincontainer().addTermin(a1);
+        m.getTerminContainer().addTermin(a1);
         System.out.println("Add: " + a1);
-        m.getTermincontainer().addTermin(a2);
+        m.getTerminContainer().addTermin(a2);
         System.out.println("Add: " + a2);
 
 
-        float gage = m.getTermincontainer().getGage(sdf.parse("1.12.2012 00:00"), sdf.parse("1.1.2013 00:00"));
+        float gage = m.getTerminContainer().getGage(sdf.parse("1.12.2012 00:00"), sdf.parse("1.1.2013 00:00"));
         System.out.println("Gage von 1.12.2012 00:00 bis 1.1.2013 00:00 : " + gage);
 
-        float miete = m.getTermincontainer().getMiete(sdf.parse("1.11.2012 00:00"), sdf.parse("1.12.2012 00:00"));
+        float miete = m.getTerminContainer().getMiete(sdf.parse("1.11.2012 00:00"), sdf.parse("1.12.2012 00:00"));
         System.out.println("Gage von 1.11.2012 00:00 bis 1.12.2012 00:00 : " + miete);
 
-        float saldo = m.getTermincontainer().getSaldo(sdf.parse("1.1.2012 00:00"), sdf.parse("1.1.2013 00:00"));
+        float saldo = m.getTerminContainer().getSaldo(sdf.parse("1.1.2012 00:00"), sdf.parse("1.1.2013 00:00"));
         System.out.println("Saldo von 1.1.2012 00:00 bis 1.1.2013 00:00 : " + saldo);
 
-        List<Probe> lp = m.getTermincontainer().getProben(sdf.parse("1.1.2012 00:00"), sdf.parse("1.1.2013 00:00"));
+        List<Probe> lp = m.getTerminContainer().getProben(sdf.parse("1.1.2012 00:00"), sdf.parse("1.1.2013 00:00"));
         System.out.println("Proben von 1.1.2012 00:00 bis 1.1.2013 00:00");
         for(Probe p : lp) {
             System.out.println(p);
         }
 
-        List<Auftritt> la = m.getTermincontainer().getAuftritte(sdf.parse("1.6.2012 00:00"), sdf.parse("1.10.2012 00:00"));
+        List<Auftritt> la = m.getTerminContainer().getAuftritte(sdf.parse("1.6.2012 00:00"), sdf.parse("1.10.2012 00:00"));
         System.out.println("Proben von 1.6.2012 00:00 bis 1.10.2012 00:00");
         for(Auftritt a : la) {
             System.out.println(a);
         }
 
-        List<Termin> lt = m.getTermincontainer().getTermine(sdf.parse("1.1.2012 00:00"), sdf.parse("1.1.2013 00:00"));
+        List<Termin> lt = m.getTerminContainer().getTermine(sdf.parse("1.1.2012 00:00"), sdf.parse("1.1.2013 00:00"));
         System.out.println("Proben von 1.1.2012 00:00 bis 1.1.2013 00:00");
         for(Termin t : lt) {
             System.out.println(t);
@@ -87,7 +87,7 @@ public class Test {
         System.out.println("\nMitgliedContainer TEST #6: Rückgabe des aktiven Lineups eines früheren Datums bei nicht-leerem Lineup");
         System.out.println(" Erwartung: Kenneth's Info sollte ausgegeben werden");
         m.addMitglied("Kenneth",5,"Guitar");
-        Mitglied kk = m.getMitgliedcontainer().getMitglieder().get(5);
+        Mitglied kk = m.getMitgliedContainer().getMitglieder().get(5);
         try{
             kk.setBeitritt(sdf.parse("01.10.1970"));
             kk.setAustritt(sdf.parse("20.04.2011"));

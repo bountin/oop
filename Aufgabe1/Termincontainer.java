@@ -2,11 +2,11 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class Termincontainer {
+public class TerminContainer {
 
     private ArrayList<Termin> terminlist;
 
-    public Termincontainer() {
+    public TerminContainer() {
         terminlist = new ArrayList<Termin>();
     }
 

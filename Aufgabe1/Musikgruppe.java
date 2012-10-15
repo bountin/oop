@@ -1,7 +1,7 @@
 import java.util.Date;
 
 public class Musikgruppe {
-    private Termincontainer termincontainer;
+    private TerminContainer termincontainer;
     private MitgliedContainer mitgliedcontainer;
     // pirvate Musikstueckcontainer musikstueckcontainer;
 
@@ -11,7 +11,7 @@ public class Musikgruppe {
     public Musikgruppe(String name, String ausrichtung) {
         this.name = name;
         this.ausrichtung = ausrichtung;
-        this.termincontainer = new Termincontainer();
+        this.termincontainer = new TerminContainer();
         this.mitgliedcontainer = new MitgliedContainer();
         //this.musikstueckcontainer = new Musikstueckcontainer();
     }
@@ -24,11 +24,11 @@ public class Musikgruppe {
         return ausrichtung;
     }
 
-    public MitgliedContainer getMitgliedcontainer() {
+    public MitgliedContainer getMitgliedContainer() {
         return mitgliedcontainer;
     }
 
-    public Termincontainer getTermincontainer() {
+    public TerminContainer getTerminContainer() {
         return termincontainer;
     }
 
