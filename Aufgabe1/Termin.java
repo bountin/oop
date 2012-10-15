@@ -1,15 +1,5 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-package Aufgabe1;
-
 import java.util.Date;
 
-/**
- *
- * @author Johannes Wawerda <johannes.wawerda@student.tuwien.ac.at>
- */
 public abstract class Termin {
      private String Ort;
      private Date datum;

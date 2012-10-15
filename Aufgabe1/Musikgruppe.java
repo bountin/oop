@@ -1,15 +1,5 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-package Aufgabe1;
-
 import java.util.Date;
 
-/**
- *
- * @author Johannes Wawerda <johannes.wawerda@student.tuwien.ac.at>
- */
 public class Musikgruppe {
     private Termincontainer termincontainer;
     private MitgliedContainer mitgliedcontainer;
@@ -26,16 +16,16 @@ public class Musikgruppe {
         //this.musikstueckcontainer = new Musikstueckcontainer();
     }
 
+    public String getName() {
+        return name;
+    }
+
     public String getAusrichtung() {
         return ausrichtung;
     }
 
     public MitgliedContainer getMitgliedcontainer() {
         return mitgliedcontainer;
-    }
-
-    public String getName() {
-        return name;
     }
 
     public Termincontainer getTermincontainer() {

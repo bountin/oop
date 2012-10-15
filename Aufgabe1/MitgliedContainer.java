@@ -1,5 +1,3 @@
-package Aufgabe1;
-
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -7,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 /**
- * <p>Eine Container Klasse f�r Mitglied Entities </p>
+ * <p>Eine Container Klasse für Mitglied Entities </p>
  *
  * @author Shahin
  *
@@ -50,7 +48,7 @@ public class MitgliedContainer {
 
 	/**
 	 * <p>Gibt eine formattierte, unsortierte Liste aller Mitglieder zum angegebenen Zeitpunkt
-	 * zur�ck</p>
+	 * zurück</p>
 	 *
 	 * @param Date date: das Datum, zu welchem die Mitglieder ausgegeben werden sollen
 	 * @return ein String mit einer Liste aller aktiven Mitglieder zu dem gegebenen Zeitpunkt
@@ -85,7 +83,7 @@ public class MitgliedContainer {
 	}
 
 	/**
-	 * <p> F�gt ein aktives Mitglied hinzu, falls nicht bereits ein aktives Mitglied
+	 * <p> Fügt ein aktives Mitglied hinzu, falls nicht bereits ein aktives Mitglied
 	 * mit diesem Namen existiert</p>
 	 *
 	 * <p> Gibt es bereits ein aktives Mitglied mit diesem Namen wird eine entsprechende

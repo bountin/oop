@@ -1,15 +1,5 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-package Aufgabe1;
-
 import java.util.Date;
 
-/**
- *
- * @author Johannes Wawerda <johannes.wawerda@student.tuwien.ac.at>
- */
 public class Probe extends Termin {
     private float raummiete;
 
@@ -55,6 +45,4 @@ public class Probe extends Termin {
     public String toString() {
         return "Probe{" + super.toString() + ", raummiete=" + raummiete + '}';
     }
-
-
 }

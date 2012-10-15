@@ -1,5 +1,3 @@
-package Aufgabe1;
-
 import java.util.Date;
 
 /**
@@ -18,7 +16,7 @@ public class Mitglied {
 	/**
 	 * <p> Der Konstruktor der Mitglied Klasse </p>
 	 *
-	 * <p> Name, Telefonnummer und Instrument k�nnen angegeben werden.
+	 * <p> Name, Telefonnummer und Instrument können angegeben werden.
 	 * Das Datum des Beitritts wird automatisch als der Zeitpunkt der
 	 * Erstellung der Klasse festgesetzt. Das Datum des Austritts bleibt frei</p>
 	 *
@@ -27,7 +25,6 @@ public class Mitglied {
 	 * @param String instrument
 	 */
 	public Mitglied(String name, long telnum, String instrument){
-		super();
 		this.name = name;
 		this.telnum = telnum;
 		this.instrument = instrument;
@@ -124,6 +121,4 @@ public class Mitglied {
 			return false;
 		return true;
 	}
-
-
 }

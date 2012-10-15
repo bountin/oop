@@ -1,17 +1,7 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-package Aufgabe1;
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-/**
- *
- * @author Johannes Wawerda <johannes.wawerda@student.tuwien.ac.at>
- */
 public class Termincontainer {
 
     private List<Termin> terminlist;
