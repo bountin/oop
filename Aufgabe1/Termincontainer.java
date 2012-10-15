@@ -26,11 +26,11 @@ public class Termincontainer {
      */
     public void addTermin(Termin t) {
         terminlist.add(t);
-    }    
-    
+    }
+
     /**
      * Returnt eine Liste aller Proben im Zeitraum zwischen from und to.
-     * @param from 
+     * @param from
      * @param to
      * @return List von Proben
      */
@@ -80,7 +80,7 @@ public class Termincontainer {
         }
         return l;
     }
-    
+
     /**
      * Liefert Miete im angegeben Zeitraum
      * @param from
@@ -88,11 +88,11 @@ public class Termincontainer {
      * @return Miete
      */
     public float getMiete(Date from, Date to) {
-        float sum = 0;   
+        float sum = 0;
         for (Termin t : terminlist) {
             if (t instanceof Probe
                     && t.getDatum().after(from)
-                    && t.getDatum().before(to)) { 
+                    && t.getDatum().before(to)) {
                 sum += ((Probe)t).getRaummiete();
             }
         }
@@ -106,17 +106,17 @@ public class Termincontainer {
      * @return Gage
      */
     public float getGage(Date from, Date to) {
-        float sum = 0;   
+        float sum = 0;
         for (Termin t : terminlist) {
             if (t instanceof Auftritt
                     && t.getDatum().after(from)
-                    && t.getDatum().before(to)) { 
+                    && t.getDatum().before(to)) {
                 sum += ((Auftritt)t).getGage();
             }
         }
-        return sum;        
-    }    
-    
+        return sum;
+    }
+
     /**
      * Liefert Saldo (Gage - Miete) im angegeben Zeitraum
      * @param from

@@ -4,7 +4,7 @@ import java.util.Date;
 
 /**
  * <p>Eine Entity Klasse zum verstauen der Information eines Bandmitglieds</p>
- * 
+ *
  * @author Shahin
  *
  */
@@ -14,14 +14,14 @@ public class Mitglied {
 	private String instrument;
 	private Date beitritt;
 	private Date austritt;
-	
+
 	/**
 	 * <p> Der Konstruktor der Mitglied Klasse </p>
-	 * 
-	 * <p> Name, Telefonnummer und Instrument können angegeben werden. 
+	 *
+	 * <p> Name, Telefonnummer und Instrument kï¿½nnen angegeben werden.
 	 * Das Datum des Beitritts wird automatisch als der Zeitpunkt der
 	 * Erstellung der Klasse festgesetzt. Das Datum des Austritts bleibt frei</p>
-	 * 
+	 *
 	 * @param String name
 	 * @param long telnum
 	 * @param String instrument
@@ -32,7 +32,7 @@ public class Mitglied {
 		this.telnum = telnum;
 		this.instrument = instrument;
 		//Nimmt die momentane Systemzeit beim Zeitpunkt der Erstellung
-		this.beitritt = new Date();		
+		this.beitritt = new Date();
 		this.austritt = null;
 	}
 
@@ -124,6 +124,6 @@ public class Mitglied {
 			return false;
 		return true;
 	}
-	
-	
+
+
 }

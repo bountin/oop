@@ -14,7 +14,7 @@ public class Auftritt extends Termin {
     private float gage;
 
     /**
-     * 
+     *
      * @param gage
      * @param Ort
      * @param datum
@@ -56,6 +56,6 @@ public class Auftritt extends Termin {
         return "Auftritt{" + super.toString() + ", gage=" + gage + '}';
     }
 
-    
-    
+
+
 }

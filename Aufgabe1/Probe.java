@@ -14,8 +14,8 @@ public class Probe extends Termin {
     private float raummiete;
 
     /**
-     * 
-     * @param raummiete 
+     *
+     * @param raummiete
      * @param Ort
      * @param datum
      * @param dauer Dauer in Minuten
@@ -56,5 +56,5 @@ public class Probe extends Termin {
         return "Probe{" + super.toString() + ", raummiete=" + raummiete + '}';
     }
 
-    
+
 }

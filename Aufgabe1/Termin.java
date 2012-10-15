@@ -16,7 +16,7 @@ public abstract class Termin {
      private int dauer;   // Minuten
 
      /**
-      * 
+      *
       * @param Ort
       * @param datum
       * @param dauer Dauer in Minuten
@@ -25,14 +25,14 @@ public abstract class Termin {
         this.Ort = Ort;
         this.datum = datum;
         this.dauer = dauer;
-    } 
-     
+    }
+
     public String getOrt() {
         return Ort;
     }
 
     /**
-     * 
+     *
      * @return Dauer in Minuten
      */
     public int getDauer() {
@@ -76,6 +76,6 @@ public abstract class Termin {
     @Override
     public String toString() {
         return "Ort=" + Ort + ", datum=" + datum + ", dauer=" + dauer;
-    }    
-    
+    }
+
 }

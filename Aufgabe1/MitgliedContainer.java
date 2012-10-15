@@ -7,14 +7,14 @@ import java.util.ArrayList;
 import java.util.Date;
 
 /**
- * <p>Eine Container Klasse für Mitglied Entities </p>
- * 
+ * <p>Eine Container Klasse fï¿½r Mitglied Entities </p>
+ *
  * @author Shahin
  *
  */
 public class MitgliedContainer {
 	private ArrayList<Mitglied> mitglieder;
-	
+
 	/**
 	 * <p>Der Standardkonstruktor der MitgliedContainer Klasse</p>
 	 */
@@ -22,10 +22,10 @@ public class MitgliedContainer {
 		super();
 		this.mitglieder = new ArrayList<Mitglied>();
 	}
-	
+
 	/**
-	 * <p>Gibt eine formattierte, unsortierte Liste aller aktueller Mitglieder zurück</p>
-	 * 
+	 * <p>Gibt eine formattierte, unsortierte Liste aller aktueller Mitglieder zurï¿½ck</p>
+	 *
 	 * @return ein String mit einer Liste aller aktiven Mitglieder
 	 */
 	public String printCurrentMitglieder(){
@@ -35,7 +35,7 @@ public class MitgliedContainer {
 		for(Mitglied mitglied: mitglieder){
 			if(mitglied.getAustritt() == null){
 				counter++;
-				ausgabe += ("Name: " + mitglied.getName() + ";  " + 
+				ausgabe += ("Name: " + mitglied.getName() + ";  " +
 							"Tel.: " + mitglied.getTelnum() + ";  " +
 							"Intrument: " + mitglied.getInstrument() + ";  "+
 							"Beitrittsdatum: " + dateFormat.format(mitglied.getBeitritt()) +"\n");
@@ -44,14 +44,14 @@ public class MitgliedContainer {
 		if(counter == 0){
 			ausgabe = ("Es gibt im Moment keine aktiven Mitglieder!");
 		}
-		
+
 		return ausgabe;
 	}
-	
+
 	/**
 	 * <p>Gibt eine formattierte, unsortierte Liste aller Mitglieder zum angegebenen Zeitpunkt
-	 * zurück</p>
-	 * 
+	 * zurï¿½ck</p>
+	 *
 	 * @param Date date: das Datum, zu welchem die Mitglieder ausgegeben werden sollen
 	 * @return ein String mit einer Liste aller aktiven Mitglieder zu dem gegebenen Zeitpunkt
 	 */
@@ -63,13 +63,13 @@ public class MitgliedContainer {
 			if(mitglied.getBeitritt().compareTo(date)<=0){
 				if (mitglied.getAustritt() == null){
 					counter++;
-					ausgabe += ("Name: " + mitglied.getName() + ";  " + 
+					ausgabe += ("Name: " + mitglied.getName() + ";  " +
 								"Tel.: " + mitglied.getTelnum() + ";  " +
 								"Intrument: " + mitglied.getInstrument() + ";  "+
 								"Beitrittsdatum: " + dateFormat.format(mitglied.getBeitritt()) + "\n");
 				}else if(mitglied.getAustritt().compareTo(date)>0){
 					counter++;
-					ausgabe += ("Name: " + mitglied.getName() + ";  " + 
+					ausgabe += ("Name: " + mitglied.getName() + ";  " +
 								"Tel.: " + mitglied.getTelnum() + ";  " +
 								"Intrument: " + mitglied.getInstrument() + ";  "+
 								"Beitrittsdatum: " + dateFormat.format(mitglied.getBeitritt()) + ";  " +
@@ -80,17 +80,17 @@ public class MitgliedContainer {
 		if(counter == 0){
 			ausgabe = ("Es gab zu diesem Zeitpunkt keine aktiven Mitglieder!");
 		}
-		
+
 		return ausgabe;
 	}
-	
+
 	/**
-	 * <p> Fügt ein aktives Mitglied hinzu, falls nicht bereits ein aktives Mitglied
+	 * <p> Fï¿½gt ein aktives Mitglied hinzu, falls nicht bereits ein aktives Mitglied
 	 * mit diesem Namen existiert</p>
-	 * 
+	 *
 	 * <p> Gibt es bereits ein aktives Mitglied mit diesem Namen wird eine entsprechende
 	 * Meldung auf dem Standardoutput ausgegeben</p>
-	 * 
+	 *
 	 * @param String name
 	 * @param long telnum
 	 * @param String instrument
@@ -104,14 +104,14 @@ public class MitgliedContainer {
 		}
 		mitglieder.add(new Mitglied(name,telnum,instrument));
 	}
-	
+
 	/**
-	 * <p> Sucht nach einem aktiven Mitglied mit dem gegebenen Namen 
+	 * <p> Sucht nach einem aktiven Mitglied mit dem gegebenen Namen
 	 * und setzt das Austrittsdatum auf das aktuelle Datum</p>
-	 * 
+	 *
 	 * <p> Gibt es kein aktives Mitglied mit diesem Namen wird eine entsprechende
 	 * Meldung auf dem Standardoutput ausgegeben</p>
-	 * 
+	 *
 	 * @param String name: der Name des zu entfernenden Mitglieds
 	 */
 	public void removeMitglied(String name){
@@ -131,5 +131,5 @@ public class MitgliedContainer {
 	public void setMitglieder(ArrayList<Mitglied> mitglieder) {
 		this.mitglieder = mitglieder;
 	}
-	
+
 }
