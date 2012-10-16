@@ -48,9 +48,18 @@ class Musikstueck {
         }
 
         if (austragung == null) {
-            return datum.after(eintragung);
+            return datum.after(eintragung) || datum.equals(eintragung);
         }
 
-        return datum.after(eintragung) && datum.before(austragung);
+        return
+            (datum.after(eintragung) || datum.equals(eintragung))
+         && (datum.before(austragung) || datum.equals(austragung));
+    }
+
+    public boolean equals(Musikstueck other) {
+        return this.getName() == other.getName()
+            && this.getLaenge() == other.getLaenge()
+            && this.getEintragung() == other.getEintragung()
+            && this.getAustragung() == other.getAustragung();
     }
 }

@@ -1,5 +1,10 @@
+import java.lang.Class;
+import java.lang.Integer;
+import java.lang.System;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -110,5 +115,86 @@ public class Test {
         * ENDE: Tests für MitgliedContainer
         * -----------------------------------------------------------
         */
+
+        /**
+         * Tests für Musikstueck
+         */
+        System.out.println();
+        System.out.println("---- Testing Mustikstueck part");
+
+        MusikstueckContainer musikstueckContainer = m.getMusikstueckContainer();
+        Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.DATE, -1);
+        Date today = new Date();
+        Date yesterday = new Date(cal.getTimeInMillis());
+        cal.add(Calendar.DATE, 2);
+        Date tomorrow = new Date(cal.getTimeInMillis());
+        cal.add(Calendar.DATE, 1);
+        Date dayAfterTomorrow = new Date(cal.getTimeInMillis());
+        Integer size;
+
+        size = musikstueckContainer.getList(today).size();
+        if (size == 0) {
+            System.out.println("OK: Musikgruppe hat ein leeres Repertoire");
+        } else {
+            System.err.println("ERROR: Musikgruppe sollte ein leeres Repertoire haben");
+        }
+
+        // Add a musikstueck
+        Musikstueck stueck1 = new Musikstueck("Für Amelie", 666);
+        musikstueckContainer.addElement(stueck1, today);
+        size = musikstueckContainer.getList(today).size();
+        if (size == 1) {
+            System.out.println("OK: Musikgruppe kennt ein Stück");
+        } else {
+            System.err.println("ERROR: Musikgruppe sollte ein Stück kennen");
+        }
+        if (musikstueckContainer.getList(today).get(0).equals(stueck1)) {
+            System.out.println("OK: Die Stücke stimmen überein");
+        } else {
+            System.err.println("ERROR: Die Stücke sollten überein stimmen");
+        }
+
+        // Musikstück sollte gestern nicht sichtbar sein, aber morgen schon
+        size = musikstueckContainer.getList(yesterday).size();
+        if (size == 0) {
+            System.out.println("OK: Musikgruppe kannte gestern kein Stück");
+        } else {
+            System.err.println("ERROR: Musikgruppe sollte gestern kein Stück kennen");
+        }
+        size = musikstueckContainer.getList(tomorrow).size();
+        if (size == 1) {
+            System.out.println("OK: Musikgruppe kennt morgen ein Stück");
+        } else {
+            System.err.println("ERROR: Musikgruppe sollte morgen ein Stück kennen");
+        }
+
+        // Entfernen des Elements
+        musikstueckContainer.removeElement(stueck1, tomorrow);
+        size = musikstueckContainer.getList(yesterday).size();
+        if (size == 0) {
+            System.out.println("OK: Musikgruppe kannte gestern immer noch kein Stück");
+        } else {
+            System.err.println("ERROR: Musikgruppe sollte gestern kein Stück kennen");
+        }
+        size = musikstueckContainer.getList(today).size();
+        if (size == 1) {
+            System.out.println("OK: Musikgruppe kennt heute ein Stück");
+        } else {
+            System.err.println("ERROR: Musikgruppe sollte heute ein Stück kennen");
+        }
+        size = musikstueckContainer.getList(tomorrow).size();
+        if (size == 1) {
+            System.out.println("OK: Musikgruppe kennt morgen ein Stück");
+        } else {
+            System.err.println("ERROR: Musikgruppe sollte morgen ein Stück kennen");
+        }
+        size = musikstueckContainer.getList(dayAfterTomorrow).size();
+        if (size == 0) {
+            System.out.println("OK: Musikgruppe kennt übermorgen kein Stück");
+        } else {
+            System.err.println("ERROR: Musikgruppe sollte übermorgen kein Stück kennen");
+        }
+
     }
 }

@@ -8,12 +8,13 @@ class MusikstueckContainer {
         this.list = new ArrayList<Musikstueck>();
     }
 
-    public void addElement(Musikstueck element) {
+    public void addElement(Musikstueck element, Date eintragung) {
         list.add(element);
+        element.setEintragung(eintragung);
     }
 
-    public void removeElement(Musikstueck element) {
-        list.remove(element);
+    public void removeElement(Musikstueck element, Date austragung) {
+        element.setAustragung(austragung);
     }
 
     public ArrayList<Musikstueck> getList(Date datum) {
