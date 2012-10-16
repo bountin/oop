@@ -1,6 +1,3 @@
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -17,69 +14,7 @@ public class MitgliedContainer {
 	 * <p>Der Standardkonstruktor der MitgliedContainer Klasse</p>
 	 */
 	public MitgliedContainer(){
-		super();
 		this.mitglieder = new ArrayList<Mitglied>();
-	}
-
-	/**
-	 * <p>Gibt eine formattierte, unsortierte Liste aller aktueller Mitglieder zur�ck</p>
-	 *
-	 * @return ein String mit einer Liste aller aktiven Mitglieder
-	 */
-	public String printCurrentMitglieder(){
-		int counter = 0;
-		String ausgabe = "";
-		DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
-		for(Mitglied mitglied: mitglieder){
-			if(mitglied.getAustritt() == null){
-				counter++;
-				ausgabe += ("Name: " + mitglied.getName() + ";  " +
-							"Tel.: " + mitglied.getTelnum() + ";  " +
-							"Intrument: " + mitglied.getInstrument() + ";  "+
-							"Beitrittsdatum: " + dateFormat.format(mitglied.getBeitritt()) +"\n");
-			}
-		}
-		if(counter == 0){
-			ausgabe = ("Es gibt im Moment keine aktiven Mitglieder!");
-		}
-
-		return ausgabe;
-	}
-
-	/**
-	 * <p>Gibt eine formattierte, unsortierte Liste aller Mitglieder zum angegebenen Zeitpunkt
-	 * zurück</p>
-	 *
-	 * @param Date date: das Datum, zu welchem die Mitglieder ausgegeben werden sollen
-	 * @return ein String mit einer Liste aller aktiven Mitglieder zu dem gegebenen Zeitpunkt
-	 */
-	public String printMitgliederAt(Date date){
-		int counter = 0;
-		String ausgabe = "";
-		DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
-		for(Mitglied mitglied: mitglieder){
-			if(mitglied.getBeitritt().compareTo(date)<=0){
-				if (mitglied.getAustritt() == null){
-					counter++;
-					ausgabe += ("Name: " + mitglied.getName() + ";  " +
-								"Tel.: " + mitglied.getTelnum() + ";  " +
-								"Intrument: " + mitglied.getInstrument() + ";  "+
-								"Beitrittsdatum: " + dateFormat.format(mitglied.getBeitritt()) + "\n");
-				}else if(mitglied.getAustritt().compareTo(date)>0){
-					counter++;
-					ausgabe += ("Name: " + mitglied.getName() + ";  " +
-								"Tel.: " + mitglied.getTelnum() + ";  " +
-								"Intrument: " + mitglied.getInstrument() + ";  "+
-								"Beitrittsdatum: " + dateFormat.format(mitglied.getBeitritt()) + ";  " +
-								"Austrittsdatum: " + dateFormat.format(mitglied.getAustritt()) + "\n");
-				}
-			}
-		}
-		if(counter == 0){
-			ausgabe = ("Es gab zu diesem Zeitpunkt keine aktiven Mitglieder!");
-		}
-
-		return ausgabe;
 	}
 
 	/**
@@ -92,15 +27,16 @@ public class MitgliedContainer {
 	 * @param String name
 	 * @param long telnum
 	 * @param String instrument
+	 * @param Date beitritt
+	 * @param Date austritt
 	 */
-	public void addMitglied(String name, long telnum, String instrument){
+	public void addMitglied(String name, String telnum, String instrument, Date beitritt, Date austritt){
 		for(Mitglied m: mitglieder){
 			if(m.getName().equals(name) && m.getAustritt() == null){
-				System.out.println(name + " ist bereits in der Gruppe!");
 				return;
 			}
 		}
-		mitglieder.add(new Mitglied(name,telnum,instrument));
+		mitglieder.add(new Mitglied(name,telnum,instrument,beitritt,austritt));
 	}
 
 	/**
@@ -119,15 +55,36 @@ public class MitgliedContainer {
 				return;
 			}
 		}
-		System.out.println(name + " ist kein aktives Mitglied der Gruppe!");
+	}
+	
+	/**
+	 * <p>Gibt die aktiven Mitglieder an einem bestimmten Datum wieder</p>
+	 * 
+	 * @param Date date: das momentane Datum wird angenommen, falls date null ist
+	 * @return eine Liste der aktiven Mitglieder zu einem gewissen Zeitpunkt. Kann leer sein, aber nicht null
+	 */
+	public ArrayList<Mitglied> getMitgliederOn(Date date){
+		ArrayList<Mitglied> m = new ArrayList<Mitglied>();
+		if(date == null){
+			for(Mitglied mitglied: mitglieder){
+				if(mitglied.getAustritt()== null){
+					m.add(mitglied);
+				}
+			}
+		}else{
+			for(Mitglied mitglied: mitglieder){
+				if( mitglied.getBeitritt().compareTo(date)<=0){
+					if(mitglied.getAustritt() == null || mitglied.getAustritt().compareTo(date)>=0){
+						m.add(mitglied);
+					}
+				}
+			}
+		}
+		
+		return m;
 	}
 
 	public ArrayList<Mitglied> getMitglieder() {
 		return mitglieder;
 	}
-
-	public void setMitglieder(ArrayList<Mitglied> mitglieder) {
-		this.mitglieder = mitglieder;
-	}
-
 }

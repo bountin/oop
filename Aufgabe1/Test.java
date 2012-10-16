@@ -1,9 +1,7 @@
-import java.lang.Class;
 import java.lang.Integer;
 import java.lang.System;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -66,50 +64,53 @@ public class Test {
         */
 
         System.out.println("\nMitgliedContainer TEST #1: Rückgabe des momentanigen Lineups bei leerem Lineup");
-        System.out.println(" Erwartung: \"Es gibt im Moment keine aktiven Mitglieder!\"");
-        m.printLineup();
+        System.out.println(" Erwartung: \"Korrekt!\"");
+        if(m.getMitgliedContainer().getMitgliederOn(null).isEmpty()){
+        	System.out.println("Korrekt!");
+        }else System.out.println("TEST FEHLGESCHLAGEN");
 
         System.out.println("\nMitgliedContainer TEST #2: Rückgabe des aktiven Lineups eines früheren Datums bei leerem Lineup");
         System.out.println(" Erwartung: \"Es gab zu diesem Zeitpunkt keine aktiven Mitglieder!\"");
-        m.printLineup(new Date());
+        
+        if(m.getMitgliedContainer().getMitgliederOn(sdf.parse("11.11.2011 00:00")).isEmpty()){
+        	System.out.println("Korrekt!");
+        }else System.out.println("TEST FEHLGESCHLAGEN");
 
         System.out.println("\nMitgliedContainer TEST #3: Hinzufügen von neuen Mitgliedern");
         System.out.println(" Erwartung: kein Crash ^^");
-        m.addMitglied("Ian",0,"Bass");
-        m.addMitglied("Rob",1,"Vocals");
-        m.addMitglied("Glenn",2,"Guitar,Keyboard");
-        m.addMitglied("Scott", 3, "Drums");
-        m.addMitglied("Richie", 4, "Guitar");
+        m.getMitgliedContainer().addMitglied("Ian","0","Bass",null,null);
+        m.getMitgliedContainer().addMitglied("Rob","1","Vocals", null,null);
+        m.getMitgliedContainer().addMitglied("Glenn","2","Guitar,Keyboard",null,null);
+        m.getMitgliedContainer().addMitglied("Scott", "3", "Drums",null,null);
+        m.getMitgliedContainer().addMitglied("Richie", "4", "Guitar",null,null);
 
         System.out.println("\nMitgliedContainer TEST #4: Rückgabe des aktiven Lineups bei nicht-leerem Lineup");
         System.out.println(" Erwartung: Ian, Rob, Glenn, Scott und Richie's Infos sollten angezeigt werden");
-        m.printLineup();
+        for(Mitglied mitglied: m.getMitgliedContainer().getMitgliederOn(null)){
+        	System.out.println(mitglied.toString() + "\n");
+        }
 
         System.out.println("\nMitgliedContainer TEST #5: Hinzufügen eines Mitglieds, das bereits aktiv ist");
-        System.out.println(" Erwartung: \"Rob ist bereits in der Gruppe!\"");
-        m.addMitglied("Rob",1,"Vocals");
+        System.out.println(" Erwartung: Rob soll nicht zweimal aufscheinen");
+        m.getMitgliedContainer().addMitglied("Rob","1","Vocals", null,null);
+        for(Mitglied mitglied: m.getMitgliedContainer().getMitgliederOn(null)){
+        	System.out.println(mitglied.toString() + "\n");
+        }
 
         System.out.println("\nMitgliedContainer TEST #6: Rückgabe des aktiven Lineups eines früheren Datums bei nicht-leerem Lineup");
         System.out.println(" Erwartung: Kenneth's Info sollte ausgegeben werden");
-        m.addMitglied("Kenneth",5,"Guitar");
-        Mitglied kk = m.getMitgliedContainer().getMitglieder().get(5);
-        try{
-            kk.setBeitritt(sdf.parse("01.10.1970"));
-            kk.setAustritt(sdf.parse("20.04.2011"));
-            m.printLineup(sdf.parse("02.10.1970"));
-        }catch(ParseException e){
-            System.err.println("ERROR: PARSE ERROR IN TEST NUMBER 6");
+        m.getMitgliedContainer().addMitglied("Kenneth","5","Guitar",sdf.parse("01.10.1970 00:00"), sdf.parse("20.04.2011 00:00"));
+        for(Mitglied mitglied: m.getMitgliedContainer().getMitgliederOn(sdf.parse("02.10.1970 00:00"))){
+        	System.out.println(mitglied.toString() + "\n");
         }
 
         System.out.println("\nMitgliedContainer TEST #7: Entfernen eines Mitglieds und anschließendes Ausgeben aller aktiver Mitglieder");
         System.out.println(" Erwartung: So wie Test#4, ohne Ian");
-        m.removeMitglied("Ian");
-        m.printLineup();
-
-        System.out.println("\nMitgliedContainer TEST #8: Entfernen eines Mitglieds, das nicht aktiv ist");
-        System.out.println(" Erwartung: \"Ian ist kein aktives Mitglied der Gruppe!\"");
-        m.removeMitglied("Ian");
-
+        m.getMitgliedContainer().removeMitglied("Ian");
+        for(Mitglied mitglied: m.getMitgliedContainer().getMitgliederOn(null)){
+        	System.out.println(mitglied.toString() + "\n");
+        }
+        
         /*
         * -----------------------------------------------------------
         * ENDE: Tests für MitgliedContainer

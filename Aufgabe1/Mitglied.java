@@ -8,7 +8,7 @@ import java.util.Date;
  */
 public class Mitglied {
 	private String name;
-	private long telnum;
+	private String telnum;
 	private String instrument;
 	private Date beitritt;
 	private Date austritt;
@@ -16,59 +16,52 @@ public class Mitglied {
 	/**
 	 * <p> Der Konstruktor der Mitglied Klasse </p>
 	 *
-	 * <p> Name, Telefonnummer und Instrument können angegeben werden.
-	 * Das Datum des Beitritts wird automatisch als der Zeitpunkt der
-	 * Erstellung der Klasse festgesetzt. Das Datum des Austritts bleibt frei</p>
+	 * <p> Ist das angegebene Beitrittsdatum nach dem aktuellen Datum wird 
+	 * beitritt zu null.</p>
+	 * <p> Austritt wird automatisch zu null falls beitritt null ist, falls
+	 * austritt nach dem aktuellen Datum ist oder wenn austritt nach beitritt ist</p>
 	 *
 	 * @param String name
-	 * @param long telnum
+	 * @param String telnum
 	 * @param String instrument
+	 * @param Date beitritt
+	 * @param Date austritt
 	 */
-	public Mitglied(String name, long telnum, String instrument){
+	public Mitglied(String name, String telnum, String instrument, Date beitritt, Date austritt){
 		this.name = name;
 		this.telnum = telnum;
 		this.instrument = instrument;
-		//Nimmt die momentane Systemzeit beim Zeitpunkt der Erstellung
-		this.beitritt = new Date();
-		this.austritt = null;
+		
+		if( beitritt == null || beitritt.after(new Date())){
+			this.beitritt = new Date();
+		}else{
+			this.beitritt = beitritt;
+		}
+		if(austritt == null || austritt.after(new Date()) || this.beitritt == null || austritt.after(this.beitritt)){
+			this.austritt = austritt;
+		}
 	}
 
 	public String getName() {
 		return name;
 	}
 
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public long getTelnum() {
+	public String getTelnum() {
 		return telnum;
-	}
-
-	public void setTelnum(long telnum) {
-		this.telnum = telnum;
 	}
 
 	public String getInstrument() {
 		return instrument;
 	}
 
-	public void setInstrument(String instrument) {
-		this.instrument = instrument;
-	}
-
 	public Date getBeitritt() {
 		return beitritt;
-	}
-
-	public void setBeitritt(Date beitritt) {
-		this.beitritt = beitritt;
 	}
 
 	public Date getAustritt() {
 		return austritt;
 	}
-
+	
 	public void setAustritt(Date austritt) {
 		this.austritt = austritt;
 	}
@@ -84,7 +77,7 @@ public class Mitglied {
 		result = prime * result
 				+ ((instrument == null) ? 0 : instrument.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		result = prime * result + (int) (telnum ^ (telnum >>> 32));
+		result = prime * result + ((telnum == null) ? 0 : telnum.hashCode());
 		return result;
 	}
 
@@ -117,8 +110,18 @@ public class Mitglied {
 				return false;
 		} else if (!name.equals(other.name))
 			return false;
-		if (telnum != other.telnum)
+		if (telnum == null) {
+			if (other.telnum != null)
+				return false;
+		} else if (!telnum.equals(other.telnum))
 			return false;
 		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "Mitglied{ Name= " + name + ", Tel#=" + telnum
+				+ ", Instrument=" + instrument + ", Beitritt=" + beitritt
+				+ ", Austritt=" + austritt + "}";
 	}
 }

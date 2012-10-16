@@ -10,7 +10,7 @@ class Musikstueck {
     private Date eintragung;
     private Date austragung;
 
-    public Musikstueck(String Name, Integer laenge) {
+    public Musikstueck(String name, Integer laenge) {
         this.name = name;
         this.laenge = laenge;
     }
