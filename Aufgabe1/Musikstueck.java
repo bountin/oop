@@ -2,15 +2,15 @@ import java.lang.Integer;
 import java.lang.String;
 import java.util.Date;
 
-class Musikstueck {
+public class Musikstueck {
     private String name;
     // The unit of laenge is seconds
-    private Integer laenge;
+    private int laenge;
 
     private Date eintragung;
     private Date austragung;
 
-    public Musikstueck(String name, Integer laenge) {
+    public Musikstueck(String name, int laenge) {
         this.name = name;
         this.laenge = laenge;
     }
@@ -22,7 +22,7 @@ class Musikstueck {
     /**
      * Laenge is measured in seconds
      */
-    public Integer getLaenge() {
+    public int getLaenge() {
         return laenge;
     }
 
@@ -57,7 +57,7 @@ class Musikstueck {
     }
 
     public boolean equals(Musikstueck other) {
-        return this.getName() == other.getName()
+        return this.getName().equals(other.getName())
             && this.getLaenge() == other.getLaenge()
             && this.getEintragung() == other.getEintragung()
             && this.getAustragung() == other.getAustragung();

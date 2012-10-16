@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Date;
 
-class MusikstueckContainer {
+public class MusikstueckContainer {
     private ArrayList<Musikstueck> list;
 
     public MusikstueckContainer() {

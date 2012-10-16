@@ -83,8 +83,4 @@ public class MitgliedContainer {
 		
 		return m;
 	}
-
-	public ArrayList<Mitglied> getMitglieder() {
-		return mitglieder;
-	}
 }
