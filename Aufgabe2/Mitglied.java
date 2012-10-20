@@ -12,6 +12,7 @@ public class Mitglied {
 	private String instrument;
 	private Date beitritt;
 	private Date austritt;
+	private MusikstueckContainer repertoire;
 
 	/**
 	 * <p> Der Konstruktor der Mitglied Klasse </p>
@@ -40,8 +41,10 @@ public class Mitglied {
 		if(austritt == null || austritt.after(new Date()) || this.beitritt == null || austritt.after(this.beitritt)){
 			this.austritt = austritt;
 		}
+		
+		this.repertoire = new MusikstueckContainer();
 	}
-
+	
 	public String getName() {
 		return name;
 	}
@@ -64,6 +67,10 @@ public class Mitglied {
 	
 	public void setAustritt(Date austritt) {
 		this.austritt = austritt;
+	}
+	
+	public MusikstueckContainer getRepertoire(){
+		return repertoire;
 	}
 
 	@Override
@@ -91,29 +98,34 @@ public class Mitglied {
 			return false;
 		Mitglied other = (Mitglied) obj;
 		if (austritt == null) {
-			if (other.austritt != null)
+			if (other.getAustritt() != null)
 				return false;
-		} else if (!austritt.equals(other.austritt))
+		} else if (!austritt.equals(other.getAustritt()))
 			return false;
 		if (beitritt == null) {
-			if (other.beitritt != null)
+			if (other.getBeitritt() != null)
 				return false;
-		} else if (!beitritt.equals(other.beitritt))
+		} else if (!beitritt.equals(other.getBeitritt()))
 			return false;
 		if (instrument == null) {
-			if (other.instrument != null)
+			if (other.getInstrument() != null)
 				return false;
-		} else if (!instrument.equals(other.instrument))
+		} else if (!instrument.equals(other.getInstrument()))
 			return false;
 		if (name == null) {
-			if (other.name != null)
+			if (other.getName() != null)
 				return false;
-		} else if (!name.equals(other.name))
+		} else if (!name.equals(other.getName()))
 			return false;
 		if (telnum == null) {
-			if (other.telnum != null)
+			if (other.getTelnum() != null)
 				return false;
-		} else if (!telnum.equals(other.telnum))
+		} else if (!telnum.equals(other.getTelnum()))
+			return false;
+		if (repertoire == null){
+			if (other.getRepertoire() != null )
+				return false;
+		} else if (!repertoire.equals(other.getRepertoire()))
 			return false;
 		return true;
 	}

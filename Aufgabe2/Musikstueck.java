@@ -1,4 +1,3 @@
-import java.lang.Integer;
 import java.lang.String;
 import java.util.Date;
 
@@ -57,7 +56,8 @@ public class Musikstueck {
     }
 
     public boolean equals(Musikstueck other) {
-        return this.getName().equals(other.getName())
+        return this.getClass().equals(other.getClass())
+        	&& this.getName().equals(other.getName())
             && this.getLaenge() == other.getLaenge()
             && this.getEintragung() == other.getEintragung()
             && this.getAustragung() == other.getAustragung();

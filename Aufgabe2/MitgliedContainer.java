@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 /**
- * <p>Eine Container Klasse für Mitglied Entities </p>
+ * <p>Eine Container Klasse fuer Mitglied Entities </p>
  *
  * @author Shahin
  *
@@ -18,7 +18,7 @@ public class MitgliedContainer {
 	}
 
 	/**
-	 * <p> Fügt ein aktives Mitglied hinzu, falls nicht bereits ein aktives Mitglied
+	 * <p> Faengt ein aktives Mitglied hinzu, falls nicht bereits ein aktives Mitglied
 	 * mit diesem Namen existiert</p>
 	 *
 	 * <p> Gibt es bereits ein aktives Mitglied mit diesem Namen wird eine entsprechende
@@ -82,5 +82,29 @@ public class MitgliedContainer {
 		}
 		
 		return m;
+	}
+	
+	/**
+	 * <p>Gibt das Repertoire der Band zu einem bestimmten Zeitpunkt wieder.
+	 *  Das Repertoire ist die Schnittmenge der Repertoires aller aktiver Mitglieder
+	 *  zu angegebenen Zeitpunkt</p>
+	 * 
+	 * @param Date date: das momentane Datum wird angenommen, falls date null ist
+	 * @return eine Liste des zusammengesetzten Repertoires, basierend auf den zu dem angegebenen
+	 * Zeitpunkt aktiven Mitgliedern 
+	 */
+	public ArrayList<Musikstueck> getActiveRepertoire(Date date){
+		ArrayList<Musikstueck> repertoire = new ArrayList<Musikstueck>();
+		
+		boolean first = true;
+		for(Mitglied mitglied: getMitgliederOn(date)){
+			if(first){
+				repertoire.addAll(mitglied.getRepertoire().getList(date));
+				first = false;
+			}else{
+				repertoire.retainAll(mitglied.getRepertoire().getList(date));
+			}
+		}
+		return repertoire;
 	}
 }
