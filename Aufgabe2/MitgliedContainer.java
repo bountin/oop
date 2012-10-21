@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * <p>Eine Container Klasse fuer Mitglied Entities </p>
@@ -57,6 +58,13 @@ public class MitgliedContainer {
 		}
 	}
 	
+    public void updateTermin(Termin t) {
+        List<Mitglied> l = this.getMitgliederOn(new Date());
+        for(Mitglied m : l) {
+            m.sendInfo("Termin '" + t + "' ändert Status auf '" + t.getStatus() + "'");
+        }
+    }
+    
 	/**
 	 * <p>Gibt die aktiven Mitglieder an einem bestimmten Datum wieder</p>
 	 * 

@@ -1,13 +1,16 @@
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Stack;
 
 public class TerminContainer {
 
     private ArrayList<Termin> terminlist;
+    private Stack<Termin> removed;
 
     public TerminContainer() {
         terminlist = new ArrayList<Termin>();
+        removed = new Stack<Termin>();
     }
 
     /**
@@ -18,6 +21,27 @@ public class TerminContainer {
         terminlist.add(t);
     }
 
+    /**
+     * Entfernt Termin
+     * @param t Termin
+     */
+    public void removeTermin(Termin t) {
+        if(terminlist.remove(t)) {
+            removed.push(t);
+        }
+    }
+
+    
+    /**
+     * Gibt ein Kopie des Stacks mit den gelöschten Terminen zurück
+     * @return Stack mit Terminen
+     */
+    public Stack<Termin> getRemoved() {
+        return (Stack<Termin>)removed.clone();
+    }
+    
+    
+    
     /**
      * Returnt eine Liste aller Proben im Zeitraum zwischen from und to.
      * @param from

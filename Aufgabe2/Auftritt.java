@@ -4,7 +4,7 @@ public class Auftritt extends Termin {
     private float gage;
 
     /**
-     *
+     * Erzeugt einen geplanten Auftritt
      * @param gage
      * @param Ort
      * @param datum
@@ -17,6 +17,11 @@ public class Auftritt extends Termin {
 
     public float getGage() {
         return gage;
+    }
+
+    public void setGage(float gage) {
+        this.setPreviousVersion(this.clone());
+        this.gage = gage;
     }
 
     @Override
@@ -41,6 +46,13 @@ public class Auftritt extends Termin {
         return hash;
     }
 
+    @Override
+    public Termin clone() {
+        Auftritt a = new Auftritt(this.gage, this.getOrt(), this.getDatum(), this.getDauer());
+        a.setPreviousVersion(this.getPreviousVersion());
+        return a;
+    }
+    
     @Override
     public String toString() {
         return "Auftritt{" + super.toString() + ", gage=" + gage + '}';

@@ -13,6 +13,7 @@ public class Test {
         System.out.println("Musikguppe: " + m);
 
         // Termin Test
+        System.out.println("\n---Termin testen---\n");
         SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy hh:mm");
 
         Probe p1 = new Probe(15.0f, "Garage", sdf.parse("17.11.2012 19:00"), 120);
@@ -56,7 +57,45 @@ public class Test {
         for(Termin t : lt) {
             System.out.println(t);
         }
-
+        
+        System.out.println("\n---Termin ändern/löschen---\n");
+        
+        // Termin ändern
+        System.out.println("Proben von 17.11.2012 auf Dauer '30' und Ort 'Wohnzimmer' ändern:");
+        lp = m.getTerminContainer().getProben(sdf.parse("17.11.2012 00:00"), sdf.parse("18.11.2012 00:00"));
+        Probe p = lp.get(0);
+        p.setDauer(30);
+        p.setOrt("Wohnzimmer");
+        System.out.println(p);
+        
+        // letzte Änderung rückgängig machen
+        System.out.println("Zweite Änderung Rückgäng machen:");
+        m.getTerminContainer().removeTermin(p);
+        m.getTerminContainer().addTermin(p.getPreviousVersion());
+        // Ausgabe des jetzt enthaltenen Termins
+        lp = m.getTerminContainer().getProben(sdf.parse("17.11.2012 00:00"), sdf.parse("18.11.2012 00:00"));
+        System.out.println(lp.get(0));
+        
+        // Status ändern
+        System.out.println("Probe absagen:");
+        lp = m.getTerminContainer().getProben(sdf.parse("17.11.2012 00:00"), sdf.parse("18.11.2012 00:00"));
+        p = lp.get(0);
+        p.setStatus(Termin.Status.ABGESAGT);
+        m.getMitgliedContainer().updateTermin(p);  // Mitglieder informieren
+        System.out.println(p);
+        
+        // Termin löschen
+        System.out.println("Proben von 17.11.2012 löschen:");
+        lp = m.getTerminContainer().getProben(sdf.parse("17.11.2012 00:00"), sdf.parse("18.11.2012 00:00"));
+        m.getTerminContainer().removeTermin(lp.get(0));
+        lp = m.getTerminContainer().getProben(sdf.parse("17.11.2012 00:00"), sdf.parse("18.11.2012 00:00"));
+        for(Termin t : lp) {  // leere List weil gelöscht
+            System.out.println(t);
+        }
+        // gelöschte Probe ausgeben
+        System.out.println("Gelöschte Probe ausgeben:");
+        System.out.println(m.getTerminContainer().getRemoved().pop());
+        
         /*
         * -----------------------------------------------------------
         * ANFANG: Tests für MitgliedContainer

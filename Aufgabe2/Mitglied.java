@@ -73,6 +73,10 @@ public class Mitglied {
 		return repertoire;
 	}
 
+    public void sendInfo(String message) {
+        // sende E-Mail oder ähnliches
+    }
+    
 	@Override
 	public int hashCode() {
 		final int prime = 31;

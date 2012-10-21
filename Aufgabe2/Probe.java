@@ -4,7 +4,7 @@ public class Probe extends Termin {
     private float raummiete;
 
     /**
-     *
+     * Erzeugt eine geplante Probe
      * @param raummiete
      * @param Ort
      * @param datum
@@ -17,6 +17,11 @@ public class Probe extends Termin {
 
     public float getRaummiete() {
         return raummiete;
+    }
+
+    public void setRaummiete(float raummiete) {
+        this.setPreviousVersion(this.clone());
+        this.raummiete = raummiete;
     }
 
     @Override
@@ -44,5 +49,12 @@ public class Probe extends Termin {
     @Override
     public String toString() {
         return "Probe{" + super.toString() + ", raummiete=" + raummiete + '}';
+    }
+
+    @Override
+    public Termin clone() {
+        Probe p = new Probe(this.raummiete, this.getOrt(), this.getDatum(), this.getDauer());
+        p.setPreviousVersion(this.getPreviousVersion());
+        return p;
     }
 }
