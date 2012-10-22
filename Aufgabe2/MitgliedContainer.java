@@ -19,7 +19,7 @@ public class MitgliedContainer {
 	}
 
 	/**
-	 * <p> Faengt ein aktives Mitglied hinzu, falls nicht bereits ein aktives Mitglied
+	 * <p> Fuegt ein aktives Mitglied hinzu, falls nicht bereits ein aktives Mitglied
 	 * mit diesem Namen existiert</p>
 	 *
 	 * <p> Gibt es bereits ein aktives Mitglied mit diesem Namen wird eine entsprechende
@@ -31,13 +31,13 @@ public class MitgliedContainer {
 	 * @param Date beitritt
 	 * @param Date austritt
 	 */
-	public void addMitglied(String name, String telnum, String instrument, Date beitritt, Date austritt){
+	public void addMitglied(Mitglied mitglied){
 		for(Mitglied m: mitglieder){
-			if(m.getName().equals(name) && m.getAustritt() == null){
+			if(m.getName().equals(mitglied.getName()) && m.getAustritt() == null){
 				return;
 			}
 		}
-		mitglieder.add(new Mitglied(name,telnum,instrument,beitritt,austritt));
+		mitglieder.add(mitglied);
 	}
 
 	/**
@@ -91,28 +91,5 @@ public class MitgliedContainer {
 		
 		return m;
 	}
-	
-	/**
-	 * <p>Gibt das Repertoire der Band zu einem bestimmten Zeitpunkt wieder.
-	 *  Das Repertoire ist die Schnittmenge der Repertoires aller aktiver Mitglieder
-	 *  zu angegebenen Zeitpunkt</p>
-	 * 
-	 * @param Date date: das momentane Datum wird angenommen, falls date null ist
-	 * @return eine Liste des zusammengesetzten Repertoires, basierend auf den zu dem angegebenen
-	 * Zeitpunkt aktiven Mitgliedern 
-	 */
-	public ArrayList<Musikstueck> getActiveRepertoire(Date date){
-		ArrayList<Musikstueck> repertoire = new ArrayList<Musikstueck>();
-		
-		boolean first = true;
-		for(Mitglied mitglied: getMitgliederOn(date)){
-			if(first){
-				repertoire.addAll(mitglied.getRepertoire().getList(date));
-				first = false;
-			}else{
-				repertoire.retainAll(mitglied.getRepertoire().getList(date));
-			}
-		}
-		return repertoire;
-	}
+
 }

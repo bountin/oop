@@ -62,4 +62,16 @@ public class Musikstueck {
             && this.getEintragung() == other.getEintragung()
             && this.getAustragung() == other.getAustragung();
     }
+    
+    public boolean equalsIgnoreDates(Musikstueck other){
+    	return this.getClass().equals(other.getClass())
+            	&& this.getName().equals(other.getName())
+                && this.getLaenge() == other.getLaenge();
+    }
+    
+    public String toString(){
+    	return "Musikstueck{ Name= " + name + ", Laenge=" + laenge
+				+ " Eintragung=" + eintragung
+				+ ", Austragung=" + austragung + "}";
+    }
 }

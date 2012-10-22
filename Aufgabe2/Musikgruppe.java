@@ -1,7 +1,9 @@
+import java.util.ArrayList;
+import java.util.Date;
+
 public class Musikgruppe {
     private TerminContainer termincontainer;
     private MitgliedContainer mitgliedcontainer;
-    private MusikstueckContainer musikstueckcontainer;
 
     private String name;
     private String ausrichtung;
@@ -11,7 +13,6 @@ public class Musikgruppe {
         this.ausrichtung = ausrichtung;
         this.termincontainer = new TerminContainer();
         this.mitgliedcontainer = new MitgliedContainer();
-        this.musikstueckcontainer = new MusikstueckContainer();
     }
 
     public String getName() {
@@ -29,10 +30,41 @@ public class Musikgruppe {
     public TerminContainer getTerminContainer() {
         return termincontainer;
     }
-
-    public MusikstueckContainer getMusikstueckContainer() {
-        return musikstueckcontainer;
-    }
+    
+    /**
+	 * <p>Gibt das Repertoire der Band zu einem bestimmten Zeitpunkt wieder.
+	 *  Das Repertoire ist die Schnittmenge der Repertoires aller aktiver Mitglieder
+	 *  zu angegebenen Zeitpunkt</p>
+	 * 
+	 * @param Date date: das momentane Datum wird angenommen, falls date null ist
+	 * @return eine Liste des zusammengesetzten Repertoires, basierend auf den zu dem angegebenen
+	 * Zeitpunkt aktiven Mitgliedern 
+	 */
+	public ArrayList<Musikstueck> getActiveRepertoire(Date date){
+		ArrayList<Musikstueck> temp = new ArrayList<Musikstueck>();
+		ArrayList<Musikstueck> repertoire = new ArrayList<Musikstueck>();
+		boolean first = true;
+		for(Mitglied mitglied: this.mitgliedcontainer.getMitgliederOn(date)){
+			if(first){
+				temp.addAll(mitglied.getRepertoire().getList(date));
+				repertoire.addAll(mitglied.getRepertoire().getList(date));
+				first = false;
+			}else{
+				for(Musikstueck m:temp){
+					boolean check = false;
+					for(Musikstueck n: mitglied.getRepertoire().getList(date)){
+						if(check = m.equalsIgnoreDates(n)){
+							break;
+						}
+					}
+					if(!check){
+						repertoire.remove(m);
+					}
+				}
+			}
+		}
+		return repertoire;
+	}
 
     @Override
     public String toString() {

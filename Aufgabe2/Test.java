@@ -96,65 +96,62 @@ public class Test {
         System.out.println("Gelöschte Probe ausgeben:");
         System.out.println(m.getTerminContainer().getRemoved().pop());
         
+     
+
         /*
-        * -----------------------------------------------------------
-        * ANFANG: Tests für MitgliedContainer
-        * -----------------------------------------------------------
-        */
-
-        System.out.println("\nMitgliedContainer TEST #1: Rückgabe des momentanigen Lineups bei leerem Lineup");
-        System.out.println(" Erwartung: \"Korrekt!\"");
-        if(m.getMitgliedContainer().getMitgliederOn(null).isEmpty()){
-        	System.out.println("Korrekt!");
-        }else System.out.println("TEST FEHLGESCHLAGEN");
-
-        System.out.println("\nMitgliedContainer TEST #2: Rückgabe des aktiven Lineups eines früheren Datums bei leerem Lineup");
-        System.out.println(" Erwartung: \"Es gab zu diesem Zeitpunkt keine aktiven Mitglieder!\"");
+         * -----------------------------------------------------------
+         * ANFANG: Tests für Repertoires und Varianten (AB ÜBUNG 2)
+         * -----------------------------------------------------------
+         */
+        System.out.println("\n---- Testing for Excercise 2: Repertoires and alternative Songs ");
         
-        if(m.getMitgliedContainer().getMitgliederOn(sdf.parse("11.11.2011 00:00")).isEmpty()){
-        	System.out.println("Korrekt!");
-        }else System.out.println("TEST FEHLGESCHLAGEN");
+        Musikstueck a = new Musikstueck("SONG A",123);
+        Musikstueck aa = new Stueckvariante("SONG A", "a", 123);
+        Musikstueck ab = new Stueckvariante("SONG A", "b", 123);
+        Musikstueck ba = new Stueckvariante("SONG B", "a", 123);
+        Musikstueck cf = new Stueckvariante("SONG C", "f", 123);
+        
+        Mitglied ian = new Mitglied("Ian","0","Bass",null,null);
+        ian.getRepertoire().addElement(a, sdf.parse("01.10.1970 00:00"));
+        ian.getRepertoire().addElement(aa, sdf.parse("01.10.1970 00:00"));
+        ian.getRepertoire().addElement(ab, sdf.parse("01.10.1970 00:00"));
+        ian.getRepertoire().addElement(ba, sdf.parse("01.10.1970 00:00"));
+        ian.getRepertoire().addElement(cf, sdf.parse("01.10.1970 00:00"));
+        Mitglied rob = new Mitglied("Rob","1","Vocals", null,null);
+        rob.getRepertoire().addElement(a, sdf.parse("01.10.1970 00:00"));
+        rob.getRepertoire().addElement(aa, sdf.parse("01.10.1970 00:00"));
+        rob.getRepertoire().addElement(ab, sdf.parse("01.10.1970 00:00"));
+        rob.getRepertoire().addElement(ba, sdf.parse("01.10.1970 00:00"));
+        Mitglied glenn = new Mitglied("Glenn","2","Guitar,Keyboard",null,null);
+        glenn.getRepertoire().addElement(a, sdf.parse("01.10.1970 00:00"));
+        glenn.getRepertoire().addElement(aa, sdf.parse("01.10.1970 00:00"));
+        glenn.getRepertoire().addElement(ab, sdf.parse("01.10.1970 00:00"));
+        glenn.getRepertoire().addElement(ba, sdf.parse("01.10.1970 00:00"));
+        Mitglied scott = new Mitglied("Scott", "3", "Drums",null,null);
+        scott.getRepertoire().addElement(a, sdf.parse("01.10.1970 00:00"));
+        scott.getRepertoire().addElement(aa, sdf.parse("01.10.1970 00:00"));
+        scott.getRepertoire().addElement(ab, sdf.parse("01.10.1970 00:00"));
+        Mitglied richie = new Mitglied("Richie", "4", "Guitar",null,null);
+        richie.getRepertoire().addElement(aa, sdf.parse("01.10.1970 00:00"));
+        Mitglied kenneth = new Mitglied("Kenneth","5","Guitar",sdf.parse("01.10.1970 00:00"), sdf.parse("20.04.2011 00:00"));
+        
+        m.getMitgliedContainer().addMitglied(ian);
+        m.getMitgliedContainer().addMitglied(rob);
+        m.getMitgliedContainer().addMitglied(glenn);
+        m.getMitgliedContainer().addMitglied(scott);
+        m.getMitgliedContainer().addMitglied(richie);
+        m.getMitgliedContainer().addMitglied(kenneth);
 
-        System.out.println("\nMitgliedContainer TEST #3: Hinzufügen von neuen Mitgliedern");
-        System.out.println(" Erwartung: kein Crash ^^");
-        m.getMitgliedContainer().addMitglied("Ian","0","Bass",null,null);
-        m.getMitgliedContainer().addMitglied("Rob","1","Vocals", null,null);
-        m.getMitgliedContainer().addMitglied("Glenn","2","Guitar,Keyboard",null,null);
-        m.getMitgliedContainer().addMitglied("Scott", "3", "Drums",null,null);
-        m.getMitgliedContainer().addMitglied("Richie", "4", "Guitar",null,null);
+        System.out.println("\n ONLY SONG A, VARIANT A IS SUPPOSED TO BE PRINTED:");
+       System.out.println( m.getActiveRepertoire(new Date()).toString());
 
-        System.out.println("\nMitgliedContainer TEST #4: Rückgabe des aktiven Lineups bei nicht-leerem Lineup");
-        System.out.println(" Erwartung: Ian, Rob, Glenn, Scott und Richie's Infos sollten angezeigt werden");
-        for(Mitglied mitglied: m.getMitgliedContainer().getMitgliederOn(null)){
-        	System.out.println(mitglied.toString() + "\n");
-        }
-
-        System.out.println("\nMitgliedContainer TEST #5: Hinzufügen eines Mitglieds, das bereits aktiv ist");
-        System.out.println(" Erwartung: Rob soll nicht zweimal aufscheinen");
-        m.getMitgliedContainer().addMitglied("Rob","1","Vocals", null,null);
-        for(Mitglied mitglied: m.getMitgliedContainer().getMitgliederOn(null)){
-        	System.out.println(mitglied.toString() + "\n");
-        }
-
-        System.out.println("\nMitgliedContainer TEST #6: Rückgabe des aktiven Lineups eines früheren Datums bei nicht-leerem Lineup");
-        System.out.println(" Erwartung: Kenneth's Info sollte ausgegeben werden");
-        m.getMitgliedContainer().addMitglied("Kenneth","5","Guitar",sdf.parse("01.10.1970 00:00"), sdf.parse("20.04.2011 00:00"));
-        for(Mitglied mitglied: m.getMitgliedContainer().getMitgliederOn(sdf.parse("02.10.1970 00:00"))){
-        	System.out.println(mitglied.toString() + "\n");
-        }
-
-        System.out.println("\nMitgliedContainer TEST #7: Entfernen eines Mitglieds und anschließendes Ausgeben aller aktiver Mitglieder");
-        System.out.println(" Erwartung: So wie Test#4, ohne Ian");
-        m.getMitgliedContainer().removeMitglied("Ian");
-        for(Mitglied mitglied: m.getMitgliedContainer().getMitgliederOn(null)){
-        	System.out.println(mitglied.toString() + "\n");
-        }
+        
         
         /*
-        * -----------------------------------------------------------
-        * ENDE: Tests für MitgliedContainer
-        * -----------------------------------------------------------
-        */
+         * -----------------------------------------------------------
+         * ENDE: Tests für Repertoires und Varianten (AB ÜBUNG 2)
+         * -----------------------------------------------------------
+         */
 
         /**
          * Tests für Musikstueck
@@ -162,7 +159,7 @@ public class Test {
         System.out.println();
         System.out.println("---- Testing Mustikstueck part");
 
-        MusikstueckContainer musikstueckContainer = m.getMusikstueckContainer();
+        MusikstueckContainer musikstueckContainer = new MusikstueckContainer(); //m.getMusikstueckContainer();
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.DATE, -1);
         Date today = new Date();
