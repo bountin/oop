@@ -1,3 +1,5 @@
+import Buchung.BuchungContainer;
+
 import java.util.Date;
 
 public abstract class Termin {
@@ -6,11 +8,13 @@ public abstract class Termin {
      private int dauer;   // Minuten
      private Status status;
      private Termin previousVersion;
-     
+
+    private BuchungContainer buchungen;
+
      public static enum Status {
          STATTGEFUNDEN, ABGESAGT, GEPLANT
      };
-     
+
      /**
       * Erzeugt einen geplanten Termin
       * @param Ort
@@ -22,6 +26,8 @@ public abstract class Termin {
         this.datum = datum;
         this.dauer = dauer;
         this.status = Status.GEPLANT;
+
+	    this.buchungen = new BuchungContainer();
     }
 
     public String getOrt() {
@@ -44,6 +50,10 @@ public abstract class Termin {
         return status;
     }
 
+    public BuchungContainer getBuchungContainer() {
+        return buchungen;
+    }
+
     public void setStatus(Status status) {
         this.previousVersion = this.clone();
         this.status = status;
@@ -63,21 +73,21 @@ public abstract class Termin {
         this.previousVersion = this.clone();
         this.ort = ort;
     }
-    
+
     protected void setPreviousVersion(Termin t) {
         this.previousVersion = t;
     }
-    
+
     public Termin getPreviousVersion() {
         return previousVersion;
     }
-    
+
     /**
      * Returnt eine Kopie des Objects.
      */
     @Override
     public abstract Termin clone();
-            
+
     @Override
     public boolean equals(Object obj) {
         if (obj == null) {

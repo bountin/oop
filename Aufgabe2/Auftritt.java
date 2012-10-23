@@ -1,6 +1,11 @@
+import Buchung.Gage;
+
 import java.util.Date;
 
 public class Auftritt extends Termin {
+	/**
+	 * @deprecated
+	 */
     private float gage;
 
     /**
@@ -12,13 +17,20 @@ public class Auftritt extends Termin {
      */
     public Auftritt(float gage, String Ort, Date datum, int dauer) {
         super(Ort, datum, dauer);
-        this.gage = gage;
+	    this.getBuchungContainer().addBuchung(new Gage(gage, datum));
+	    this.gage = gage;
     }
 
+	/**
+	 * @deprecated
+	 */
     public float getGage() {
         return gage;
     }
 
+	/**
+	 * @deprecated
+	 */
     public void setGage(float gage) {
         this.setPreviousVersion(this.clone());
         this.gage = gage;
@@ -52,7 +64,7 @@ public class Auftritt extends Termin {
         a.setPreviousVersion(this.getPreviousVersion());
         return a;
     }
-    
+
     @Override
     public String toString() {
         return "Auftritt{" + super.toString() + ", gage=" + gage + '}';

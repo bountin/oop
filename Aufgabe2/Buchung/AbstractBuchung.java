@@ -3,10 +3,10 @@ package Buchung;
 import java.util.Date;
 
 abstract public class AbstractBuchung {
-    private int wert;
+    private float wert;
 	private Date datum;
 
-	protected AbstractBuchung(int wert, Date datum) {
+	protected AbstractBuchung(float wert, Date datum) {
 		this.wert = wert;
 		this.datum = datum;
 	}
@@ -15,7 +15,7 @@ abstract public class AbstractBuchung {
 		return datum;
 	}
 
-    public int getWert() {
+    public float getWert() {
         return wert;
     }
 }

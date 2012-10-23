@@ -1,3 +1,5 @@
+import Buchung.RaumMiete;
+
 import java.util.Date;
 
 public class Probe extends Termin {
@@ -13,12 +15,20 @@ public class Probe extends Termin {
     public Probe(float raummiete, String Ort, Date datum, int dauer) {
         super(Ort, datum, dauer);
         this.raummiete = raummiete;
+	    RaumMiete miete = new RaumMiete(raummiete, datum);
+	    this.getBuchungContainer().addBuchung(miete);
     }
 
+	/**
+	 * @deprecated
+	 */
     public float getRaummiete() {
         return raummiete;
     }
 
+	/**
+	 * @deprecated
+	 */
     public void setRaummiete(float raummiete) {
         this.setPreviousVersion(this.clone());
         this.raummiete = raummiete;

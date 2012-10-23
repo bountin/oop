@@ -1,3 +1,7 @@
+import Buchung.Filter.AbstractFilter;
+import Buchung.Filter.TypFilter;
+import Buchung.Filter.ZeitraumFilter;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -31,7 +35,7 @@ public class TerminContainer {
         }
     }
 
-    
+
     /**
      * Gibt ein Kopie des Stacks mit den gelöschten Terminen zurück
      * @return Stack mit Terminen
@@ -39,9 +43,9 @@ public class TerminContainer {
     public Stack<Termin> getRemoved() {
         return (Stack<Termin>)removed.clone();
     }
-    
-    
-    
+
+
+
     /**
      * Returnt eine Liste aller Proben im Zeitraum zwischen from und to.
      * @param from
@@ -97,47 +101,58 @@ public class TerminContainer {
 
     /**
      * Liefert Miete im angegeben Zeitraum
+     * @deprecated
      * @param from
      * @param to
      * @return Miete
      */
-    public float getMiete(Date from, Date to) {
-        float sum = 0;
-        for (Termin t : terminlist) {
-            if (t instanceof Probe
-                    && t.getDatum().after(from)
-                    && t.getDatum().before(to)) {
-                sum += ((Probe)t).getRaummiete();
-            }
-        }
-        return sum;
+    public float getMiete(Date from, Date to) throws Exception {
+	    ArrayList<AbstractFilter> filters = new ArrayList<AbstractFilter>();
+	    filters.add(new ZeitraumFilter(from, to));
+	    TypFilter typFiler = new TypFilter();
+	    typFiler.addAllowedClass("Buchung.RaumMiete");
+	    filters.add(typFiler);
+	    return this.getSaldo(filters);
     }
 
     /**
      * Liefert Gage im angegeben Zeitraum
+     * @deprecated
      * @param from
      * @param to
      * @return Gage
      */
-    public float getGage(Date from, Date to) {
-        float sum = 0;
-        for (Termin t : terminlist) {
-            if (t instanceof Auftritt
-                    && t.getDatum().after(from)
-                    && t.getDatum().before(to)) {
-                sum += ((Auftritt)t).getGage();
-            }
-        }
-        return sum;
+    public float getGage(Date from, Date to) throws Exception {
+	    ArrayList<AbstractFilter> filters = new ArrayList<AbstractFilter>();
+	    filters.add(new ZeitraumFilter(from, to));
+	    TypFilter typFiler = new TypFilter();
+	    typFiler.addAllowedClass("Buchung.Gage");
+	    filters.add(typFiler);
+	    return this.getSaldo(filters);
     }
 
     /**
      * Liefert Saldo (Gage - Miete) im angegeben Zeitraum
+     * @deprecated
      * @param from
      * @param to
      * @return Saldo
      */
-    public float getSaldo(Date from, Date to) {
-        return getGage(from, to) - getMiete(from, to);
+    public float getSaldo(Date from, Date to) throws Exception {
+	    ArrayList<AbstractFilter> filters = new ArrayList<AbstractFilter>();
+	    filters.add(new ZeitraumFilter(from, to));
+	    TypFilter typFiler = new TypFilter();
+	    typFiler.addAllowedClass("Buchung.RaumMiete");
+	    typFiler.addAllowedClass("Buchung.Gage");
+	    filters.add(typFiler);
+	    return this.getSaldo(filters);
     }
+
+	public float getSaldo(List<AbstractFilter> filters) {
+		float summe = 0;
+		for (Termin t: terminlist) {
+			summe += t.getBuchungContainer().summe(filters);
+		}
+		return summe;
+	}
 }

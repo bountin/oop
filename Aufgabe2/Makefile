@@ -4,4 +4,4 @@ clean:
 	rm -f *.class
 	rm -f */*.class
 all:
-	javac *.java */*.java
+	javac *.java */*.java */*/*.java

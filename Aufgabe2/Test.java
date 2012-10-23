@@ -1,8 +1,10 @@
 import Buchung.BuchungContainer;
 import Buchung.Filter.AbstractFilter;
+import Buchung.Filter.TypFilter;
 import Buchung.Filter.ZeitraumFilter;
 import Buchung.Gage;
 import Buchung.RaumMiete;
+import Buchung.Steuer;
 
 import java.lang.Integer;
 import java.lang.System;
@@ -15,7 +17,7 @@ import java.util.List;
 
 public class Test {
 
-    public static void main(String[] args) throws ParseException {
+    public static void main(String[] args) throws Exception, ClassNotFoundException {
         Musikgruppe m = new Musikgruppe("MyMusikGroup", "Blub");  // denkt euch nen Namen und eine Richtung aus ;)
         System.out.println("Musikguppe: " + m);
 
@@ -246,27 +248,27 @@ public class Test {
 	    System.out.println();
 	    System.out.println("BUCHUNGSCONTAINER TESTS");
 	    BuchungContainer buchungContainer = new BuchungContainer();
-	    if (buchungContainer.summe(new ArrayList<AbstractFilter>()) == 0) {
+	    if (buchungContainer.summe(new ArrayList<AbstractFilter>()) == 0.0f) {
 		    System.out.println("OK: summe() = 0 ohne Buchungen");
 	    } else {
 		    System.out.println("ERROR: summe() != 0 ohne Buchungen");
 	    }
-	    Gage buchung1 = new Gage(500, new Date());
+	    Gage buchung1 = new Gage(500.0f, new Date());
 	    buchungContainer.addBuchung(buchung1);
-	    if (buchungContainer.summe(new ArrayList<AbstractFilter>()) == 500) {
+	    if (buchungContainer.summe(new ArrayList<AbstractFilter>()) == 500.0f) {
 		    System.out.println("OK: summe() = 500 mit buchung1");
 	    } else {
 		    System.out.println("ERROR: summe() != 500 mit buchung1");
 	    }
-	    RaumMiete buchung2 = new RaumMiete(300, new Date());
+	    RaumMiete buchung2 = new RaumMiete(300.0f, new Date());
 	    buchungContainer.addBuchung(buchung2);
-	    if (buchungContainer.summe(new ArrayList<AbstractFilter>()) == 200) {
+	    if (buchungContainer.summe(new ArrayList<AbstractFilter>()) == 200.0f) {
 		    System.out.println("OK: summe() = 200 mit buchung1 & buchung2");
 	    } else {
 		    System.out.println("ERROR: summe() != 200 mit buchung1 & buchung2");
 	    }
 	    buchungContainer.removeBuchung(buchung1);
-	    if (buchungContainer.summe(new ArrayList<AbstractFilter>()) == -300) {
+	    if (buchungContainer.summe(new ArrayList<AbstractFilter>()) == -300.0f) {
 		    System.out.println("OK: summe() = -300 mit buchung2");
 	    } else {
 		    System.out.println("ERROR: summe() != -300 mit buchung2");
@@ -277,8 +279,8 @@ public class Test {
 	    System.out.println();
 	    System.out.println("BUCHUNGSCONTAINER MIT FILTER TESTS");
 	    buchungContainer = new BuchungContainer();
-	    buchung1 = new Gage(100, today);
-	    buchung2 = new RaumMiete(200, tomorrow);
+	    buchung1 = new Gage(100.0f, today);
+	    buchung2 = new RaumMiete(200.0f, tomorrow);
 		buchungContainer.addBuchung(buchung1);
 		buchungContainer.addBuchung(buchung2);
 	    ZeitraumFilter filter1 = new ZeitraumFilter(yesterday, tomorrow);
@@ -290,20 +292,56 @@ public class Test {
 	    ZeitraumFilter filter3 = new ZeitraumFilter(tomorrow, tomorrow);
 	    ArrayList<AbstractFilter> filter3list = new ArrayList<AbstractFilter>();
 	    filter3list.add(filter3);
-		if (buchungContainer.summe(filter1list) == -100) {
+		if (buchungContainer.summe(filter1list) == -100.0f) {
 			System.out.println("OK: Filter1 passt");
 		} else {
 			System.out.println("ERROR: Filter1 passt nicht");
 		}
-		if (buchungContainer.summe(filter2list) == -100) {
+		if (buchungContainer.summe(filter2list) == -100.0f) {
 			System.out.println("OK: Filter2 passt");
 		} else {
 			System.out.println("ERROR: Filter2 passt nicht");
 		}
-		if (buchungContainer.summe(filter3list) == -200) {
+		if (buchungContainer.summe(filter3list) == -200.0f) {
 			System.out.println("OK: Filter3 passt");
 		} else {
 			System.out.println("ERROR: Filter3 passt nicht");
 		}
+
+	    /*************
+	     * TerminContainer mit Filtern
+	     ************/
+	    System.out.println();
+	    System.out.println("Termincontainer MIT FILTER TESTS");
+	    TerminContainer tc = new TerminContainer();
+	    Auftritt auf1 = new Auftritt(555f, "Nirgendwo", today, 123);
+	    Auftritt auf2 = new Auftritt(100f, "Nirgendwo", today, 123);
+	    tc.addTermin(auf1);
+	    tc.addTermin(auf2);
+	    if (tc.getSaldo(yesterday, tomorrow) == 655f) {
+		    System.out.println("OK: getSaldo passt");
+	    } else {
+		    System.out.println("ERROR: getSaldo passt nicht");
+	    }
+
+	    /*************
+	     * MusikGruppe mit Filter
+	     ************/
+	    System.out.println();
+	    System.out.println("Musikgruppe MIT FILTER TESTS");
+	    Musikgruppe mg = new Musikgruppe("Foo", "Bar");
+	    mg.getTerminContainer().addTermin(auf1);
+	    mg.getTerminContainer().addTermin(auf2);
+	    if (mg.getSaldo(new ArrayList<AbstractFilter>()) == 655f) {
+		    System.out.println("OK: getSumme 1 passt");
+	    } else {
+		    System.out.println("ERROR: getSumme 1 passt nicht");
+	    }
+	    mg.getBuchungContainer().addBuchung(new Steuer(55f, today));
+	    if (mg.getSaldo(new ArrayList<AbstractFilter>()) == 600f) {
+		    System.out.println("OK: getSumme 2 passt");
+	    } else {
+		    System.out.println("ERROR: getSumme 2 passt nicht");
+	    }
     }
 }
