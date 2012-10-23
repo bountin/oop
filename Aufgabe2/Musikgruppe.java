@@ -4,7 +4,8 @@ import java.util.Date;
 public class Musikgruppe {
     private TerminContainer termincontainer;
     private MitgliedContainer mitgliedcontainer;
-
+    private OrtContainer ortcontainer;
+    
     private String name;
     private String ausrichtung;
 
@@ -13,6 +14,7 @@ public class Musikgruppe {
         this.ausrichtung = ausrichtung;
         this.termincontainer = new TerminContainer();
         this.mitgliedcontainer = new MitgliedContainer();
+        this.ortcontainer = new OrtContainer();
     }
 
     public String getName() {
@@ -29,6 +31,10 @@ public class Musikgruppe {
 
     public TerminContainer getTerminContainer() {
         return termincontainer;
+    }
+    
+    public OrtContainer getOrtContainer() {
+        return ortcontainer;
     }
     
     /**
