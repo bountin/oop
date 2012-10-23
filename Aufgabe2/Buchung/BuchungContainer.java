@@ -16,7 +16,7 @@ public class BuchungContainer {
     public int summe() {
         int summe = 0;
         for (AbstractBuchung b: buchungen) {
-            summe += buchungen.getWert();
+            summe += b.getWert();
         }
         return summe;
     }
