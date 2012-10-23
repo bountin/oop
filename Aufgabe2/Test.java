@@ -1,7 +1,13 @@
+import Buchung.BuchungContainer;
+import Buchung.Filter.AbstractFilter;
+import Buchung.Gage;
+import Buchung.RaumMiete;
+
 import java.lang.Integer;
 import java.lang.System;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -57,9 +63,9 @@ public class Test {
         for(Termin t : lt) {
             System.out.println(t);
         }
-        
+
         System.out.println("\n---Termin ändern/löschen---\n");
-        
+
         // Termin ändern
         System.out.println("Proben von 17.11.2012 auf Dauer '30' und Ort 'Wohnzimmer' ändern:");
         lp = m.getTerminContainer().getProben(sdf.parse("17.11.2012 00:00"), sdf.parse("18.11.2012 00:00"));
@@ -67,7 +73,7 @@ public class Test {
         p.setDauer(30);
         p.setOrt("Wohnzimmer");
         System.out.println(p);
-        
+
         // letzte Änderung rückgängig machen
         System.out.println("Zweite Änderung Rückgäng machen:");
         m.getTerminContainer().removeTermin(p);
@@ -75,7 +81,7 @@ public class Test {
         // Ausgabe des jetzt enthaltenen Termins
         lp = m.getTerminContainer().getProben(sdf.parse("17.11.2012 00:00"), sdf.parse("18.11.2012 00:00"));
         System.out.println(lp.get(0));
-        
+
         // Status ändern
         System.out.println("Probe absagen:");
         lp = m.getTerminContainer().getProben(sdf.parse("17.11.2012 00:00"), sdf.parse("18.11.2012 00:00"));
@@ -83,7 +89,7 @@ public class Test {
         p.setStatus(Termin.Status.ABGESAGT);
         m.getMitgliedContainer().updateTermin(p);  // Mitglieder informieren
         System.out.println(p);
-        
+
         // Termin löschen
         System.out.println("Proben von 17.11.2012 löschen:");
         lp = m.getTerminContainer().getProben(sdf.parse("17.11.2012 00:00"), sdf.parse("18.11.2012 00:00"));
@@ -95,8 +101,8 @@ public class Test {
         // gelöschte Probe ausgeben
         System.out.println("Gelöschte Probe ausgeben:");
         System.out.println(m.getTerminContainer().getRemoved().pop());
-        
-     
+
+
 
         /*
          * -----------------------------------------------------------
@@ -104,13 +110,13 @@ public class Test {
          * -----------------------------------------------------------
          */
         System.out.println("\n---- Testing for Excercise 2: Repertoires and alternative Songs ");
-        
+
         Musikstueck a = new Musikstueck("SONG A",123);
         Musikstueck aa = new Stueckvariante("SONG A", "a", 123);
         Musikstueck ab = new Stueckvariante("SONG A", "b", 123);
         Musikstueck ba = new Stueckvariante("SONG B", "a", 123);
         Musikstueck cf = new Stueckvariante("SONG C", "f", 123);
-        
+
         Mitglied ian = new Mitglied("Ian","0","Bass",null,null);
         ian.getRepertoire().addElement(a, sdf.parse("01.10.1970 00:00"));
         ian.getRepertoire().addElement(aa, sdf.parse("01.10.1970 00:00"));
@@ -134,7 +140,7 @@ public class Test {
         Mitglied richie = new Mitglied("Richie", "4", "Guitar",null,null);
         richie.getRepertoire().addElement(aa, sdf.parse("01.10.1970 00:00"));
         Mitglied kenneth = new Mitglied("Kenneth","5","Guitar",sdf.parse("01.10.1970 00:00"), sdf.parse("20.04.2011 00:00"));
-        
+
         m.getMitgliedContainer().addMitglied(ian);
         m.getMitgliedContainer().addMitglied(rob);
         m.getMitgliedContainer().addMitglied(glenn);
@@ -145,8 +151,8 @@ public class Test {
         System.out.println("\n ONLY SONG A, VARIANT A IS SUPPOSED TO BE PRINTED:");
        System.out.println( m.getActiveRepertoire(new Date()).toString());
 
-        
-        
+
+
         /*
          * -----------------------------------------------------------
          * ENDE: Tests für Repertoires und Varianten (AB ÜBUNG 2)
@@ -233,5 +239,36 @@ public class Test {
             System.err.println("ERROR: Musikgruppe sollte übermorgen kein Stück kennen");
         }
 
+		/*****************
+		 * BuchungsContainer *
+		 ****************/
+	    System.out.println();
+	    System.out.println("BUCHUNGSCONTAINER TESTS");
+	    BuchungContainer buchungContainer = new BuchungContainer();
+	    if (buchungContainer.summe(new ArrayList<AbstractFilter>()) == 0) {
+		    System.out.println("OK: summe() = 0 ohne Buchungen");
+	    } else {
+		    System.out.println("ERROR: summe() != 0 ohne Buchungen");
+	    }
+	    Gage buchung1 = new Gage(500, new Date());
+	    buchungContainer.addBuchung(buchung1);
+	    if (buchungContainer.summe(new ArrayList<AbstractFilter>()) == 500) {
+		    System.out.println("OK: summe() = 500 mit buchung1");
+	    } else {
+		    System.out.println("ERROR: summe() != 500 mit buchung1");
+	    }
+	    RaumMiete buchung2 = new RaumMiete(300, new Date());
+	    buchungContainer.addBuchung(buchung2);
+	    if (buchungContainer.summe(new ArrayList<AbstractFilter>()) == 200) {
+		    System.out.println("OK: summe() = 200 mit buchung1 & buchung2");
+	    } else {
+		    System.out.println("ERROR: summe() != 200 mit buchung1 & buchung2");
+	    }
+	    buchungContainer.removeBuchung(buchung1);
+	    if (buchungContainer.summe(new ArrayList<AbstractFilter>()) == -300) {
+		    System.out.println("OK: summe() = -300 mit buchung2");
+	    } else {
+		    System.out.println("ERROR: summe() != -300 mit buchung2");
+	    }
     }
 }
