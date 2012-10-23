@@ -13,3 +13,4 @@ GRUPPENNUMMER
 
 # IDE ignore #
 .idea
+*.iml
