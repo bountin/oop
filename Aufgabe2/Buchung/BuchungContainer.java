@@ -1,23 +1,24 @@
 package Buchung;
 
 import java.util.ArrayList;
+import Buchung.Filter.AbstractFilter;
 
 public class BuchungContainer {
-    private ArrayList<AbstractBuchung> buchungen = new ArrayList<AbstractBuchung>();
+	private ArrayList<AbstractBuchung> buchungen = new ArrayList<AbstractBuchung>();
 
-    public void addBuchung(AbstractBuchung buchung) {
-        this.buchungen.add(buchung);
-    }
+	public void addBuchung(AbstractBuchung buchung) {
+		this.buchungen.add(buchung);
+	}
 
-    public void removeBuchung(AbstractBuchung buchung) {
-        this.buchungen.remove(buchung);
-    }
+	public void removeBuchung(AbstractBuchung buchung) {
+		this.buchungen.remove(buchung);
+	}
 
-    public int summe() {
-        int summe = 0;
-        for (AbstractBuchung b: buchungen) {
-            summe += b.getWert();
-        }
-        return summe;
-    }
+	public int summe() {
+		int summe = 0;
+		for (AbstractBuchung b: buchungen) {
+			summe += b.getWert();
+		}
+		return summe;
+	}
 }
