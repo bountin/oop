@@ -28,7 +28,7 @@ public class Test {
         Ort o1 = new Ort("Garage", "Hauptstraße 7", "1020", true, true, 12);
         Ort o2 = new Ort("Saal", "Bahnhofsplatz 17", "1020", true, false, 60);
         Ort o3 = new Ort("Halle", "Wiedener Hauptstraße 11", "1050", false, true, 200);
-        
+
         Probe p1 = new Probe(15.0f, o1, sdf.parse("17.11.2012 19:00"), 120);
         Probe p2 = new Probe(20.0f, o1, sdf.parse("24.11.2012 18:30"), 90);
         Auftritt a1 = new Auftritt(150.0f, o2, sdf.parse("24.12.2012 21:00"), 60);
@@ -318,8 +318,8 @@ public class Test {
 	    System.out.println();
 	    System.out.println("Termincontainer MIT FILTER TESTS");
 	    TerminContainer tc = new TerminContainer();
-	    Auftritt auf1 = new Auftritt(555f, "Nirgendwo", today, 123);
-	    Auftritt auf2 = new Auftritt(100f, "Nirgendwo", today, 123);
+	    Auftritt auf1 = new Auftritt(555f, o1, today, 123);
+	    Auftritt auf2 = new Auftritt(100f, o1, today, 123);
 	    tc.addTermin(auf1);
 	    tc.addTermin(auf2);
 	    if (tc.getSaldo(yesterday, tomorrow) == 655f) {
