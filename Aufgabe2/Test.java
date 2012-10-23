@@ -1,5 +1,6 @@
 import Buchung.BuchungContainer;
 import Buchung.Filter.AbstractFilter;
+import Buchung.Filter.ZeitraumFilter;
 import Buchung.Gage;
 import Buchung.RaumMiete;
 
@@ -270,5 +271,39 @@ public class Test {
 	    } else {
 		    System.out.println("ERROR: summe() != -300 mit buchung2");
 	    }
+	    /*******************************
+	     * BuchungsContainer mit Filter
+	     ******************************/
+	    System.out.println();
+	    System.out.println("BUCHUNGSCONTAINER MIT FILTER TESTS");
+	    buchungContainer = new BuchungContainer();
+	    buchung1 = new Gage(100, today);
+	    buchung2 = new RaumMiete(200, tomorrow);
+		buchungContainer.addBuchung(buchung1);
+		buchungContainer.addBuchung(buchung2);
+	    ZeitraumFilter filter1 = new ZeitraumFilter(yesterday, tomorrow);
+	    ArrayList<AbstractFilter> filter1list = new ArrayList<AbstractFilter>();
+	    filter1list.add(filter1);
+	    ZeitraumFilter filter2 = new ZeitraumFilter(today, tomorrow);
+	    ArrayList<AbstractFilter> filter2list = new ArrayList<AbstractFilter>();
+	    filter2list.add(filter2);
+	    ZeitraumFilter filter3 = new ZeitraumFilter(tomorrow, tomorrow);
+	    ArrayList<AbstractFilter> filter3list = new ArrayList<AbstractFilter>();
+	    filter3list.add(filter3);
+		if (buchungContainer.summe(filter1list) == -100) {
+			System.out.println("OK: Filter1 passt");
+		} else {
+			System.out.println("ERROR: Filter1 passt nicht");
+		}
+		if (buchungContainer.summe(filter2list) == -100) {
+			System.out.println("OK: Filter2 passt");
+		} else {
+			System.out.println("ERROR: Filter2 passt nicht");
+		}
+		if (buchungContainer.summe(filter3list) == -200) {
+			System.out.println("OK: Filter3 passt");
+		} else {
+			System.out.println("ERROR: Filter3 passt nicht");
+		}
     }
 }
