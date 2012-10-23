@@ -12,8 +12,8 @@ public class Probe extends Termin {
      * @param datum
      * @param dauer Dauer in Minuten
      */
-    public Probe(float raummiete, String Ort, Date datum, int dauer) {
-        super(Ort, datum, dauer);
+    public Probe(float raummiete, Ort ort, Date datum, int dauer) {
+        super(ort, datum, dauer);
         this.raummiete = raummiete;
 	    RaumMiete miete = new RaumMiete(raummiete, datum);
 	    this.getBuchungContainer().addBuchung(miete);

@@ -25,10 +25,14 @@ public class Test {
         System.out.println("\n---Termin testen---\n");
         SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy hh:mm");
 
-        Probe p1 = new Probe(15.0f, "Garage", sdf.parse("17.11.2012 19:00"), 120);
-        Probe p2 = new Probe(20.0f, "Garage", sdf.parse("24.11.2012 18:30"), 90);
-        Auftritt a1 = new Auftritt(150.0f, "Saal", sdf.parse("24.12.2012 21:00"), 60);
-        Auftritt a2 = new Auftritt(135.0f, "Halle", sdf.parse("3.9.2012 14:30"), 120);
+        Ort o1 = new Ort("Garage", "Hauptstraße 7", "1020", true, true, 12);
+        Ort o2 = new Ort("Saal", "Bahnhofsplatz 17", "1020", true, false, 60);
+        Ort o3 = new Ort("Halle", "Wiedener Hauptstraße 11", "1050", false, true, 200);
+        
+        Probe p1 = new Probe(15.0f, o1, sdf.parse("17.11.2012 19:00"), 120);
+        Probe p2 = new Probe(20.0f, o1, sdf.parse("24.11.2012 18:30"), 90);
+        Auftritt a1 = new Auftritt(150.0f, o2, sdf.parse("24.12.2012 21:00"), 60);
+        Auftritt a2 = new Auftritt(135.0f, o3, sdf.parse("3.9.2012 14:30"), 120);
 
         m.getTerminContainer().addTermin(p1);
         System.out.println("Add: " + p1);
@@ -74,7 +78,7 @@ public class Test {
         lp = m.getTerminContainer().getProben(sdf.parse("17.11.2012 00:00"), sdf.parse("18.11.2012 00:00"));
         Probe p = lp.get(0);
         p.setDauer(30);
-        p.setOrt("Wohnzimmer");
+        p.setOrt(new Ort("Wohnzimmer", "Hauptstraße 16/7", "1045", false, false, 5));
         System.out.println(p);
 
         // letzte Änderung rückgängig machen

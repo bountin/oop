@@ -9,6 +9,7 @@ public class Musikgruppe {
     private TerminContainer termincontainer;
     private MitgliedContainer mitgliedcontainer;
     private BuchungContainer buchungcontainer;
+    private OrtContainer ortcontainer;
 
     private String name;
     private String ausrichtung;
@@ -19,6 +20,7 @@ public class Musikgruppe {
         this.termincontainer = new TerminContainer();
         this.mitgliedcontainer = new MitgliedContainer();
         this.buchungcontainer = new BuchungContainer();
+        this.ortcontainer = new OrtContainer();
     }
 
     public String getName() {
@@ -41,6 +43,9 @@ public class Musikgruppe {
         return buchungcontainer;
     }
 
+    public OrtContainer getOrtContainer() {
+        return ortcontainer;
+    }
     /**
 	 * <p>Gibt das Repertoire der Band zu einem bestimmten Zeitpunkt wieder.
 	 *  Das Repertoire ist die Schnittmenge der Repertoires aller aktiver Mitglieder

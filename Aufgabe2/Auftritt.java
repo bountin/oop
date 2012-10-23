@@ -15,8 +15,8 @@ public class Auftritt extends Termin {
      * @param datum
      * @param dauer Dauer in Minuten
      */
-    public Auftritt(float gage, String Ort, Date datum, int dauer) {
-        super(Ort, datum, dauer);
+    public Auftritt(float gage, Ort ort, Date datum, int dauer) {
+        super(ort, datum, dauer);
 	    this.getBuchungContainer().addBuchung(new Gage(gage, datum));
 	    this.gage = gage;
     }

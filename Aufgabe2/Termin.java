@@ -3,7 +3,7 @@ import Buchung.BuchungContainer;
 import java.util.Date;
 
 public abstract class Termin {
-     private String ort;
+     private Ort ort;
      private Date datum;
      private int dauer;   // Minuten
      private Status status;
@@ -21,8 +21,8 @@ public abstract class Termin {
       * @param datum
       * @param dauer Dauer in Minuten
       */
-    public Termin(String Ort, Date datum, int dauer) {
-        this.ort = Ort;
+    public Termin(Ort ort, Date datum, int dauer) {
+        this.ort = ort;
         this.datum = datum;
         this.dauer = dauer;
         this.status = Status.GEPLANT;
@@ -30,7 +30,7 @@ public abstract class Termin {
 	    this.buchungen = new BuchungContainer();
     }
 
-    public String getOrt() {
+    public Ort getOrt() {
         return ort;
     }
 
@@ -69,7 +69,7 @@ public abstract class Termin {
         this.dauer = dauer;
     }
 
-    public void setOrt(String ort) {
+    public void setOrt(Ort ort) {
         this.previousVersion = this.clone();
         this.ort = ort;
     }
