@@ -7,7 +7,7 @@ public class Probe extends Termin {
 
     /**
      * Precondition: raummiete >= 0, ort != null, datum != null, dauer > 0
-     * Postcondition: Erzeugt ein Proben Objekt mit den übergebenen Werten
+     * Postcondition: Erzeugt ein Proben Objekt mit den uebergebenen Werten
      */
     public Probe(float raummiete, Ort ort, Date datum, int dauer) {
         super(ort, datum, dauer);
@@ -27,7 +27,7 @@ public class Probe extends Termin {
 
     /**
      * Precondition: raummiete >= 0
-     * Postcondition: Setzt Raummiete auf den übergeben Wert und speichert das
+     * Postcondition: Setzt Raummiete auf den uebergeben Wert und speichert das
      * alte Proben Objekt in previousVersion
      *
      * BAD: Um Rueckwaertskompatibilitaet zu den alten Testfaellen zu erhalten, wurde die lokale Raummiete nicht entfernt.

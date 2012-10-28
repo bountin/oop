@@ -20,7 +20,7 @@ public class TerminContainer {
 
     /**
      * Preconditon: t != null
-     * Postcondition: Fügt Termin t zum Container
+     * Postcondition: Fuegt Termin t zum Container
      */
     public void addTermin(Termin t) {
         terminlist.add(t);
@@ -38,8 +38,8 @@ public class TerminContainer {
     }
 
     /**
-     * Postcondition: Gibt eine Kopie des Stacks mit allen bisher gelöschten
-     * Terminen zurück
+     * Postcondition: Gibt eine Kopie des Stacks mit allen bisher geloeschten
+     * Terminen zurueck
      */
     public Stack<Termin> getRemoved() {
         return (Stack<Termin>) removed.clone();
@@ -48,7 +48,7 @@ public class TerminContainer {
     /**
      * Preconditon: from != null, to != null, to ist nach from
      * Postcondition: Gibt eine Liste mit allen Proben im entsprechenden Zeitraum
-     * zurück
+     * zurueck
      */
     public List<Probe> getProben(Date from, Date to) {
         List<Probe> l = new ArrayList<Probe>();
@@ -65,7 +65,7 @@ public class TerminContainer {
     /**
      * Preconditon: from != null, to != null, to ist nach from
      * Postcondition: Gibt eine Liste mit allen Auftritten im entsprechenden Zeitraum
-     * zurück
+     * zurueck
      */
     public List<Auftritt> getAuftritte(Date from, Date to) {
         List<Auftritt> l = new ArrayList<Auftritt>();
@@ -82,7 +82,7 @@ public class TerminContainer {
     /**
      * Preconditon: from != null, to != null, to ist nach from
      * Postcondition: Gibt eine Liste mit allen Terminen im entsprechenden Zeitraum
-     * zurück
+     * zurueck
      */
     public List<Termin> getTermine(Date from, Date to) {
         List<Termin> l = new ArrayList<Termin>();
@@ -98,7 +98,7 @@ public class TerminContainer {
     /**
      * Preconditon: from != null, to != null, to ist nach from
      * Postcondition: gibt die Summe aller Mieten im entsprechenden Zeitraum
-     * zurück
+     * zurueck
      * PostConfition: Rueckgabewert ist <= 0, da Mieten nur Ausgaben sind.
      *
      * GOOD: Durch Ueberladung ist die Rueckwaertskompatibilitaet zu dem Stand vor dem Buchungs-Refactoring gegeben.
@@ -115,7 +115,7 @@ public class TerminContainer {
     /**
      * Preconditon: from != null, to != null, to ist nach from
      * Postcondition: gibt die Summe aller Gagen im entsprechenden Zeitraum
-     * zurück
+     * zurueck
      * PostConfition: Rueckgabewert ist >= 0, da Gagen nur Einnahmen sind.
      *
      * GOOD: Durch Ueberladung ist die Rueckwaertskompatibilitaet zu dem Stand vor dem Buchungs-Refactoring gegeben.

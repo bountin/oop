@@ -40,7 +40,7 @@ public class MitgliedContainer {
     public void updateTermin(Termin t) {
         List<Mitglied> l = this.getMitgliederOn(new Date());
         for(Mitglied m : l) {
-            m.sendInfo("Termin '" + t + "' ändert Status auf '" + t.getStatus() + "'");
+            m.sendInfo("Termin '" + t + "' aendert Status auf '" + t.getStatus() + "'");
         }
     }
 

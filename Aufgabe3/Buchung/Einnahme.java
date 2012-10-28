@@ -11,6 +11,6 @@ abstract public class Einnahme
 	 */
 	public Einnahme(float wert, Date datum) {
 		super(wert, datum);
-		assert wert >= 0 : "Einnahmen müssen positiv sein";
+		assert wert >= 0 : "Einnahmen muessen positiv sein";
 	}
 }

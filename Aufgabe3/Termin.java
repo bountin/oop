@@ -5,7 +5,7 @@ import java.util.Date;
 public abstract class Termin {
      private Ort ort;
      private Date datum;
-     private int dauer;   
+     private int dauer;
      private Status status;
      private Termin previousVersion;
 
@@ -49,8 +49,8 @@ public abstract class Termin {
     }
 
     /**
-     * GOOD: Status enum - Es kann kein ungültiger Wert übergeben werden.
-     * Postcondition: Setzt Status auf den übergebenen Status und speichert die 
+     * GOOD: Status enum - Es kann kein ungueltiger Wert uebergeben werden.
+     * Postcondition: Setzt Status auf den uebergebenen Status und speichert die
      * alte Terminversion in previousVersion.
      */
     public void setStatus(Status status) {
@@ -60,9 +60,9 @@ public abstract class Termin {
 
     /**
      * Precondition: datum != null
-     * Postcondition: Setzt das übergeben Datum und speichert die 
+     * Postcondition: Setzt das uebergeben Datum und speichert die
      * alte Terminversion in previousVersion.
-     */    
+     */
     public void setDatum(Date datum) {
         this.previousVersion = this.clone();
         this.datum = datum;
@@ -70,9 +70,9 @@ public abstract class Termin {
 
     /**
      * Precondition: dauer > 0
-     * Postcondition: Setzt die übergeben Dauer und speichert die 
+     * Postcondition: Setzt die uebergeben Dauer und speichert die
      * alte Terminversion in previousVersion.
-     */      
+     */
     public void setDauer(int dauer) {
         this.previousVersion = this.clone();
         this.dauer = dauer;
@@ -80,9 +80,9 @@ public abstract class Termin {
 
     /**
      * Precondition: ort != null
-     * Postcondition: Setzt den übergeben Ort und speichert die 
+     * Postcondition: Setzt den uebergeben Ort und speichert die
      * alte Terminversion in previousVersion.
-     */     
+     */
     public void setOrt(Ort ort) {
         this.previousVersion = this.clone();
         this.ort = ort;
@@ -90,8 +90,8 @@ public abstract class Termin {
 
     /**
      * Precondition: nur von Termin und geerbeten Klassen aufrufen
-     * Postcondition: Setzt previousVersion auf den übergebenen Termin
-     */      
+     * Postcondition: Setzt previousVersion auf den uebergebenen Termin
+     */
     protected void setPreviousVersion(Termin t) {
         this.previousVersion = t;
     }

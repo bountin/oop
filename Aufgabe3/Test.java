@@ -31,9 +31,9 @@ public class Test {
         System.out.println("\n---Termin testen---\n");
         SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy hh:mm");
 
-        Ort o1 = new Ort("Garage", "Hauptstraße 7", "1020", true, true, 12);
+        Ort o1 = new Ort("Garage", "Hauptstrasse 7", "1020", true, true, 12);
         Ort o2 = new Ort("Saal", "Bahnhofsplatz 17", "1020", true, false, 60);
-        Ort o3 = new Ort("Halle", "Wiedener Hauptstraße 11", "1050", false, true, 200);
+        Ort o3 = new Ort("Halle", "Wiedener Hauptstrasse 11", "1050", false, true, 200);
 
         Probe p1 = new Probe(15.0f, o1, sdf.parse("17.11.2012 19:00"), 120);
         Probe p2 = new Probe(20.0f, o1, sdf.parse("24.11.2012 18:30"), 90);
@@ -77,25 +77,25 @@ public class Test {
             System.out.println(t);
         }
 
-        System.out.println("\n---Termin ändern/löschen---\n");
+        System.out.println("\n---Termin aendern/loeschen---\n");
 
-        // Termin ändern
-        System.out.println("Proben von 17.11.2012 auf Dauer '30' und Ort 'Wohnzimmer' ändern:");
+        // Termin aendern
+        System.out.println("Proben von 17.11.2012 auf Dauer '30' und Ort 'Wohnzimmer' aendern:");
         lp = m.getTerminContainer().getProben(sdf.parse("17.11.2012 00:00"), sdf.parse("18.11.2012 00:00"));
         Probe p = lp.get(0);
         p.setDauer(30);
-        p.setOrt(new Ort("Wohnzimmer", "Hauptstraße 16/7", "1045", false, false, 5));
+        p.setOrt(new Ort("Wohnzimmer", "Hauptstrasse 16/7", "1045", false, false, 5));
         System.out.println(p);
 
-        // letzte Änderung rückgängig machen
-        System.out.println("Zweite Änderung Rückgäng machen:");
+        // letzte Aenderung rueckgaengig machen
+        System.out.println("Zweite Aenderung Rueckgaeng machen:");
         m.getTerminContainer().removeTermin(p);
         m.getTerminContainer().addTermin(p.getPreviousVersion());
         // Ausgabe des jetzt enthaltenen Termins
         lp = m.getTerminContainer().getProben(sdf.parse("17.11.2012 00:00"), sdf.parse("18.11.2012 00:00"));
         System.out.println(lp.get(0));
 
-        // Status ändern
+        // Status aendern
         System.out.println("Probe absagen:");
         lp = m.getTerminContainer().getProben(sdf.parse("17.11.2012 00:00"), sdf.parse("18.11.2012 00:00"));
         p = lp.get(0);
@@ -103,23 +103,23 @@ public class Test {
         m.getMitgliedContainer().updateTermin(p);  // Mitglieder informieren
         System.out.println(p);
 
-        // Termin löschen
-        System.out.println("Proben von 17.11.2012 löschen:");
+        // Termin loeschen
+        System.out.println("Proben von 17.11.2012 loeschen:");
         lp = m.getTerminContainer().getProben(sdf.parse("17.11.2012 00:00"), sdf.parse("18.11.2012 00:00"));
         m.getTerminContainer().removeTermin(lp.get(0));
         lp = m.getTerminContainer().getProben(sdf.parse("17.11.2012 00:00"), sdf.parse("18.11.2012 00:00"));
-        for(Termin t : lp) {  // leere List weil gelöscht
+        for(Termin t : lp) {  // leere List weil geloescht
             System.out.println(t);
         }
-        // gelöschte Probe ausgeben
-        System.out.println("Gelöschte Probe ausgeben:");
+        // geloeschte Probe ausgeben
+        System.out.println("Geloeschte Probe ausgeben:");
         System.out.println(m.getTerminContainer().getRemoved().pop());
 
 
 
         /*
          * -----------------------------------------------------------
-         * ANFANG: Tests für Repertoires und Varianten (AB ÜBUNG 2)
+         * ANFANG: Tests fuer Repertoires und Varianten (AB UEBUNG 2)
          * -----------------------------------------------------------
          */
         System.out.println("\n---- Testing for Excercise 2: Repertoires and alternative Songs ");
@@ -168,12 +168,12 @@ public class Test {
 
         /*
          * -----------------------------------------------------------
-         * ENDE: Tests für Repertoires und Varianten (AB ÜBUNG 2)
+         * ENDE: Tests fuer Repertoires und Varianten (AB UEBUNG 2)
          * -----------------------------------------------------------
          */
 
         /**
-         * Tests für Musikstueck
+         * Tests fuer Musikstueck
          */
         System.out.println();
         System.out.println("---- Testing Mustikstueck part");
@@ -197,59 +197,59 @@ public class Test {
         }
 
         // Add a musikstueck
-        Musikstueck stueck1 = new Musikstueck("Für Amelie", 666);
+        Musikstueck stueck1 = new Musikstueck("Fuer Amelie", 666);
         musikstueckContainer.addElement(stueck1, today);
         size = musikstueckContainer.getList(today).size();
         if (size == 1) {
-            System.out.println("OK: Musikgruppe kennt ein Stück");
+            System.out.println("OK: Musikgruppe kennt ein Stueck");
         } else {
-            System.err.println("ERROR: Musikgruppe sollte ein Stück kennen");
+            System.err.println("ERROR: Musikgruppe sollte ein Stueck kennen");
         }
         if (musikstueckContainer.getList(today).get(0).equals(stueck1)) {
-            System.out.println("OK: Die Stücke stimmen überein");
+            System.out.println("OK: Die Stuecke stimmen ueberein");
         } else {
-            System.err.println("ERROR: Die Stücke sollten überein stimmen");
+            System.err.println("ERROR: Die Stuecke sollten ueberein stimmen");
         }
 
-        // Musikstück sollte gestern nicht sichtbar sein, aber morgen schon
+        // Musikstueck sollte gestern nicht sichtbar sein, aber morgen schon
         size = musikstueckContainer.getList(yesterday).size();
         if (size == 0) {
-            System.out.println("OK: Musikgruppe kannte gestern kein Stück");
+            System.out.println("OK: Musikgruppe kannte gestern kein Stueck");
         } else {
-            System.err.println("ERROR: Musikgruppe sollte gestern kein Stück kennen");
+            System.err.println("ERROR: Musikgruppe sollte gestern kein Stueck kennen");
         }
         size = musikstueckContainer.getList(tomorrow).size();
         if (size == 1) {
-            System.out.println("OK: Musikgruppe kennt morgen ein Stück");
+            System.out.println("OK: Musikgruppe kennt morgen ein Stueck");
         } else {
-            System.err.println("ERROR: Musikgruppe sollte morgen ein Stück kennen");
+            System.err.println("ERROR: Musikgruppe sollte morgen ein Stueck kennen");
         }
 
         // Entfernen des Elements
         musikstueckContainer.removeElement(stueck1, tomorrow);
         size = musikstueckContainer.getList(yesterday).size();
         if (size == 0) {
-            System.out.println("OK: Musikgruppe kannte gestern immer noch kein Stück");
+            System.out.println("OK: Musikgruppe kannte gestern immer noch kein Stueck");
         } else {
-            System.err.println("ERROR: Musikgruppe sollte gestern kein Stück kennen");
+            System.err.println("ERROR: Musikgruppe sollte gestern kein Stueck kennen");
         }
         size = musikstueckContainer.getList(today).size();
         if (size == 1) {
-            System.out.println("OK: Musikgruppe kennt heute ein Stück");
+            System.out.println("OK: Musikgruppe kennt heute ein Stueck");
         } else {
-            System.err.println("ERROR: Musikgruppe sollte heute ein Stück kennen");
+            System.err.println("ERROR: Musikgruppe sollte heute ein Stueck kennen");
         }
         size = musikstueckContainer.getList(tomorrow).size();
         if (size == 1) {
-            System.out.println("OK: Musikgruppe kennt morgen ein Stück");
+            System.out.println("OK: Musikgruppe kennt morgen ein Stueck");
         } else {
-            System.err.println("ERROR: Musikgruppe sollte morgen ein Stück kennen");
+            System.err.println("ERROR: Musikgruppe sollte morgen ein Stueck kennen");
         }
         size = musikstueckContainer.getList(dayAfterTomorrow).size();
         if (size == 0) {
-            System.out.println("OK: Musikgruppe kennt übermorgen kein Stück");
+            System.out.println("OK: Musikgruppe kennt uebermorgen kein Stueck");
         } else {
-            System.err.println("ERROR: Musikgruppe sollte übermorgen kein Stück kennen");
+            System.err.println("ERROR: Musikgruppe sollte uebermorgen kein Stueck kennen");
         }
 
 		/*****************

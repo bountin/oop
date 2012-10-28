@@ -14,7 +14,7 @@ public class OrtContainer {
 
     /**
      * Precondition: ort != null
-     * Postcondition: Ort wird zum Container hinzugefügt
+     * Postcondition: Ort wird zum Container hinzugefuegt
      */
     public void addOrt(Ort ort) {
         orte.add(ort);
@@ -25,8 +25,8 @@ public class OrtContainer {
     }
 
     /**
-     * Precondition: Erwartet Namen mit gesuchtem Ort 
-     * Postcondition: Liste mit allen Orten deren Name dem Übergebenen entspricht.
+     * Precondition: Erwartet Namen mit gesuchtem Ort
+     * Postcondition: Liste mit allen Orten deren Name dem Uebergebenen entspricht.
      */
     public ArrayList<Ort> getOrtbyName(String name) {
         ArrayList<Ort> l = new ArrayList<Ort>();

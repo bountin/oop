@@ -21,7 +21,7 @@ public class ZeitraumFilter
 	/**
 	 * Precondition: Buchung != null
 	 * Postcondition: Wahrheitswert ob Buchung auf den Filter matcht (durch Oberklasse)
-	 * Postcondition: Überprüfung die Buchung im erlaubten Zeitintervall liegt
+	 * Postcondition: Ueberpruefung die Buchung im erlaubten Zeitintervall liegt
 	 */
 	public boolean isOK(AbstractBuchung buchung) {
 		Date buchungDate = buchung.getDatum();

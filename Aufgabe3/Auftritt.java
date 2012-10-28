@@ -24,7 +24,7 @@ public class Auftritt extends Termin {
 
     /**
      * Proconditon: gage >= 0
-     * Postcondition: Setzt die Gage auf den übergebenen Wert. Speichert zuvor
+     * Postcondition: Setzt die Gage auf den uebergebenen Wert. Speichert zuvor
      * das gesamte Objekt als previosVersion
      *
      * BAD: Um Rueckwaertskompatibilitaet zu den alten Testfaellen zu erhalten, wurde die lokale Gage nicht entfernt.
