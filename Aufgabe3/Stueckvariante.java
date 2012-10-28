@@ -3,6 +3,7 @@ public class Stueckvariante extends Musikstueck {
 	
 	private String variantenName;
 
+	//POSTCONDITION: Ein den Parametern entsprechendes Objekt wurde erzeugt
 	public Stueckvariante(String name, String variantenName, int laenge) {
 		 super(name, laenge);
 		 this.variantenName = variantenName;

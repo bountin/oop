@@ -1,11 +1,5 @@
 import java.util.Date;
 
-/**
- * <p>Eine Entity Klasse zum verstauen der Information eines Bandmitglieds</p>
- *
- * @author Shahin
- *
- */
 public class Mitglied {
 	private String name;
 	private String telnum;
@@ -13,21 +7,15 @@ public class Mitglied {
 	private Date beitritt;
 	private Date austritt;
 	private MusikstueckContainer repertoire;
-
-	/**
-	 * <p> Der Konstruktor der Mitglied Klasse </p>
-	 *
-	 * <p> Ist das angegebene Beitrittsdatum nach dem aktuellen Datum wird 
-	 * beitritt zu null.</p>
-	 * <p> Austritt wird automatisch zu null falls beitritt null ist, falls
-	 * austritt nach dem aktuellen Datum ist oder wenn austritt nach beitritt ist</p>
-	 *
-	 * @param String name
-	 * @param String telnum
-	 * @param String instrument
-	 * @param Date beitritt
-	 * @param Date austritt
-	 */
+	
+	//NOTE: Preconditions werden im Code selbst überprüft und richtig gestellt
+	//Insbesondere: beitritt soll nicht null sein
+	//				beitritt soll nicht in der zukunft sein
+	//				austritt soll nicht null sein
+	//				austritt soll nicht in der zukunft sein
+	//				man kann nicht ausgetreten sein bevor man beigetreten ist
+	
+	//POSTCONDITION: Ein den Parametern entsprechendes Objekt wurde erzeugt
 	public Mitglied(String name, String telnum, String instrument, Date beitritt, Date austritt){
 		this.name = name;
 		this.telnum = telnum;
@@ -74,7 +62,7 @@ public class Mitglied {
 	}
 
     public void sendInfo(String message) {
-        // sende E-Mail oder ähnliches
+        //NOTE: sende E-Mail oder ähnliches
     }
     
 	@Override
