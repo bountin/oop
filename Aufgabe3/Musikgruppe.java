@@ -14,6 +14,7 @@ public class Musikgruppe {
     private String name;
     private String ausrichtung;
 
+    //POSTCONDITION: Ein den Parametern entsprechendes Objekt wurde erzeugt
     public Musikgruppe(String name, String ausrichtung) {
         this.name = name;
         this.ausrichtung = ausrichtung;

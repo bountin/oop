@@ -3,6 +3,7 @@ public class Stueckvariante extends Musikstueck {
 	
 	private String variantenName;
 
+	//POSTCONDITION: Ein den Parametern entsprechendes Objekt wurde erzeugt
 	public Stueckvariante(String name, String variantenName, int laenge) {
 		 super(name, laenge);
 		 this.variantenName = variantenName;
@@ -21,6 +22,7 @@ public class Stueckvariante extends Musikstueck {
         	&& this.getVariantenName().equals(getVariantenName());
 	}    
 	
+	//POSTCONDITION: eine Implementierung der equals Methode, die Ein- und Austritt ignoriert 
 	public boolean equalsIgnoreDates(Musikstueck other) {
         return this.getClass().equals(other.getClass())
         	&& this.getName().equals(other.getName())
