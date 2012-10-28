@@ -32,6 +32,8 @@ public class MitgliedContainer {
 		}
 	}
 	
+	//POSTCONDITION: Sendet jedem momentan aktiven Mitglied eine Nachricht
+	
     public void updateTermin(Termin t) {
         List<Mitglied> l = this.getMitgliederOn(new Date());
         for(Mitglied m : l) {
@@ -39,6 +41,8 @@ public class MitgliedContainer {
         }
     }
 
+  //POSTCONDITION: Die Liste aller zu dem Zeitpunkt "date" aktiven Mitglieder
+    //wird zurueckgegeben
 	public ArrayList<Mitglied> getMitgliederOn(Date date){
 		ArrayList<Mitglied> m = new ArrayList<Mitglied>();
 		if(date == null){

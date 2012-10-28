@@ -22,6 +22,7 @@ public class Stueckvariante extends Musikstueck {
         	&& this.getVariantenName().equals(getVariantenName());
 	}    
 	
+	//POSTCONDITION: eine Implementierung der equals Methode, die Ein- und Austritt ignoriert 
 	public boolean equalsIgnoreDates(Musikstueck other) {
         return this.getClass().equals(other.getClass())
         	&& this.getName().equals(other.getName())
