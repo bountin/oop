@@ -10,7 +10,7 @@ public class MitgliedContainer {
 		this.mitglieder = new ArrayList<Mitglied>();
 	}
 
-	//POSTCONDITION: mitglied wird in die Liste hinzugefügt, falls es nicht bereits 
+	//POSTCONDITION: mitglied wird in die Liste hinzugefuegt, falls es nicht bereits 
 	//aktiv ist
 	public void addMitglied(Mitglied mitglied){
 		for(Mitglied m: mitglieder){

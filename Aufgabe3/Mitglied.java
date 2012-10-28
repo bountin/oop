@@ -8,7 +8,7 @@ public class Mitglied {
 	private Date austritt;
 	private MusikstueckContainer repertoire;
 	
-	//NOTE: Preconditions werden im Code selbst überprüft und richtig gestellt
+	//NOTE: Preconditions werden im Code selbst ueberprueft und richtig gestellt
 	//Insbesondere: beitritt soll nicht null sein
 	//				beitritt soll nicht in der zukunft sein
 	//				austritt soll nicht null sein
@@ -62,7 +62,7 @@ public class Mitglied {
 	}
 
     public void sendInfo(String message) {
-        //NOTE: sende E-Mail oder ähnliches
+        //NOTE: sende E-Mail oder aehnliches
     }
     
 	@Override
