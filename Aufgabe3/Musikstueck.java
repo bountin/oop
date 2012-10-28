@@ -3,12 +3,16 @@ import java.util.Date;
 
 public class Musikstueck {
     private String name;
-    // The unit of laenge is seconds
     private int laenge;
 
     private Date eintragung;
     private Date austragung;
 
+	/**
+	 * Anmerkung: Laenge ist in Sekunden
+	 * Precondition: Laenge ist positiv
+	 * Precondition: Name != null
+	 */
     public Musikstueck(String name, int laenge) {
         this.name = name;
         this.laenge = laenge;
@@ -18,9 +22,6 @@ public class Musikstueck {
         return name;
     }
 
-    /**
-     * Laenge is measured in seconds
-     */
     public int getLaenge() {
         return laenge;
     }
@@ -41,6 +42,10 @@ public class Musikstueck {
         this.austragung = austragung;
     }
 
+	/**
+	 * Precondition: datum darf nicht null sein
+	 * Postcondition: Warhheitswert, ob das Musikstueck am gegebenen Tag aktiv war, wird zurueck gegegebn
+	 */
     public boolean isActive(Date datum) {
         if (eintragung == null ) {
             return false;
@@ -55,6 +60,10 @@ public class Musikstueck {
          && (datum.before(austragung) || datum.equals(austragung));
     }
 
+	/**
+	 * Precondition: Other darf nicht null sein
+	 * Postcondition: Wahr, wenn beide Musikstuecke identisch sind. Ansonsten falsch.
+	 */
     public boolean equals(Musikstueck other) {
         return this.getClass().equals(other.getClass())
         	&& this.getName().equals(other.getName())
@@ -62,13 +71,17 @@ public class Musikstueck {
             && this.getEintragung() == other.getEintragung()
             && this.getAustragung() == other.getAustragung();
     }
-    
+
+	/**
+	 * Precondition: Other darf nicht null sein
+	 * Postcondition: Wahr, wenn beide Musikstuecke mit Ausnahme der beiden Datuemer identisch sind. Ansonsten falsch.
+	 */
     public boolean equalsIgnoreDates(Musikstueck other){
     	return this.getClass().equals(other.getClass())
             	&& this.getName().equals(other.getName())
                 && this.getLaenge() == other.getLaenge();
     }
-    
+
     public String toString(){
     	return "Musikstueck{ Name= " + name + ", Laenge=" + laenge
 				+ " Eintragung=" + eintragung

@@ -13,7 +13,8 @@ public class TypFilter extends AbstractFilter {
 	}
 
 	/**
-	 * @param className
+	 * Precondition: className != null und der className muss mit einer Klasse übereinstimmen, die von der Klasse AbstractBuchung ableitet
+	 * Postcondition: In der internen Klassenliste ist der neue Klassenname enthalten
 	 */
 	public void addAllowedClass(String className) throws Exception {
 		if (! AbstractBuchung.class.isAssignableFrom(Class.forName(className)) ) {
@@ -23,7 +24,11 @@ public class TypFilter extends AbstractFilter {
 		classList.add(className);
 	}
 
-	@Override
+	/**
+	 * Precondition: Buchung != null
+	 * Postcondition: Wahrheitswert ob Buchung auf den Filter matcht (durch Oberklasse)
+	 * Postcondition: Überprüfung ob die Klasse der Buchung in der Liste der erlaubten Klassen ist
+	 */
 	public boolean isOK(AbstractBuchung buchung) {
 		return this.classList.contains(buchung.getClass().getName());
 	}

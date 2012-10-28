@@ -28,7 +28,7 @@ public class TerminContainer {
 
     /**
      * Preconditon: t != null
-     * Postcondition: Entfernt Termin aus Container (falls vorhanden). Falls 
+     * Postcondition: Entfernt Termin aus Container (falls vorhanden). Falls
      * der Termin vorhanden war wird er auf den removed Stack gepusht.
      */
     public void removeTermin(Termin t) {
@@ -38,7 +38,7 @@ public class TerminContainer {
     }
 
     /**
-     * Postcondition: Gibt eine Kopie des Stacks mit allen bisher gelöschten 
+     * Postcondition: Gibt eine Kopie des Stacks mit allen bisher gelöschten
      * Terminen zurück
      */
     public Stack<Termin> getRemoved() {
@@ -47,7 +47,7 @@ public class TerminContainer {
 
     /**
      * Preconditon: from != null, to != null, to ist nach from
-     * Postcondition: Gibt eine Liste mit allen Proben im entsprechenden Zeitraum 
+     * Postcondition: Gibt eine Liste mit allen Proben im entsprechenden Zeitraum
      * zurück
      */
     public List<Probe> getProben(Date from, Date to) {
@@ -64,7 +64,7 @@ public class TerminContainer {
 
     /**
      * Preconditon: from != null, to != null, to ist nach from
-     * Postcondition: Gibt eine Liste mit allen Auftritten im entsprechenden Zeitraum 
+     * Postcondition: Gibt eine Liste mit allen Auftritten im entsprechenden Zeitraum
      * zurück
      */
     public List<Auftritt> getAuftritte(Date from, Date to) {
@@ -81,7 +81,7 @@ public class TerminContainer {
 
     /**
      * Preconditon: from != null, to != null, to ist nach from
-     * Postcondition: Gibt eine Liste mit allen Terminen im entsprechenden Zeitraum 
+     * Postcondition: Gibt eine Liste mit allen Terminen im entsprechenden Zeitraum
      * zurück
      */
     public List<Termin> getTermine(Date from, Date to) {
@@ -97,8 +97,9 @@ public class TerminContainer {
 
     /**
      * Preconditon: from != null, to != null, to ist nach from
-     * Postcondition: gibt die Summe aller Mieten im entsprechenden Zeitraum 
+     * Postcondition: gibt die Summe aller Mieten im entsprechenden Zeitraum
      * zurück
+     * PostConfition: Rueckgabewert ist <= 0, da Mieten nur Ausgaben sind.
      */
     public float getMiete(Date from, Date to) throws Exception {
         ArrayList<AbstractFilter> filters = new ArrayList<AbstractFilter>();
@@ -111,8 +112,9 @@ public class TerminContainer {
 
     /**
      * Preconditon: from != null, to != null, to ist nach from
-     * Postcondition: gibt die Summe aller Gagen im entsprechenden Zeitraum 
+     * Postcondition: gibt die Summe aller Gagen im entsprechenden Zeitraum
      * zurück
+     * PostConfition: Rueckgabewert ist >= 0, da Gagen nur Einnahmen sind.
      */
     public float getGage(Date from, Date to) throws Exception {
         ArrayList<AbstractFilter> filters = new ArrayList<AbstractFilter>();
@@ -138,6 +140,10 @@ public class TerminContainer {
         return this.getSaldo(filters);
     }
 
+	/**
+	 * Precondition: Eine Liste von Filtern muss uebergeben werden. Die Liste kann auch leer sein.
+	 * Postcondition: Liefert den Saldo der Buchungen unter beruecksichtigung der gegebenen Filter
+	 */
     public float getSaldo(List<AbstractFilter> filters) {
         float summe = 0;
         for (Termin t : terminlist) {

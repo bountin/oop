@@ -11,16 +11,18 @@ public class ZeitraumFilter
 	private Date endDate;
 
 	/**
-	 * Filter um nur Buchungen in einem Zeitraum zu erhalten
-	 * @param startDate
-	 * @param endDate
+	 * Precondition: Beide Datuemer duerfen nich null sein
 	 */
 	public ZeitraumFilter(Date startDate, Date endDate) {
 		this.startDate = startDate;
 		this.endDate = endDate;
 	}
 
-	@Override
+	/**
+	 * Precondition: Buchung != null
+	 * Postcondition: Wahrheitswert ob Buchung auf den Filter matcht (durch Oberklasse)
+	 * Postcondition: Überprüfung die Buchung im erlaubten Zeitintervall liegt
+	 */
 	public boolean isOK(AbstractBuchung buchung) {
 		Date buchungDate = buchung.getDatum();
 
