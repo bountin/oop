@@ -1,3 +1,4 @@
+
 import Buchung.Filter.AbstractFilter;
 import Buchung.Filter.TypFilter;
 import Buchung.Filter.ZeitraumFilter;
@@ -18,39 +19,36 @@ public class TerminContainer {
     }
 
     /**
-     * Fügt einen neuen Termin hinzu
-     * @param t Termin
+     * Preconditon: t != null
+     * Postcondition: Fügt Termin t zum Container
      */
     public void addTermin(Termin t) {
         terminlist.add(t);
     }
 
     /**
-     * Entfernt Termin
-     * @param t Termin
+     * Preconditon: t != null
+     * Postcondition: Entfernt Termin aus Container (falls vorhanden). Falls 
+     * der Termin vorhanden war wird er auf den removed Stack gepusht.
      */
     public void removeTermin(Termin t) {
-        if(terminlist.remove(t)) {
+        if (terminlist.remove(t)) {
             removed.push(t);
         }
     }
 
-
     /**
-     * Gibt ein Kopie des Stacks mit den gelöschten Terminen zurück
-     * @return Stack mit Terminen
+     * Postcondition: Gibt eine Kopie des Stacks mit allen bisher gelöschten 
+     * Terminen zurück
      */
     public Stack<Termin> getRemoved() {
-        return (Stack<Termin>)removed.clone();
+        return (Stack<Termin>) removed.clone();
     }
 
-
-
     /**
-     * Returnt eine Liste aller Proben im Zeitraum zwischen from und to.
-     * @param from
-     * @param to
-     * @return List von Proben
+     * Preconditon: from != null, to != null, to ist nach from
+     * Postcondition: Gibt eine Liste mit allen Proben im entsprechenden Zeitraum 
+     * zurück
      */
     public List<Probe> getProben(Date from, Date to) {
         List<Probe> l = new ArrayList<Probe>();
@@ -58,17 +56,16 @@ public class TerminContainer {
             if (t instanceof Probe
                     && t.getDatum().after(from)
                     && t.getDatum().before(to)) {
-                l.add((Probe)t);
+                l.add((Probe) t);
             }
         }
         return l;
     }
 
     /**
-     * Returnt eine Liste aller Auftritte im Zeitraum zwischen from und to.
-     * @param from
-     * @param to
-     * @return Liste von Auftritten
+     * Preconditon: from != null, to != null, to ist nach from
+     * Postcondition: Gibt eine Liste mit allen Auftritten im entsprechenden Zeitraum 
+     * zurück
      */
     public List<Auftritt> getAuftritte(Date from, Date to) {
         List<Auftritt> l = new ArrayList<Auftritt>();
@@ -76,17 +73,16 @@ public class TerminContainer {
             if (t instanceof Auftritt
                     && t.getDatum().after(from)
                     && t.getDatum().before(to)) {
-                l.add((Auftritt)t);
+                l.add((Auftritt) t);
             }
         }
         return l;
     }
 
     /**
-     * Returnt eine Liste aller Termine im Zeitraum zwischen from und to.
-     * @param from
-     * @param to
-     * @return List von Terminen
+     * Preconditon: from != null, to != null, to ist nach from
+     * Postcondition: Gibt eine Liste mit allen Terminen im entsprechenden Zeitraum 
+     * zurück
      */
     public List<Termin> getTermine(Date from, Date to) {
         List<Termin> l = new ArrayList<Termin>();
@@ -100,59 +96,53 @@ public class TerminContainer {
     }
 
     /**
-     * Liefert Miete im angegeben Zeitraum
-     * @deprecated
-     * @param from
-     * @param to
-     * @return Miete
+     * Preconditon: from != null, to != null, to ist nach from
+     * Postcondition: gibt die Summe aller Mieten im entsprechenden Zeitraum 
+     * zurück
      */
     public float getMiete(Date from, Date to) throws Exception {
-	    ArrayList<AbstractFilter> filters = new ArrayList<AbstractFilter>();
-	    filters.add(new ZeitraumFilter(from, to));
-	    TypFilter typFiler = new TypFilter();
-	    typFiler.addAllowedClass("Buchung.RaumMiete");
-	    filters.add(typFiler);
-	    return this.getSaldo(filters);
+        ArrayList<AbstractFilter> filters = new ArrayList<AbstractFilter>();
+        filters.add(new ZeitraumFilter(from, to));
+        TypFilter typFiler = new TypFilter();
+        typFiler.addAllowedClass("Buchung.RaumMiete");
+        filters.add(typFiler);
+        return this.getSaldo(filters);
     }
 
     /**
-     * Liefert Gage im angegeben Zeitraum
-     * @deprecated
-     * @param from
-     * @param to
-     * @return Gage
+     * Preconditon: from != null, to != null, to ist nach from
+     * Postcondition: gibt die Summe aller Gagen im entsprechenden Zeitraum 
+     * zurück
      */
     public float getGage(Date from, Date to) throws Exception {
-	    ArrayList<AbstractFilter> filters = new ArrayList<AbstractFilter>();
-	    filters.add(new ZeitraumFilter(from, to));
-	    TypFilter typFiler = new TypFilter();
-	    typFiler.addAllowedClass("Buchung.Gage");
-	    filters.add(typFiler);
-	    return this.getSaldo(filters);
+        ArrayList<AbstractFilter> filters = new ArrayList<AbstractFilter>();
+        filters.add(new ZeitraumFilter(from, to));
+        TypFilter typFiler = new TypFilter();
+        typFiler.addAllowedClass("Buchung.Gage");
+        filters.add(typFiler);
+        return this.getSaldo(filters);
     }
+
 
     /**
-     * Liefert Saldo (Gage - Miete) im angegeben Zeitraum
-     * @deprecated
-     * @param from
-     * @param to
-     * @return Saldo
+     * Preconditon: from != null, to != null, to ist nach from
+     * Postcondition: Liefert Saldo (Gage - Miete) im angegeben Zeitraum
      */
     public float getSaldo(Date from, Date to) throws Exception {
-	    ArrayList<AbstractFilter> filters = new ArrayList<AbstractFilter>();
-	    filters.add(new ZeitraumFilter(from, to));
-	    TypFilter typFiler = new TypFilter();
-	    typFiler.addAllowedClass("Buchung.RaumMiete");
-	    typFiler.addAllowedClass("Buchung.Gage");
-	    filters.add(typFiler);
-	    return this.getSaldo(filters);
+        ArrayList<AbstractFilter> filters = new ArrayList<AbstractFilter>();
+        filters.add(new ZeitraumFilter(from, to));
+        TypFilter typFiler = new TypFilter();
+        typFiler.addAllowedClass("Buchung.RaumMiete");
+        typFiler.addAllowedClass("Buchung.Gage");
+        filters.add(typFiler);
+        return this.getSaldo(filters);
     }
 
-	public float getSaldo(List<AbstractFilter> filters) {
-		float summe = 0;
-		for (Termin t: terminlist) {
-			summe += t.getBuchungContainer().summe(filters);
-		}
-		return summe;
-	}
+    public float getSaldo(List<AbstractFilter> filters) {
+        float summe = 0;
+        for (Termin t : terminlist) {
+            summe += t.getBuchungContainer().summe(filters);
+        }
+        return summe;
+    }
 }

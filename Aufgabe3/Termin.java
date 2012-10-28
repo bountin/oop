@@ -5,7 +5,7 @@ import java.util.Date;
 public abstract class Termin {
      private Ort ort;
      private Date datum;
-     private int dauer;   // Minuten
+     private int dauer;   
      private Status status;
      private Termin previousVersion;
 
@@ -15,12 +15,10 @@ public abstract class Termin {
          STATTGEFUNDEN, ABGESAGT, GEPLANT
      };
 
-     /**
-      * Erzeugt einen geplanten Termin
-      * @param Ort
-      * @param datum
-      * @param dauer Dauer in Minuten
-      */
+    /**
+     * Precondition: raummiete != null, Date != null, dauer > 0
+     * Postcondition: Setzt Parameter im Objekt.
+     */
     public Termin(Ort ort, Date datum, int dauer) {
         this.ort = ort;
         this.datum = datum;
@@ -34,10 +32,6 @@ public abstract class Termin {
         return ort;
     }
 
-    /**
-     *
-     * @return Dauer in Minuten
-     */
     public int getDauer() {
         return dauer;
     }
@@ -54,26 +48,50 @@ public abstract class Termin {
         return buchungen;
     }
 
+    /**
+     * GOOD: Status enum - Es kann kein ungültiger Wert übergeben werden.
+     * Postcondition: Setzt Status auf den übergebenen Status und speichert die 
+     * alte Terminversion in previousVersion.
+     */
     public void setStatus(Status status) {
         this.previousVersion = this.clone();
         this.status = status;
     }
 
+    /**
+     * Precondition: datum != null
+     * Postcondition: Setzt das übergeben Datum und speichert die 
+     * alte Terminversion in previousVersion.
+     */    
     public void setDatum(Date datum) {
         this.previousVersion = this.clone();
         this.datum = datum;
     }
 
+    /**
+     * Precondition: dauer > 0
+     * Postcondition: Setzt die übergeben Dauer und speichert die 
+     * alte Terminversion in previousVersion.
+     */      
     public void setDauer(int dauer) {
         this.previousVersion = this.clone();
         this.dauer = dauer;
     }
 
+    /**
+     * Precondition: ort != null
+     * Postcondition: Setzt den übergeben Ort und speichert die 
+     * alte Terminversion in previousVersion.
+     */     
     public void setOrt(Ort ort) {
         this.previousVersion = this.clone();
         this.ort = ort;
     }
 
+    /**
+     * Precondition: nur von Termin und geerbeten Klassen aufrufen
+     * Postcondition: Setzt previousVersion auf den übergebenen Termin
+     */      
     protected void setPreviousVersion(Termin t) {
         this.previousVersion = t;
     }

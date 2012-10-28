@@ -1,12 +1,4 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 
-/**
- *
- * @author Johannes Wawerda <johannes.wawerda@student.tuwien.ac.at>
- */
 public class Ort {
     private String name;
     private String adresse;
@@ -16,13 +8,8 @@ public class Ort {
     private int zugl_personen;
 
     /**
-     * Erzeugt einen Ort.
-     * @param name Name
-     * @param adresse Adresse
-     * @param plz Postleitzahl
-     * @param soundanlage Hat der Ort eine vorinstallierte Soundanlage
-     * @param lichtanlage Hat der Ort eine vorinstallierte Lichtanlage
-     * @param zugl_personen Anzahl der für den Ort zugelassenen Personen
+     * Preconditon: name und adresse != null, plz ist eine Postleitzahl, zugl_personen >= 0
+     * Postcondition: Ein Ort-Objekt mit den entsprechenden Werten wird erzeugt
      */
     public Ort(String name, String adresse, String plz, boolean soundanlage, boolean lichtanlage, int zugl_personen) {
         this.name = name;

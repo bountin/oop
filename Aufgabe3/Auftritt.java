@@ -3,17 +3,12 @@ import Buchung.Gage;
 import java.util.Date;
 
 public class Auftritt extends Termin {
-	/**
-	 * @deprecated
-	 */
     private float gage;
 
     /**
-     * Erzeugt einen geplanten Auftritt
-     * @param gage
-     * @param Ort
-     * @param datum
-     * @param dauer Dauer in Minuten
+     * Proconditon: gage >= 0, ort != null, datum != null, dauer > 0
+     * dauer gibt die Dauer in Minuten an.
+     * Postcondition: Ein Auftritt-Objekt mit den entsprechenden Werten wird erzeugt
      */
     public Auftritt(float gage, Ort ort, Date datum, int dauer) {
         super(ort, datum, dauer);
@@ -21,16 +16,15 @@ public class Auftritt extends Termin {
 	    this.gage = gage;
     }
 
-	/**
-	 * @deprecated
-	 */
     public float getGage() {
         return gage;
     }
 
-	/**
-	 * @deprecated
-	 */
+    /**
+     * Proconditon: gage >= 0
+     * Postcondition: Setzt die Gage auf den übergebenen Wert. Speichert zuvor 
+     * das gesamte Objekt als previosVersion
+     */
     public void setGage(float gage) {
         this.setPreviousVersion(this.clone());
         this.gage = gage;

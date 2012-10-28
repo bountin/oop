@@ -6,11 +6,8 @@ public class Probe extends Termin {
     private float raummiete;
 
     /**
-     * Erzeugt eine geplante Probe
-     * @param raummiete
-     * @param Ort
-     * @param datum
-     * @param dauer Dauer in Minuten
+     * Precondition: raummiete >= 0, ort != null, datum != null, dauer > 0
+     * Postcondition: Erzeugt ein Proben Objekt mit den übergebenen Werten
      */
     public Probe(float raummiete, Ort ort, Date datum, int dauer) {
         super(ort, datum, dauer);
@@ -19,16 +16,15 @@ public class Probe extends Termin {
 	    this.getBuchungContainer().addBuchung(miete);
     }
 
-	/**
-	 * @deprecated
-	 */
     public float getRaummiete() {
         return raummiete;
     }
 
-	/**
-	 * @deprecated
-	 */
+    /**
+     * Precondition: raummiete >= 0
+     * Postcondition: Setzt Raummiete auf den übergeben Wert und speichert das 
+     * alte Proben Objekt in previousVersion
+     */
     public void setRaummiete(float raummiete) {
         this.setPreviousVersion(this.clone());
         this.raummiete = raummiete;
