@@ -9,6 +9,8 @@ public class Auftritt extends Termin {
      * Proconditon: gage >= 0, ort != null, datum != null, dauer > 0
      * dauer gibt die Dauer in Minuten an.
      * Postcondition: Ein Auftritt-Objekt mit den entsprechenden Werten wird erzeugt
+     *
+     * BAD: Um Rueckwaertskompatibilitaet zu den alten Testfaellen zu erhalten, wurde die lokale Gage nicht entfernt.
      */
     public Auftritt(float gage, Ort ort, Date datum, int dauer) {
         super(ort, datum, dauer);
@@ -22,8 +24,10 @@ public class Auftritt extends Termin {
 
     /**
      * Proconditon: gage >= 0
-     * Postcondition: Setzt die Gage auf den übergebenen Wert. Speichert zuvor 
+     * Postcondition: Setzt die Gage auf den übergebenen Wert. Speichert zuvor
      * das gesamte Objekt als previosVersion
+     *
+     * BAD: Um Rueckwaertskompatibilitaet zu den alten Testfaellen zu erhalten, wurde die lokale Gage nicht entfernt.
      */
     public void setGage(float gage) {
         this.setPreviousVersion(this.clone());

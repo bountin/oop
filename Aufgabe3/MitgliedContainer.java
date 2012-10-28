@@ -10,7 +10,7 @@ public class MitgliedContainer {
 		this.mitglieder = new ArrayList<Mitglied>();
 	}
 
-	//POSTCONDITION: mitglied wird in die Liste hinzugefuegt, falls es nicht bereits 
+	//POSTCONDITION: mitglied wird in die Liste hinzugefuegt, falls es nicht bereits
 	//aktiv ist
 	public void addMitglied(Mitglied mitglied){
 		for(Mitglied m: mitglieder){
@@ -21,7 +21,7 @@ public class MitgliedContainer {
 		mitglieder.add(mitglied);
 	}
 
-	//POSTCONDITION: alle aktiven Mitglieder mit dem angegebenem Namen werden 
+	//POSTCONDITION: alle aktiven Mitglieder mit dem angegebenem Namen werden
 	//(sofern sie existieren) auf inaktiv gesetzt (austritt = jetzt)
 	public void removeMitglied(String name){
 		for(Mitglied m: mitglieder){
@@ -31,9 +31,12 @@ public class MitgliedContainer {
 			}
 		}
 	}
-	
-	//POSTCONDITION: Sendet jedem momentan aktiven Mitglied eine Nachricht
-	
+
+	/**
+	 * POSTCONDITION: Sendet jedem momentan aktiven Mitglied eine Nachricht
+	 * GOOD: Termine sind austauschbar, sowohl Proben als auch Auftritte koennen verwendet werden.
+	 * BAD: Das Datum wird nicht uebergeben bzw. vom Termin geholt, sondern ist immer TODAY()
+	 */
     public void updateTermin(Termin t) {
         List<Mitglied> l = this.getMitgliederOn(new Date());
         for(Mitglied m : l) {
@@ -60,7 +63,7 @@ public class MitgliedContainer {
 				}
 			}
 		}
-		
+
 		return m;
 	}
 

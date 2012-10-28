@@ -100,6 +100,8 @@ public class TerminContainer {
      * Postcondition: gibt die Summe aller Mieten im entsprechenden Zeitraum
      * zurück
      * PostConfition: Rueckgabewert ist <= 0, da Mieten nur Ausgaben sind.
+     *
+     * GOOD: Durch Ueberladung ist die Rueckwaertskompatibilitaet zu dem Stand vor dem Buchungs-Refactoring gegeben.
      */
     public float getMiete(Date from, Date to) throws Exception {
         ArrayList<AbstractFilter> filters = new ArrayList<AbstractFilter>();
@@ -115,6 +117,8 @@ public class TerminContainer {
      * Postcondition: gibt die Summe aller Gagen im entsprechenden Zeitraum
      * zurück
      * PostConfition: Rueckgabewert ist >= 0, da Gagen nur Einnahmen sind.
+     *
+     * GOOD: Durch Ueberladung ist die Rueckwaertskompatibilitaet zu dem Stand vor dem Buchungs-Refactoring gegeben.
      */
     public float getGage(Date from, Date to) throws Exception {
         ArrayList<AbstractFilter> filters = new ArrayList<AbstractFilter>();
@@ -143,6 +147,8 @@ public class TerminContainer {
 	/**
 	 * Precondition: Eine Liste von Filtern muss uebergeben werden. Die Liste kann auch leer sein.
 	 * Postcondition: Liefert den Saldo der Buchungen unter beruecksichtigung der gegebenen Filter
+	 *
+	 * GOOD: Saldogenerierung ist durch Filter sehr flexibel, da nur ein Obertyp erforderlich ist. Eine Erweiterung ist sehr leicht moeglich.
 	 */
     public float getSaldo(List<AbstractFilter> filters) {
         float summe = 0;

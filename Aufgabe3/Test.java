@@ -15,6 +15,12 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * Allgemeines BAD: Bei zunehmender Groesze koennte es besser sein alle Container und ContainerElemente nach einem gemeinsamen Interface arbeiten zu lassen. Auch die add/remove Methoden koennten in einer abstrakten Klasse zusammengefasst werden, wobei dabei bedacht werden muss, dass eine Typenueberpruefung stattfinden muss.
+ *
+ * Wir vermuten, dass wir bereits einen guten Klassenzusammenhalt und eine schwache Objektkopplung haben, da sich fuer uns bereits vieles aus der Angabe erschlossen hat. Ausserdem haben auch unsere detaillierten Besprechungen und unsere Praxiserfahrung dazu beigetragen.
+ */
+
 public class Test {
 
     public static void main(String[] args) throws Exception, ClassNotFoundException {

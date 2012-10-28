@@ -11,19 +11,26 @@ public class Probe extends Termin {
      */
     public Probe(float raummiete, Ort ort, Date datum, int dauer) {
         super(ort, datum, dauer);
+
+	    // BAD: Um Rueckwaertskompatibilitaet zu den alten Testfaellen zu erhalten, wurde die lokale Raummiete nicht entfernt.
         this.raummiete = raummiete;
 	    RaumMiete miete = new RaumMiete(raummiete, datum);
 	    this.getBuchungContainer().addBuchung(miete);
     }
 
+	/**
+	 * BAD: Um Rueckwaertskompatibilitaet zu den alten Testfaellen zu erhalten, wurde die lokale Raummiete nicht entfernt.
+	 */
     public float getRaummiete() {
         return raummiete;
     }
 
     /**
      * Precondition: raummiete >= 0
-     * Postcondition: Setzt Raummiete auf den übergeben Wert und speichert das 
+     * Postcondition: Setzt Raummiete auf den übergeben Wert und speichert das
      * alte Proben Objekt in previousVersion
+     *
+     * BAD: Um Rueckwaertskompatibilitaet zu den alten Testfaellen zu erhalten, wurde die lokale Raummiete nicht entfernt.
      */
     public void setRaummiete(float raummiete) {
         this.setPreviousVersion(this.clone());

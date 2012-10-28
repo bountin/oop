@@ -25,8 +25,12 @@ public class BuchungContainer {
 
 	/**
 	 * NOTE: Die filter werden mit UND verknueft, also muessen alle erfuellt werden, damit eine Buchung miteinflieszt
+	 *
 	 * Precondition: filter ist eine Liste von filter (und != null)
 	 * Postcondition: Liefert einen Saldo der gefilterten Buchungen dieses Containers
+	 *
+	 * GUT: Durch die Austauschbarkeit der Buchungen durch die gemeinsame Oberklasse kann der Wert jedes Objekt durch getWert ermittelt werden.
+	 * GUT: Die Buchungen beinhalten sowohl Einnahmen als auch Ausgaben. Ein seperates Handling ist nicht notwendig.
 	 */
 	public int summe(List<AbstractFilter> filter) {
 		int summe = 0;
