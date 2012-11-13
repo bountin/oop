@@ -1,8 +1,8 @@
 
 public class Box implements Pict{
 
-	private double height;
-	private double width;
+	protected double height;
+	protected double width;
 	private final char rim;
 	private final char content;
 	
