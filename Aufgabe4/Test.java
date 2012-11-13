@@ -1,3 +1,7 @@
+import sun.java2d.loops.ScaledBlit;
+
+import java.lang.System;
+
 /**
  * @author Johannes Wawerda <johannes.wawerda@student.tuwien.ac.at>
  */
@@ -116,5 +120,26 @@ public class Test {
         System.out.println("--Erwartung: eine 1x2 Box mit den Zeichen '*'");
         dbox.setCharacter('*');
         System.out.println(dbox);
+
+	    /*************
+	     *** SCALED **
+	     ************/
+	    System.out.println("Tests fuer Scaled");
+	    System.out.println("-Erwartung: Zwei X untereinander, zwei @ untereinander; nächste Zeile: 3x3 # und ein Minuszeichen");
+	    DarkBox[][] scaled_param = new DarkBox[2][2];
+	    scaled_param[0][0] = new DarkBox('X', 1, 2);
+	    scaled_param[0][1] = new DarkBox('@', 2, 1);
+	    scaled_param[1][0] = new DarkBox('#', 3, 3);
+	    scaled_param[1][1] = new DarkBox('-', 1, 1);
+	    Scaled<Pict> scaled = new Scaled<Pict>(scaled_param);
+	    System.out.println(scaled.toString());
+
+	    System.out.println("-Erwartung: 2x4 X, 2x4 @; nächste Zeile: 6x6 # und 2x2 Minuszeichen (scaled von vorhin mit 2)");
+	    scaled.scale(2);
+	    System.out.println(scaled.toString());
+
+	    System.out.println("-Erwartung: X@, nächste Zeile: #- (scaled von vorhin mit 0.1)");
+	    scaled.scale(0.1);
+	    System.out.println(scaled.toString());
     }
 }
