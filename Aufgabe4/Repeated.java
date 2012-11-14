@@ -14,7 +14,7 @@ public class Repeated<P> implements Pict {
 
     /**
      * 0.1 <= factor <= 10.0; resize the picture
-     * @param factor 
+     * @param factor
      */
     @Override
     public void scale(double factor) {
@@ -23,7 +23,7 @@ public class Repeated<P> implements Pict {
         }
     }
 
-    /** 
+    /**
      * If elements have different sizes, the smaller ones will be filled with
      * spaces
      * @return the picture as String

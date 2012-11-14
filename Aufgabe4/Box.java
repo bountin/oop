@@ -1,26 +1,30 @@
 
-public class Box implements Pict{
 
+// Rand ist ein beliebiges Zeichen excl. dem Leerzeichen
+// Inhalt ist ein beliebiges Zeichen
+// Die Hoehe und die Breite sind immer > 0
+// Skalierung basiert auf Streckung
+public class Box implements Pict{
 	protected double height;
 	protected double width;
 	private final char rim;
 	private final char content;
-	
+
 	public Box(char rim, char content, double width, double height) {
 		if(rim == ' '){
 			this.rim = '.';
 		}else{
 			this.rim = rim;
 		}
-		
+
 		this.content = content;
-		
+
 		if(width<=0){
 			this.width = 1;
 		}else{
 			this.width = width;
 		}
-		
+
 		if(height<=0){
 			this.height = 1;
 		}else{
@@ -35,7 +39,7 @@ public class Box implements Pict{
 			width *= factor;
 		}
 	}
-	
+
 	@Override
 	public String toString(){
 		StringBuilder sb = new StringBuilder();
@@ -62,7 +66,7 @@ public class Box implements Pict{
 				sb.append(rim);
 			}
 		}
-		
+
 		return sb.toString();
 	}
 

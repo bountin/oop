@@ -3,15 +3,20 @@
  *
  * @author Johannes Wawerda <johannes.wawerda@student.tuwien.ac.at>
  */
-public class DarkBox extends Box {
 
+// Der Rand besteht immer aus einem beliebigen Zeichen
+// Der Inhalt besteht immer aus einem beliebigen Zeichen
+// Inhalt und Rand bestehen aus dem selben Zeichen
+// Die Hoehe und die Breite sind immer > 0
+// Skalierung basiert auf Streckung und Wiederholung, da keine Unterscheidung moeglich
+public class DarkBox extends Box {
     private char c;
 
     public DarkBox(char c, double width, double height) {
         super(c, c, width, height);
         this.c = c;
     }
-    
+
     public void setCharacter(char c) {
         this.c = c;
     }

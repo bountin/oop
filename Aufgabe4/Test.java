@@ -7,6 +7,23 @@ import java.lang.System;
  */
 
 
+/**
+ * Alle Klassen sind direkt oder transitiv Untertypen von Pict
+ *
+ * ClearBox ist ein Untertyp von Box, da das inhaltliche Constraint genauer wird und die Klassen ansonsten identisch sind
+ * Box ist kein Untertyp von ClearBox, da das inhaltliche Constraint nschaerfer werden wuerde
+ *
+ * DarkBox ist ein Untertyp von Box, da das inhaltliche Constraint liberaler wird und DarkBox die sonstigen Elemente von Box uebernimmt
+ * Das gleiche gilt auch fuer FreeBox, also ist DarkBox auch ein Untertyp von FreeBox
+ *  - Java unterstuetzt keine Mehrfachvererbung von konkreten Klassen, deshalb wurde nur von Box abgeleitet
+ * Da DarkBox eine zusaetliche Methode implementiert, kann weder Box noch FreeBox ein Untertyp von DarkBox sein.
+ *
+ * Alle moeglichen Varianten von Repeated<P> (also P Element aus {P universell, Pict, Char, Box etc.} sind Untertypen von Freebox
+ * FreeBox ist ein Untertyp von allen moeglichen Repeated<P>
+ *
+ *
+ */
+
 public class Test {
 
     public static void main(String[] args) {
