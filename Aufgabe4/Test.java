@@ -14,14 +14,21 @@ import java.lang.System;
  * Box ist kein Untertyp von ClearBox, da das inhaltliche Constraint nschaerfer werden wuerde
  *
  * DarkBox ist ein Untertyp von Box, da das inhaltliche Constraint liberaler wird und DarkBox die sonstigen Elemente von Box uebernimmt
- * Das gleiche gilt auch fuer FreeBox, also ist DarkBox auch ein Untertyp von FreeBox
+ * Das gleiche gilt auch fuer FreeBox, also ist DarkBox auch ein Untertyp von FreeBox (und daher auch von Repeated<P>)
  *  - Java unterstuetzt keine Mehrfachvererbung von konkreten Klassen, deshalb wurde nur von Box abgeleitet
  * Da DarkBox eine zusaetliche Methode implementiert, kann weder Box noch FreeBox ein Untertyp von DarkBox sein.
  *
  * Alle moeglichen Varianten von Repeated<P> (also P Element aus {P universell, Pict, Char, Box etc.} sind Untertypen von Freebox
  * FreeBox ist ein Untertyp von allen moeglichen Repeated<P>
  *
+ * Scaled<ClaerBox> ist Untertyp von Scaled<Box>. 
+ * Scaled<Box> ist Untertyp von Scaled<Pict>. 
+ * Scaled<DarkBox> ist Untertyp von Scaled<FreeBox>.
+ * Scaled<FreeBox> ist Untertyp von Scaled<Pict>.
+ * Scaled<Pict> ist Untertyp von Pict.
+ * In Java ist das jedoch nicht zu realisieren da es keine impliziten Untertypen bei Generizitaet gibt.
  *
+ * Alle restlichen Untertypen ergeben sich durch die Transitivitaet.
  */
 
 public class Test {

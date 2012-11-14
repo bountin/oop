@@ -6,7 +6,7 @@
 // Inhalt und Rand sind beliebige unabhaengige Zeichen
 // Die Hoehe und die Breite sind immer > 0, in diesem Fall muss mindestens ein Zeichen gesetzt werden
 // Skalierung basiert auf Wiederholung
-public class FreeBox extends Repeated {
+public class FreeBox extends Repeated<Character> {
     /**
      * Create a FreeBox
      * @param text
