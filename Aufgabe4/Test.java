@@ -1,5 +1,3 @@
-import sun.java2d.loops.ScaledBlit;
-
 import java.lang.System;
 
 /**
