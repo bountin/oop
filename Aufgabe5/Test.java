@@ -23,7 +23,7 @@ public class Test {
         System.out.println("REMOVE TEST");
         Iterator<String> iter1 = set1.iterator();
         System.out.println("remove: " + iter1.next());
-        iter1.remove();
+        iter1.remove(); 
 
         System.out.println("UEBRIGE ELEMENTE");
         for (String s : set1) {

@@ -7,28 +7,28 @@ import java.util.NoSuchElementException;
  * verlangt!
  * @author Johannes Wawerda <johannes.wawerda@student.tuwien.ac.at>
  */
-public class OrderedSet<T extends Shorter> implements Iterable<T> {
+public class OrderedSet<K extends Shorter<K>> implements Iterable<K> {
 
-    private class Node<T> {
+    protected class Node<K> {
 
-        private T content;
-        private Node<T> next = null;
-        private Node<T> prev = null;
+        protected K content;
+        protected Node<K> next = null;
+        protected Node<K> prev = null;
 
-        public Node(T content) {
+        public Node(K content) {
             this.content = content;
         }
     }
-    private Node<T> root = null;
+    protected Node<K> root = null;
 
     /**
      * Fuegt geordnet in Liste ein falls unique. Kurz = Vorne, Lang = Hinten
      * @param content 
      */
-    public void insert(T content) {
-        Node<T> n = new Node<T>(content);
+    public void insert(K content) {
+        Node<K> n = new Node<K>(content);
         boolean isUnique = true;
-        for (T cont : this) {
+        for (K cont : this) {
             if (n.content.equals(cont)) {
                 isUnique = false;
             }
@@ -37,14 +37,14 @@ public class OrderedSet<T extends Shorter> implements Iterable<T> {
             if (root == null) {
                 root = n;
             } else {
-                Node<T> act = root;
-                Node<T> lastact = null;
+                Node<K> act = root;
+                Node<K> lastact = null;
                 while (act != null && act.content.shorter(content)) {
                     lastact = act;
                     act = act.next;
                 }
-                Node<T> prev = lastact;
-                Node<T> next = act;
+                Node<K> prev = lastact;
+                Node<K> next = act;
                 if (prev == null) {
                     n.next = root;
                     root.prev = n.next;
@@ -62,11 +62,11 @@ public class OrderedSet<T extends Shorter> implements Iterable<T> {
     }
 
     @Override
-    public Iterator<T> iterator() {
-        return new Iterator<T>() {
+    public Iterator<K> iterator() {
+        return new Iterator<K>() {
 
-            Node<T> pos = root;
-            Node<T> lastpos = null;
+            Node<K> pos = root;
+            Node<K> lastpos = null;
 
             @Override
             public boolean hasNext() {
@@ -78,9 +78,9 @@ public class OrderedSet<T extends Shorter> implements Iterable<T> {
             }
 
             @Override
-            public T next() {
+            public K next() {
                 if (hasNext()) {
-                    T cont = pos.content;
+                    K cont = pos.content;
                     lastpos = pos;
                     pos = pos.next;
                     return cont;
@@ -94,8 +94,8 @@ public class OrderedSet<T extends Shorter> implements Iterable<T> {
                 if (lastpos == null) {
                     throw new IllegalStateException();
                 }
-                Node<T> prev = lastpos.prev;
-                Node<T> next = lastpos.next;
+                Node<K> prev = lastpos.prev;
+                Node<K> next = lastpos.next;
                 if (prev != null) {
                     prev.next = next;
                 } else {

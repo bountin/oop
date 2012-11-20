@@ -2,46 +2,16 @@
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
 /**
- * Einfach verkettete List mit einmaligen Elementen
+ *
  * @author Johannes Wawerda <johannes.wawerda@student.tuwien.ac.at>
  */
-public class Set<K> implements Iterable<K> {
+public class OrderedMap<K extends Shorter<K>, V> extends OrderedSet<K> {
 
-    private class Node<K> {
-
-        private K content;
-        private Node<K> next = null;
-        private Node<K> prev = null;
-
-        public Node(K content) {
-            this.content = content;
-        }
-    }
-    private Node<K> root = null;
-
-    // Fuegt hinten in der Liste ein, falls unique.
-    public void insert(K content) {
-        Node<K> n = new Node<K>(content);
-        boolean isUnique = true;
-        for (K cont : this) {
-            if (n.content.equals(cont)) {
-                isUnique = false;
-            }
-        }
-        if (isUnique) {
-            Node<K> last = root;
-            if (root == null) {
-                root = n;
-            } else {
-                while (last.next != null) {
-                    last = last.next;
-                }
-                last.next = n;
-                n.prev = last;
-            }
-        }
-    }
 
     @Override
     public Iterator<K> iterator() {
@@ -87,6 +57,29 @@ public class Set<K> implements Iterable<K> {
                     next.prev = prev;
                 }
                 lastpos = null;
+            }
+
+            public Iterator<V> iterator() {
+                return new Iterator<V>() {
+
+                    @Override
+                    public boolean hasNext() {
+                        throw new UnsupportedOperationException("Not supported yet.");
+                    }
+
+                    @Override
+                    public V next() {
+                        throw new UnsupportedOperationException("Not supported yet.");
+                    }
+
+                    @Override
+                    public void remove() {
+                        throw new UnsupportedOperationException("Not supported yet.");
+                    }
+
+                    public void add(V content) {
+                    }
+                };
             }
         };
     }
