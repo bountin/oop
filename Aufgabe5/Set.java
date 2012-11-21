@@ -89,5 +89,7 @@ public class Set<K> implements Iterable<K> {
                 lastpos = null;
             }
         };
+        
+        
     }
 }
