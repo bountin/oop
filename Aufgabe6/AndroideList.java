@@ -18,7 +18,8 @@ class AndroideList
 
 		if (list.containsKey(androide.getSerial())) {
 			// Alter the saved Androide
-			list.get(androide.getSerial()).alter(androide);
+			// TODO: Implement!
+//			list.get(androide.getSerial()).alter(androide);
 		} else {
 			// Insert the new androide
 			list.put(androide.getSerial(), androide);
