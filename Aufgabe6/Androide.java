@@ -13,7 +13,15 @@ abstract class Androide
 		this.skin = skin;
 	}
 
-	abstract public boolean check();
+	public boolean check()
+	{
+		return this.checkSoftware();
+	}
+
+	abstract protected boolean checkSoftware();
+//	{
+//		return software.check(this);
+//	}
 
 	public String getSerial() {
 		return serial;
