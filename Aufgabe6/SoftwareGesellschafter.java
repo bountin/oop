@@ -1,0 +1,6 @@
+
+class SoftwareGesellschafter
+	extends Software
+{
+
+}

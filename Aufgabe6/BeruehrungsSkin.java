@@ -1,0 +1,6 @@
+
+class BeruehrungsSkin
+	extends Skin
+{
+
+}

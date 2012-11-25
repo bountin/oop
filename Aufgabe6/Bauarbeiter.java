@@ -1,0 +1,6 @@
+
+class Bauarbeiter
+	extends Schwerarbeiter
+{
+
+}

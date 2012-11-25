@@ -1,0 +1,6 @@
+
+class SoftwareTransportarbeiter
+	extends Software
+{
+
+}

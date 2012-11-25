@@ -1,0 +1,6 @@
+
+class Objektbewacher
+	extends Beschuetzer
+{
+
+}

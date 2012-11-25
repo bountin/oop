@@ -1,0 +1,6 @@
+
+class SoftwareHilfskraft
+	extends Software
+{
+
+}

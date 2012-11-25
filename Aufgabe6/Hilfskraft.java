@@ -1,0 +1,6 @@
+
+class Hilfskraft
+	extends Bediener
+{
+
+}

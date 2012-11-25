@@ -1,0 +1,6 @@
+
+class SoftwareServiceTechniker
+	extends Software
+{
+
+}

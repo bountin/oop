@@ -1,0 +1,6 @@
+
+class SoftwareBauarbeiter
+	extends Software
+{
+
+}

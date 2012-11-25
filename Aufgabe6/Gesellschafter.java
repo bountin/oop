@@ -1,0 +1,6 @@
+
+class Gesellschafter
+	extends Bediener
+{
+
+}

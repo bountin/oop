@@ -1,0 +1,6 @@
+
+class FesterSkin
+	extends Skin
+{
+
+}

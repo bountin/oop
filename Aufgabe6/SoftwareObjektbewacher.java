@@ -1,0 +1,6 @@
+
+class SoftwareObjektbewacher
+	extends Software
+{
+
+}

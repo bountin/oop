@@ -1,0 +1,6 @@
+
+class SoftwareKaempfer
+	extends Software
+{
+
+}

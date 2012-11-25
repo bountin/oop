@@ -1,0 +1,6 @@
+
+class SoftwareLeibwaechter
+	extends Software
+{
+
+}

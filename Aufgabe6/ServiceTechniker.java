@@ -1,0 +1,6 @@
+
+class ServiceTechniker
+	extends Schwerarbeiter
+{
+
+}

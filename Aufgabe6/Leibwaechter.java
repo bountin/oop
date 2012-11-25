@@ -1,0 +1,6 @@
+
+class Leibwaechter
+	extends Beschuetzer
+{
+
+}

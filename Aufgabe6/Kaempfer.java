@@ -1,0 +1,6 @@
+
+class Kaempfer
+	extends Beschuetzer
+{
+
+}
