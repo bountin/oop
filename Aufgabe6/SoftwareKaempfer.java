@@ -2,13 +2,17 @@
 class SoftwareKaempfer
 	extends Software
 {
+	/*
+	 * CONSTRAINT: Precondition
+	 * Stufe is only valid for level 5. Is checked in checkFromKaempfer
+	 */
 	public SoftwareKaempfer(Sicherheitsstufe stufe)
 	{
 		super(stufe);
 	}
 
-	public boolean checkFromSoftwareKaempfer(SoftwareKaempfer bau)
+	public boolean checkFromKaempfer(Kaempfer bau)
 	{
-		return true;
+		return getSicherheitsstufe().checkFromKaempfer(bau);
 	}
 }

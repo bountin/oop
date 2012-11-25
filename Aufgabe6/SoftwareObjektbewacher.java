@@ -2,6 +2,10 @@
 class SoftwareObjektbewacher
 	extends Software
 {
+	/*
+	 * CONSTRAINT: Precondition
+	 * Stufe is only valid for level 4. Is checked in checkFromObjektbewacher
+	 */
 	public SoftwareObjektbewacher(Sicherheitsstufe stufe)
 	{
 		super(stufe);
@@ -9,6 +13,6 @@ class SoftwareObjektbewacher
 
 	public boolean checkFromObjektbewacher(Objektbewacher bau)
 	{
-		return true;
+		return getSicherheitsstufe().checkFromObjektbewacher(bau);
 	}
 }

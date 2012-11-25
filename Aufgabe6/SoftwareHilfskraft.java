@@ -2,6 +2,10 @@
 class SoftwareHilfskraft
 	extends Software
 {
+	/*
+	 * CONSTRAINT: Precondition
+	 * Stufe is only valid for levels 1 or 2. Is checked in checkFromHilfskraft
+	 */
 	public SoftwareHilfskraft(Sicherheitsstufe stufe)
 	{
 		super(stufe);
@@ -9,6 +13,6 @@ class SoftwareHilfskraft
 
 	public boolean checkFromHilfskraft(Hilfskraft bau)
 	{
-		return true;
+		return getSicherheitsstufe().checkFromHilfskraft(bau);
 	}
 }

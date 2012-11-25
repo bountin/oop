@@ -2,6 +2,10 @@
 class SoftwareBauarbeiter
 	extends Software
 {
+	/*
+	 * CONSTRAINT: Precondition
+	 * Stufe is only valid for levels 3 or 4. Is checked in checkFromBauabeiter
+	 */
 	public SoftwareBauarbeiter  (Sicherheitsstufe stufe)
 	{
 		super(stufe);
@@ -9,6 +13,6 @@ class SoftwareBauarbeiter
 
 	public boolean checkFromBauarbeiter(Bauarbeiter bau)
 	{
-		return true;
+		return getSicherheitsstufe().checkFromBauarbeiter(bau);
 	}
 }
