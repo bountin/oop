@@ -17,7 +17,7 @@ public class MeanElapsedTime extends ElapsedTime{
 		while(i.hasNext()){
 			total += i.next();
 		}
-		return total/count();
+		return total/(double)count();
 	}
 	
 	public int count(){
@@ -27,7 +27,7 @@ public class MeanElapsedTime extends ElapsedTime{
 			total ++;
 			i.next();
 		}
-		return total+1;
+		return total;
 	}
 
 	public void add(double value){
