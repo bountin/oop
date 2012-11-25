@@ -26,4 +26,9 @@ public class Sicherheitsstufe4 extends Sicherheitsstufe{
 		return true;
 	}
 
+	@Override
+	public boolean checkLimit(double leistung) {
+		return leistung<=10;
+	}
+
 }

@@ -40,4 +40,6 @@ public abstract class Sicherheitsstufe {
 	{
 		return false;
 	}
+
+	public abstract boolean checkLimit(double leistung);
 }
