@@ -2,9 +2,9 @@ import java.lang.String;
 
 abstract class Androide
 {
-	private String serial;
-	private Skin skin;
-	private Software software;
+	protected String serial;
+	protected Skin skin;
+	protected Software software;
 
 	public Androide(String serial, Skin skin, Software software)
 	{
