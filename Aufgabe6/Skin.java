@@ -12,7 +12,7 @@ abstract class Skin
 		return false;
 	}
 
-	public boolean is PanzerSkin()
+	public boolean isPanzerSkin()
 	{
 		return false;
 	}
