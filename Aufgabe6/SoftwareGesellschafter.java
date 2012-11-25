@@ -2,13 +2,17 @@
 class SoftwareGesellschafter
 	extends Software
 {
-	public SoftwareGesellschafter(Sicherheitsstufe stufe)
+	/*
+	 * CONSTRAINT: Precondition
+	 * Stufe is only valid for value 1. Is checked in checkFromGesellschafter
+	 */
+	public SoftwareGesellschafter(int stufe)
 	{
 		super(stufe);
 	}
 
 	public boolean checkFromGesellschafter(Gesellschafter bau)
 	{
-		return true;
+		return getSicherheitsstufe()==1;
 	}
 }

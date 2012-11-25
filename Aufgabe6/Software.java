@@ -1,15 +1,21 @@
-import java.lang.System;
+
 
 abstract class Software
 {
-	private Sicherheitsstufe sicherheitsstufe;
+	private int sicherheitsstufe;
 
-	public Software(Sicherheitsstufe stufe)
+	/*
+	 * CONSTRAINT: Precondition
+	 * stufe (and by extension sicherheitsstufe) is only valid for values x 
+	 * where 1<=x<=5. However, the actual validity depends on the particular
+	 * Software in question
+	 */
+	public Software(int stufe)
 	{
 		this.sicherheitsstufe = stufe;
 	}
 
-	public Sicherheitsstufe getSicherheitsstufe() {
+	public int getSicherheitsstufe() {
 		return sicherheitsstufe;
 	}
 
