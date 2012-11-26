@@ -9,6 +9,6 @@ class ServiceTechniker
 
 	protected boolean checkSoftware()
 	{
-		return software.checkFromServiceTechniker(this);
+		return software.checkFromServiceTechniker(this)&& software.getSicherheitsstufe().checkFromServiceTechniker(this);
 	}
 }

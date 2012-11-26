@@ -9,6 +9,7 @@ class Transportarbeiter
 
 	protected boolean checkSoftware()
 	{
-		return software.checkFromTransportarbeiter(this);
+		return software.checkFromTransportarbeiter(this)&& software.getSicherheitsstufe().checkFromTransportarbeiter(this);
 	}
+
 }

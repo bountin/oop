@@ -9,6 +9,6 @@ class Objektbewacher
 
 	protected boolean checkSoftware()
 	{
-		return software.checkFromObjektbewacher(this);
+		return software.checkFromObjektbewacher(this)&& software.getSicherheitsstufe().checkFromObjektbewacher(this);
 	}
 }

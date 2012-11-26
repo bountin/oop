@@ -9,6 +9,6 @@ class Kaempfer
 
 	protected boolean checkSoftware()
 	{
-		return software.checkFromKaempfer(this);
+		return software.checkFromKaempfer(this) && software.getSicherheitsstufe().checkFromKaempfer(this);
 	}
 }

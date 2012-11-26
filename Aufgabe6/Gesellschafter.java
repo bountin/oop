@@ -9,6 +9,6 @@ class Gesellschafter
 
 	protected boolean checkSoftware()
 	{
-		return software.checkFromGesellschafter(this);
+		return software.checkFromGesellschafter(this)&& software.getSicherheitsstufe().checkFromGesellschafter(this);
 	}
 }

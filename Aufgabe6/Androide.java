@@ -19,7 +19,8 @@ abstract class Androide
 
 	public boolean check()
 	{
-		return this.checkSoftware();
+		return this.checkSoftware() &&
+				this.kit.isUnderLimit(software.getSicherheitsstufe());
 	}
 
 	abstract protected boolean checkSoftware();

@@ -9,6 +9,6 @@ class Bauarbeiter
 
 	protected boolean checkSoftware()
 	{
-		return software.checkFromBauarbeiter(this);
+		return software.checkFromBauarbeiter(this)&& software.getSicherheitsstufe().checkFromBauarbeiter(this);
 	}
 }

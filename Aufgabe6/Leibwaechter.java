@@ -9,6 +9,6 @@ class Leibwaechter
 
 	protected boolean checkSoftware()
 	{
-		return software.checkFromLeibwaechter(this);
+		return software.checkFromLeibwaechter(this)&& software.getSicherheitsstufe().checkFromLeibwaechter(this);
 	}
 }

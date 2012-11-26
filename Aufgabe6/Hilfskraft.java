@@ -9,6 +9,6 @@ class Hilfskraft
 
 	protected boolean checkSoftware()
 	{
-		return software.checkFromHilfskraft(this);
+		return software.checkFromHilfskraft(this)&& software.getSicherheitsstufe().checkFromHilfskraft(this);
 	}
 }
