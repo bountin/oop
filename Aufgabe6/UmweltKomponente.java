@@ -1,6 +1,7 @@
 
 public abstract class UmweltKomponente {
 	
+	private String serial;
 	private double leistung;
 	private String name;
 	
@@ -24,5 +25,13 @@ public abstract class UmweltKomponente {
 	 *Returns leistung for Aktors, but 0 for Sensors
 	 */
 	public abstract double getLeistungForLimit();
+
+	public String getSerial() {
+		return serial;
+	}
+
+	public void setSerial(String serial) {
+		this.serial = serial;
+	}
 
 }

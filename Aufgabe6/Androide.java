@@ -13,6 +13,8 @@ abstract class Androide
 		this.software = software;
 		this.skin = skin;
 		this.kit = kit;
+		
+		encodeSerial();
 	}
 
 	public boolean check()
@@ -27,5 +29,14 @@ abstract class Androide
 
 	public String getSerial() {
 		return serial;
+	}
+	
+	private void encodeSerial(){
+		if(software.getSerial()==null)
+			software.setSerial(serial);
+		if(skin.getSerial()==null)
+			skin.setSerial(serial);
+		if(kit.getSerial()==null)
+			kit.setSerial(serial);
 	}
 }

@@ -2,6 +2,8 @@
 abstract class Skin
 {
 
+	private String serial;
+	
 	public boolean isFesterSkin()
 	{
 		return false;
@@ -15,5 +17,13 @@ abstract class Skin
 	public boolean isPanzerSkin()
 	{
 		return false;
+	}
+
+	public String getSerial() {
+		return serial;
+	}
+
+	public void setSerial(String serial) {
+		this.serial = serial;
 	}
 }

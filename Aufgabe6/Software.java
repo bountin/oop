@@ -2,6 +2,7 @@
 
 abstract class Software
 {
+	private String serial;
 	private Sicherheitsstufe sicherheitsstufe;
 
 	public Software(Sicherheitsstufe stufe)
@@ -51,5 +52,13 @@ abstract class Software
 	public boolean checkFromTransportarbeiter(Transportarbeiter bau)
 	{
 		return false;
+	}
+
+	public String getSerial() {
+		return serial;
+	}
+
+	public void setSerial(String serial) {
+		this.serial = serial;
 	}
 }
