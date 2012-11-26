@@ -5,12 +5,14 @@ abstract class Androide
 	protected String serial;
 	protected Skin skin;
 	protected Software software;
+	protected SensorenAktorenKit kit;
 
-	public Androide(String serial, Skin skin, Software software)
+	public Androide(String serial, Skin skin, Software software, SensorenAktorenKit kit)
 	{
 		this.serial = serial;
 		this.software = software;
 		this.skin = skin;
+		this.kit = kit;
 	}
 
 	public boolean check()

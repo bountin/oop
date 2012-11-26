@@ -2,9 +2,9 @@
 class Objektbewacher
 	extends Beschuetzer
 {
-	public Objektbewacher(String serial, Skin skin, Software software)
+	public Objektbewacher(String serial, Skin skin, Software software,SensorenAktorenKit kit)
 	{
-		super(serial, skin, software);
+		super(serial, skin, software,kit);
 	}
 
 	protected boolean checkSoftware()

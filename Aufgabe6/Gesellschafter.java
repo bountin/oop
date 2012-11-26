@@ -2,9 +2,9 @@
 class Gesellschafter
 	extends Bediener
 {
-	public Gesellschafter(String serial, Skin skin, Software software)
+	public Gesellschafter(String serial, Skin skin, Software software,SensorenAktorenKit kit)
 	{
-		super(serial, skin, software);
+		super(serial, skin, software,kit);
 	}
 
 	protected boolean checkSoftware()

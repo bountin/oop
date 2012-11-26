@@ -2,9 +2,9 @@
 abstract class Bediener
 	extends Androide
 {
-	public Bediener(String serial, Skin skin, Software software)
+	public Bediener(String serial, Skin skin, Software software,SensorenAktorenKit kit)
 	{
-		super(serial, skin, software);
+		super(serial, skin, software,kit);
 	}
 
 	public boolean check()
