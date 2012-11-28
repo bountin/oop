@@ -11,4 +11,10 @@ class Gesellschafter
 	{
 		return software.checkFromGesellschafter(this)&& software.getSicherheitsstufe().checkFromGesellschafter(this);
 	}
+
+    @Override
+    public String toString() {
+        return "Gesellschafter" + super.toString();
+    }
+    
 }

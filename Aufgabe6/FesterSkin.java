@@ -7,4 +7,10 @@ class FesterSkin
 {
 	return true;
 }
+
+    @Override
+    public String toString() {
+        return "FesterSkin" + super.toString();
+    }
+    
 }

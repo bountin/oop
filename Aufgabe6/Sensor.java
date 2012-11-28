@@ -10,4 +10,9 @@ public class Sensor extends UmweltKomponente{
 		return 0;
 	}
 
+    @Override
+    public String toString() {
+        return "Sensor"+ super.toString();
+    }
+    
 }

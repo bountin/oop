@@ -15,4 +15,10 @@ class SoftwareHilfskraft
 	{
 		return getSicherheitsstufe().checkFromHilfskraft(bau);
 	}
+
+    @Override
+    public String toString() {
+        return "SoftwareHilfskraft" + super.toString();
+    }
+    
 }

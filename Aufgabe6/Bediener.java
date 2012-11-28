@@ -15,4 +15,11 @@ abstract class Bediener
 			// Only Beschuetzer is allowed to have Panzer but this is implicitly checked in the check above
 		;
 	}
+
+    @Override
+    public String toString() {
+        return ", Typ=Bediener" + super.toString();
+    }
+    
+    
 }

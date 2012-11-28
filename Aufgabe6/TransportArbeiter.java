@@ -12,4 +12,10 @@ class Transportarbeiter
 		return software.checkFromTransportarbeiter(this)&& software.getSicherheitsstufe().checkFromTransportarbeiter(this);
 	}
 
+    @Override
+    public String toString() {
+        return "Transportarbeiter" + super.toString();
+    }
+
+    
 }

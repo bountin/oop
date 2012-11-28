@@ -10,4 +10,10 @@ public class Sicherheitsstufe2 extends Sicherheitsstufe{
 	public boolean checkLimit(double leistung) {
 		return leistung<=1.0;
 	}
+
+    @Override
+    public String toString() {
+        return "2";
+    }
+    
 }

@@ -11,4 +11,10 @@ class Kaempfer
 	{
 		return software.checkFromKaempfer(this) && software.getSicherheitsstufe().checkFromKaempfer(this);
 	}
+
+    @Override
+    public String toString() {
+        return "Kaempfer" + super.toString();
+    }
+    
 }

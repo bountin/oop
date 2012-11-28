@@ -14,4 +14,10 @@ abstract class Beschuetzer
 			true // Beschuetzer are allowed to have any skin
 		;
 	}
+
+    @Override
+    public String toString() {
+        return ", Typ=Beschuetzer" + super.toString();
+    }
+    
 }

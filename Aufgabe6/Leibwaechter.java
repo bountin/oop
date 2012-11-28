@@ -11,4 +11,10 @@ class Leibwaechter
 	{
 		return software.checkFromLeibwaechter(this)&& software.getSicherheitsstufe().checkFromLeibwaechter(this);
 	}
+
+    @Override
+    public String toString() {
+        return "Leibwaechter" + super.toString();
+    }
+    
 }

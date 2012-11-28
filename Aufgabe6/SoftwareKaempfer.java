@@ -15,4 +15,10 @@ class SoftwareKaempfer
 	{
 		return getSicherheitsstufe().checkFromKaempfer(bau);
 	}
+
+    @Override
+    public String toString() {
+        return "SoftwareKaempfer" + super.toString();
+    }
+    
 }

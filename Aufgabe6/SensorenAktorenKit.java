@@ -29,4 +29,10 @@ public class SensorenAktorenKit {
 			k.setSerial(serial);
 		}
 	}
+
+    @Override
+    public String toString() {
+        return "{" + "serial=" + serial + ", komponenten=" + komponenten + '}';
+    }
+    
 }

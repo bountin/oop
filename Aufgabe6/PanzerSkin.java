@@ -7,4 +7,10 @@ class PanzerSkin
 	{
 		return true;
 	}
+
+    @Override
+    public String toString() {
+        return "PanzerSkin" + super.toString();
+    }
+    
 }

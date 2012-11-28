@@ -15,4 +15,10 @@ class SoftwareObjektbewacher
 	{
 		return getSicherheitsstufe().checkFromObjektbewacher(bau);
 	}
+
+    @Override
+    public String toString() {
+        return "SoftwareObjektbewacher" + super.toString();
+    }
+    
 }

@@ -27,7 +27,7 @@ abstract class Androide
 //	{
 //		return software.check(this);
 //	}
-
+    
 	public String getSerial() {
 		return serial;
 	}
@@ -40,4 +40,9 @@ abstract class Androide
 		if(kit.getSerial()==null)
 			kit.setSerial(serial);
 	}
+
+    @Override
+    public String toString() {
+        return "{" + "serial=" + serial + ", skin=" + skin + ", software=" + software + ", kit=" + kit + '}';
+    }
 }

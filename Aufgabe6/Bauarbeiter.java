@@ -11,4 +11,11 @@ class Bauarbeiter
 	{
 		return software.checkFromBauarbeiter(this)&& software.getSicherheitsstufe().checkFromBauarbeiter(this);
 	}
+
+    @Override
+    public String toString() {
+        return "Bauarbeiter" + super.toString();
+    }
+    
+    
 }

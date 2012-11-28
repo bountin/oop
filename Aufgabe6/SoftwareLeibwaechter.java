@@ -15,4 +15,10 @@ class SoftwareLeibwaechter
 	{
 		return getSicherheitsstufe().checkFromLeibwaechter(bau);
 	}
+
+    @Override
+    public String toString() {
+        return "SoftwareLeibwaechter" + super.toString();
+    }
+    
 }

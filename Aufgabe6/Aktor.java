@@ -9,5 +9,8 @@ public class Aktor extends UmweltKomponente{
 	public double getLeistungForLimit() {
 		return getLeistung();
 	}
-
+    @Override
+    public String toString() {
+        return "Aktor"+ super.toString();
+    }
 }

@@ -15,4 +15,10 @@ class SoftwareTransportarbeiter
 	{
 		return getSicherheitsstufe().checkFromTransportarbeiter(bau);
 	}
+
+    @Override
+    public String toString() {
+        return "SoftwareTransportarbeiter" + super.toString();
+    }
+    
 }

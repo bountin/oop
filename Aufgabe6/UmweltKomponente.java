@@ -34,4 +34,10 @@ public abstract class UmweltKomponente {
 		this.serial = serial;
 	}
 
+    @Override
+    public String toString() {
+        return "{" + "serial=" + serial + ", leistung=" + leistung + ", name=" + name + '}';
+    }
+
+    
 }

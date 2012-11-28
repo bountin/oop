@@ -14,4 +14,11 @@ abstract class Schwerarbeiter
 			!this.skin.isPanzerSkin() // Panzer is only allowed for Beschuetzer
 		;
 	}
+
+    @Override
+    public String toString() {
+        return ", Typ=Schwerarbeiter" + super.toString();
+    }
+    
+    
 }

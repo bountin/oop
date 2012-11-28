@@ -22,4 +22,11 @@ public class Sicherheitsstufe3 extends Sicherheitsstufe{
 		return leistung<=5;
 	}
 
+    @Override
+    public String toString() {
+        return "3";
+    }
+    
+    
+
 }

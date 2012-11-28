@@ -11,4 +11,10 @@ class Hilfskraft
 	{
 		return software.checkFromHilfskraft(this)&& software.getSicherheitsstufe().checkFromHilfskraft(this);
 	}
+
+    @Override
+    public String toString() {
+        return "Hilfskraft" + super.toString();
+    }
+    
 }

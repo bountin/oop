@@ -11,4 +11,10 @@ public class Sicherheitsstufe5 extends Sicherheitsstufe{
 		return true;
 	}
 
+    @Override
+    public String toString() {
+        return "5";
+    }
+
+    
 }

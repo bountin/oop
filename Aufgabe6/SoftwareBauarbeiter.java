@@ -15,4 +15,10 @@ class SoftwareBauarbeiter
 	{
 		return getSicherheitsstufe().checkFromBauarbeiter(bau);
 	}
+
+    @Override
+    public String toString() {
+        return "SoftwareBauarbeiter" + super.toString();
+    }
+    
 }

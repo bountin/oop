@@ -15,4 +15,10 @@ class SoftwareGesellschafter
 	{
 		return getSicherheitsstufe().checkFromGesellschafter(bau);
 	}
+
+    @Override
+    public String toString() {
+        return "SoftwareGesellschafter" + super.toString();
+    }
+    
 }
