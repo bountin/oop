@@ -13,7 +13,7 @@ abstract class Androide
 		this.software = software;
 		this.skin = skin;
 		this.kit = kit;
-		
+
 		encodeSerial();
 	}
 
@@ -31,7 +31,7 @@ abstract class Androide
 	public String getSerial() {
 		return serial;
 	}
-	
+
 	private void encodeSerial(){
 		if(software.getSerial()==null)
 			software.setSerial(serial);
