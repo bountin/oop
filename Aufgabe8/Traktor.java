@@ -35,6 +35,9 @@ abstract public class Traktor {
 		this.betriebsdauer += betrag;
 	}
 
+	/**
+	 * Rueckgabe der Betriebsdauer des Traktors (>= 0)
+	 */
 	@Autor("Martin")
 	public int getBetriebsdauer() {
 		return this.betriebsdauer;
@@ -63,6 +66,5 @@ abstract public class Traktor {
 	@Autor("Martin")
 	public Ausruestung getAusruestung() {
 		return ausruestung;
-
 	}
 }
