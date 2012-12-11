@@ -1,4 +1,5 @@
 
+@Autor("Martin")
 abstract public class Traktor {
 
 	/**
@@ -20,6 +21,7 @@ abstract public class Traktor {
 	 * Ausruestung muss eine gueltige ausruestung sein und != null
 	 * Nummer muss > 0 sein
 	 */
+	@Autor("Martin")
 	Traktor(int nummer, Ausruestung ausruestung) {
 		this.ausruestung = ausruestung;
 		this.nummer = nummer;
@@ -28,10 +30,15 @@ abstract public class Traktor {
 	/**
 	 * betrag muss positiv sein
 	 */
+	@Autor("Martin")
 	public void erhoehe_betriebsdauer(int betrag) {
 		this.betriebsdauer += betrag;
 	}
 
+	/**
+	 * Rueckgabe der Betriebsdauer des Traktors (>= 0)
+	 */
+	@Autor("Martin")
 	public int getBetriebsdauer() {
 		return this.betriebsdauer;
 	}
@@ -39,6 +46,7 @@ abstract public class Traktor {
 	/**
 	 * Ausruestung muss gueltige ausruestung sein und != null
 	 */
+	@Autor("Martin")
 	public void aendere_ausruestung(Ausruestung ausruestung) {
 		this.ausruestung = ausruestung;
 	}
@@ -47,6 +55,7 @@ abstract public class Traktor {
 	 * Liefert Seriennummer zurueck
 	 * Rueckgabewert > 0
 	 */
+	@Autor("Martin")
 	public int getNummer() {
 		return nummer;
 	}
@@ -54,8 +63,8 @@ abstract public class Traktor {
 	/**
 	 * Liefert Instanz von aktueller Ausruestung zurueck
 	 */
+	@Autor("Martin")
 	public Ausruestung getAusruestung() {
 		return ausruestung;
-
 	}
 }

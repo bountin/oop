@@ -1,12 +1,21 @@
 
+@Autor("Martin")
 public class DrillAusruestung extends Ausruestung{
-	private int seahschare_anzahl;
+	// Anzahl der Saescharen ist immer >= 0
+	private int saeschare_anzahl;
 
-	public DrillAusruestung(int seaschare_anzahl) {
-		this.seahschare_anzahl = seaschare_anzahl;
+	/**
+	 * saeschare_anzahl muss >= 0 sein
+	 */
+	@Autor("Martin")
+	public DrillAusruestung(int saeschare_anzahl) {
+		this.saeschare_anzahl = saeschare_anzahl;
 	}
 
-	public int getSeaschare_anzahl() {
-		return seahschare_anzahl;
+	/**
+	 * Rueckgabe der Anzahl der Saescharen (>= 0)
+	 */
+	public int getSaeschare_anzahl() {
+		return saeschare_anzahl;
 	}
 }
