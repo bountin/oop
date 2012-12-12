@@ -1,4 +1,6 @@
 
+
+
 @Autor("Undefined")
 public class Bauernhof implements HofIdentifiable{
 
@@ -50,4 +52,6 @@ public class Bauernhof implements HofIdentifiable{
 	}
 
 	// XXX Implement Statistik Methods
+	
+	
 }
