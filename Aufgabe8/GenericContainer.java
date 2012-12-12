@@ -52,7 +52,11 @@ public abstract class GenericContainer {
 		while(i.hasNext()){
 			Box current = i.next();
 			if(id.equals(current.getContent().getIdentifier())){
-				return current.getContent();
+				if(id instanceof String){
+					return (Bauernhof)current.getContent();
+				}else{
+					return (Traktor)current.getContent();
+				}
 			}
 		}
 		return null;
