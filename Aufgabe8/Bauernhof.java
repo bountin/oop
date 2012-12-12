@@ -4,6 +4,9 @@ public class Bauernhof implements HofIdentifiable{
 
 	// Identifizierender Name des Bauernhofes
 	private String name;
+	
+	// Container aller Traktoren
+	private TraktorContainer traktoren;
 
 	/**
 	 * name muss ein gueltiger String sein
@@ -11,6 +14,7 @@ public class Bauernhof implements HofIdentifiable{
 	@Autor("Martin")
 	Bauernhof(String name) {
 		this.name = name;
+		this.traktoren = new TraktorContainer();
 	}
 
 	/**
@@ -23,12 +27,16 @@ public class Bauernhof implements HofIdentifiable{
 
 	@Autor("Undefined")
 	public void insertTraktor(Traktor traktor) {
-		// XXX Implement
+		traktoren.add(traktor);
 	}
 
 	@Autor("Undefined")
+	public Traktor getTraktor(int nummer){
+		return (Traktor)traktoren.get(nummer);
+	}
+	@Autor("Undefined")
 	public void removeTraktorViaNummer(int nummer) {
-		// XXX Implement
+		traktoren.remove(nummer);
 	}
 
 	/*
