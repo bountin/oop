@@ -8,47 +8,21 @@ public class Test {
 	    System.out.println("***** Autoren *****");
 	    System.out.println("*******************");
 
-	    int i = 0;
+	    ClassContainer classes = new ClassContainer();
 
-	    Class[] classes = new Class[100];
-	    classes[i++] = Ausruestung.class;
-	    classes[i++] = Autor.class;
-	    classes[i++] = Bauernhof.class;
-	    classes[i++] = BauernhofContainer.class;
-	    classes[i++] = DieselTraktor.class;
-	    classes[i++] = DrillAusruestung.class;
-	    classes[i++] = DuengeAusruestung.class;
-	    classes[i++] = GasTraktor.class;
-	    classes[i++] = GenericContainer.class;
-	    classes[i++] = HofIdentifiable.class;
-	    classes[i++] = Traktor.class;
-	    classes[i++] = TraktorContainer.class;
+	    classes.add(Ausruestung.class);
+	    classes.add(Autor.class);
+	    classes.add(Bauernhof.class);
+	    classes.add(BauernhofContainer.class);
+	    classes.add(DieselTraktor.class);
+	    classes.add(DrillAusruestung.class);
+	    classes.add(DuengeAusruestung.class);
+	    classes.add(GasTraktor.class);
+	    classes.add(GenericContainer.class);
+	    classes.add(HofIdentifiable.class);
+	    classes.add(Traktor.class);
+	    classes.add(TraktorContainer.class);
 
-	    for (Class<?> c: classes) {
-		    if (c == null) {
-			    continue;
-		    }
-		    System.out.print(c.getName() + ": ");
-			Autor class_autor = c.getAnnotation(Autor.class);
-		    if (class_autor == null) {
-			    System.out.println("Nicht definiert");
-			    continue;
-		    }
-
-		    System.out.println(class_autor.value());
-		    System.out.println("  Methoden:");
-
-		    for (Method m: c.getMethods()) {
-			    System.out.print("\t" + m.getName() + ": ");
-			    Autor method_autor = m.getAnnotation(Autor.class);
-			    if (method_autor == null) {
-				    System.out.println("Nicht definiert");
-				    continue;
-			    }
-
-			    System.out.println(method_autor.value());
-		    }
-		    System.out.println();
-	    }
+	    classes.output();
     }
 }
