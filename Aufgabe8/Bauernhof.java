@@ -50,8 +50,23 @@ public class Bauernhof implements HofIdentifiable{
 	public Object getIdentifier() {
 		return getName();
 	}
-
-	// XXX Implement Statistik Methods
 	
+	@Autor("Shahin")
+	public void outputStats() {
+	  System.out.println("NAME: " + getName());
+	  System.out.println("Betriebszeit per Assignment:");
+	  traktoren.avgWorktimePerAssignment();
+	  System.out.println("Betriebszeit per Motor:");
+	  traktoren.avgWorktimePerEngine();
+	  System.out.println("Dieselverbrauch per Assignment:");
+	  traktoren.avgDieselConsuptionPerAssignment();
+	  System.out.println("Biogasverbrauch per Assignment:");
+	  traktoren.avgBiogasConsuptionPerAssignment();
+	  System.out.println("Saescharen per Motor:");
+	  traktoren.minMaxSowingCoulters();
+	  System.out.println("Duengerkapazitaet per Motor:");
+	  traktoren.avgFertilizerCapacity();
+	  System.out.println();
+	}
 	
 }
