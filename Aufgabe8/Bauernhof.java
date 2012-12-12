@@ -1,12 +1,10 @@
 
-
-
-@Autor("Undefined")
+@Autor("Shahin")
 public class Bauernhof implements HofIdentifiable{
 
 	// Identifizierender Name des Bauernhofes
 	private String name;
-	
+
 	// Container aller Traktoren
 	private TraktorContainer traktoren;
 
@@ -27,16 +25,16 @@ public class Bauernhof implements HofIdentifiable{
 		return this.name;
 	}
 
-	@Autor("Undefined")
+	@Autor("Shahin")
 	public void insertTraktor(Traktor traktor) {
 		traktoren.add(traktor);
 	}
 
-	@Autor("Undefined")
+	@Autor("Shahin")
 	public Traktor getTraktor(int nummer){
 		return (Traktor)traktoren.get(nummer);
 	}
-	@Autor("Undefined")
+	@Autor("Shahin")
 	public void removeTraktorViaNummer(int nummer) {
 		traktoren.remove(nummer);
 	}
@@ -50,7 +48,7 @@ public class Bauernhof implements HofIdentifiable{
 	public Object getIdentifier() {
 		return getName();
 	}
-	
+
 	@Autor("Shahin")
 	public void outputStats() {
 	  System.out.println("NAME: " + getName());
@@ -68,5 +66,4 @@ public class Bauernhof implements HofIdentifiable{
 	  traktoren.avgFertilizerCapacity();
 	  System.out.println();
 	}
-	
 }

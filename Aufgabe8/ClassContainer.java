@@ -48,6 +48,7 @@ public class ClassContainer {
 	/**
 	 * c wird in Liste aufgenommen, first und last entsprechend angepasst
 	 */
+	@Autor("Martin")
 	public void add(Class c) {
 		Box new_box = new Box(c);
 		if (first == null) {
@@ -60,6 +61,7 @@ public class ClassContainer {
 	}
 
 	// Ausgabe der Autoren der Class Objekte auf stdout
+	@Autor("Martin")
 	public void output() {
 		for (Box box = first; box != null; box = box.getNext()) {
 			Class<?> c = box.getClassElement();

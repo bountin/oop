@@ -11,7 +11,7 @@ public class TraktorContainer extends GenericContainer{
 	public void add(HofIdentifiable element) {
 		if(element instanceof Traktor){
 			Box newBox = new Box(element);
-					
+
 					if(getFirst() == null){
 						setFirst(newBox);
 						setLast(getFirst());
@@ -23,7 +23,7 @@ public class TraktorContainer extends GenericContainer{
 	}
 
 	// STATISTIK METHODEN //
-	
+
 	/*
 	 * berechnet die durchschnittliche Anzahl an Betriebsstunden,
 	 * insgesamt, sowie separat per Einsatzart und gibt sie aus
@@ -33,8 +33,8 @@ public class TraktorContainer extends GenericContainer{
 		Iterator i = iterator();
 		int duengeNum = 0;
 		int drillNum = 0;
-		int duengeTime = 0;
-		int drillTime = 0;
+		double duengeTime = 0;
+		double drillTime = 0;
 		Traktor t = null;
 		while(i.hasNext()){
 			t = (Traktor) i.next().getContent();
@@ -56,9 +56,9 @@ public class TraktorContainer extends GenericContainer{
 			System.out.println("Durchschnittliche Betriebsdauer aller Traktoren: 0");
 		}else System.out.println("Durchschnittliche Betriebsdauer aller Traktoren: "+((drillTime+duengeTime)/(drillNum+duengeNum)));
 	}
-	
+
 	/*
-	 * berechnet die durchschnittliche Anzahl an Betriebsstunden 
+	 * berechnet die durchschnittliche Anzahl an Betriebsstunden
 	 * per Motorart und gibt sie aus
 	 */
 	@Autor("Shahin")
@@ -66,8 +66,8 @@ public class TraktorContainer extends GenericContainer{
 		Iterator i = iterator();
 		int dieselNum = 0;
 		int biogasNum = 0;
-		int dieselTime = 0;
-		int biogasTime = 0;
+		double dieselTime = 0;
+		double biogasTime = 0;
 		Traktor t = null;
 		while(i.hasNext()){
 			t = (Traktor) i.next().getContent();
@@ -86,9 +86,9 @@ public class TraktorContainer extends GenericContainer{
 			System.out.println("Durchschnittliche Betriebsdauer der BiogasTraktoren: 0");
 		}else System.out.println("Durchschnittliche Betriebsdauer der BiogasTraktoren: "+(biogasTime/biogasNum));
 	}
-	
+
 	/*
-	 * berechnet den durchschnittlichen DieselVerbrauch 
+	 * berechnet den durchschnittlichen DieselVerbrauch
 	 * per Einsatzart und gesamt und gibt sie aus
 	 */
 	@Autor("Shahin")
@@ -122,7 +122,7 @@ public class TraktorContainer extends GenericContainer{
 
 
 	/*
-	 * berechnet den durchschnittlichen BiogasVerbrauch 
+	 * berechnet den durchschnittlichen BiogasVerbrauch
 	 * per Einsatzart und gesamt und gibt sie aus
 	 */
 	@Autor("Shahin")
@@ -153,7 +153,7 @@ public class TraktorContainer extends GenericContainer{
 			System.out.println("Durchschnittlicher Verbrauch aller BiogasTraktoren: 0");
 		}else System.out.println("Durchschnittlicher Verbrauch aller BiogasTraktoren: "+((drillUse+duengeUse)/(drillNum+duengeNum)));
 	}
-	
+
 	/*
 	 * berechnet die minimale und maximale Anzahl
 	 * an Saescharen und gibt sie aus
@@ -169,7 +169,7 @@ public class TraktorContainer extends GenericContainer{
 		while(i.hasNext()){
 			t = (Traktor) i.next().getContent();
 			if(t instanceof DieselTraktor && t.getAusruestung() instanceof DrillAusruestung){
-				
+
 				if(((DrillAusruestung)(t.getAusruestung())).getSaeschare_anzahl()<minDiesel){
 					minDiesel = ((DrillAusruestung)(t.getAusruestung())).getSaeschare_anzahl();
 				}
@@ -197,9 +197,9 @@ public class TraktorContainer extends GenericContainer{
 			System.out.println("Groesste Anzahl an Saescharen insgesamt: " + maxDiesel);
 		}else System.out.println("Groesste Anzahl an Saescharen insgesamt: " + maxGas);
 	}
-	
+
 	/*
-	 * berechnet das durchschnittliche Fassunsgsvermoegen 
+	 * berechnet das durchschnittliche Fassunsgsvermoegen
 	 * per Motorart und gesamt und gibt sie aus
 	 */
 	@Autor("Shahin")

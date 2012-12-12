@@ -1,6 +1,6 @@
 @Autor("Shahin")
 public abstract class GenericContainer {
-	
+
 	/*
 	 * ist null bei leerem container
 	 */
@@ -9,7 +9,7 @@ public abstract class GenericContainer {
 	 * ist null bei leerem container
 	 */
 	private Box last;
-	
+
 	/*
 	 * liefert neuen Iterator mit dem ersten Element als Startelement
 	 */
@@ -19,12 +19,12 @@ public abstract class GenericContainer {
 	}
 	@Autor("Shahin")
 	public abstract void add(HofIdentifiable element);
-	
+
 	/*
 	 * sucht nach einem HofIdentifiable mit der gesuchten id
 	 * und entfernt sie, insofern sie existiert
 	 * */
-	
+
 	@Autor("Shahin")
 	public void remove(Object id) {
 		Iterator i = new Iterator();
@@ -34,7 +34,11 @@ public abstract class GenericContainer {
 			predecessor = current;
 			current = i.next();
 			if(id.equals(current.getContent().getIdentifier())){
-				predecessor.setNext(current.getNext());
+				if (predecessor != null) {
+					predecessor.setNext(current.getNext());
+				} else {
+					first = current.getNext();
+				}
 				current.setNext(null);
 				break;
 			}
@@ -78,7 +82,7 @@ public abstract class GenericContainer {
 	protected void setLast(Box last) {
 		this.last = last;
 	}
-	
+
 	@Autor("Shahin") protected class Box{
 		private HofIdentifiable content;
 		/*
@@ -98,7 +102,7 @@ public abstract class GenericContainer {
 			return content;
 		}
 		/*
-		 * gibt die Box zurueck, auf die diese verweist. 
+		 * gibt die Box zurueck, auf die diese verweist.
 		 * null falls keine solche existiert
 		 */
 		@Autor("Shahin")
@@ -116,7 +120,7 @@ public abstract class GenericContainer {
 		 * null bei leerem Container
 		 */
 		private Box current;
-		
+
 		/*
 		 * erzeugt einen neuen Iterator
 		 * und setzt das erste Element
@@ -128,7 +132,7 @@ public abstract class GenericContainer {
 			this.current = getFirst();
 		}
 		/*
-		 * ueberprueft ob es noch ein nicht 
+		 * ueberprueft ob es noch ein nicht
 		 * zurueckgebenes Element gibt
 		 */
 		@Autor("Shahin")
@@ -145,7 +149,7 @@ public abstract class GenericContainer {
 			if(current == null){
 				return null;
 			}
-			Box value = current;	
+			Box value = current;
 			current = current.getNext();
 			return value;
 		}
