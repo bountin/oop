@@ -1,6 +1,6 @@
 
 @Autor("Martin")
-abstract public class Traktor {
+abstract public class Traktor implements HofIdentifiable{
 
 	/**
 	 * ausruestung ist entweder eine Drill- oder eine DuengeAusruestung
@@ -66,5 +66,14 @@ abstract public class Traktor {
 	@Autor("Martin")
 	public Ausruestung getAusruestung() {
 		return ausruestung;
+	}
+	
+	/*
+	 * (non-Javadoc)
+	 * @see HofIdentifiable#getIdentifier()
+	 */
+	@Autor("Shahin")
+	public Object getIdentifier(){
+		return getNummer();
 	}
 }

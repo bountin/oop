@@ -1,6 +1,6 @@
 
 @Autor("Undefined")
-public class Bauernhof {
+public class Bauernhof implements HofIdentifiable{
 
 	// Identifizierender Name des Bauernhofes
 	private String name;
@@ -29,6 +29,16 @@ public class Bauernhof {
 	@Autor("Undefined")
 	public void removeTraktorViaNummer(int nummer) {
 		// XXX Implement
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see HofIdentifiable#getIdentifier()
+	 */
+	@Autor("Shahin")
+	@Override
+	public Object getIdentifier() {
+		return getName();
 	}
 
 	// XXX Implement Statistik Methods
