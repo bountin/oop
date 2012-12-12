@@ -18,17 +18,7 @@ public abstract class GenericContainer {
 		return new Iterator();
 	}
 	@Autor("Shahin")
-	public abstract void add(HofIdentifiable element);/*{
-		Box newBox = new Box(element);
-		
-		if(first == null){
-			first = newBox;
-			last = first;
-		}else{
-			last.setNext(newBox);
-			last = newBox;
-		}
-	}*/
+	public abstract void add(HofIdentifiable element);
 	
 	/*
 	 * sucht nach einem HofIdentifiable mit der gesuchten id
@@ -87,6 +77,10 @@ public abstract class GenericContainer {
 	
 	@Autor("Shahin") protected class Box{
 		private HofIdentifiable content;
+		/*
+		 * null falls letztes Element des
+		 * Containers
+		 */
 		private Box next;
 		@Autor("Shahin")
 		public Box(HofIdentifiable element){
@@ -100,7 +94,7 @@ public abstract class GenericContainer {
 			return content;
 		}
 		/*
-		 * gibt die Box zurück, auf die diese verweist. 
+		 * gibt die Box zurueck, auf die diese verweist. 
 		 * null falls keine solche existiert
 		 */
 		@Autor("Shahin")
@@ -114,21 +108,31 @@ public abstract class GenericContainer {
 	}
 	@Autor("Shahin")
 	public class Iterator{
+		/*
+		 * null bei leerem Container
+		 */
 		private Box current;
+		
+		/*
+		 * erzeugt einen neuen Iterator
+		 * und setzt das erste Element
+		 * des Containers als erstes
+		 * Element des Iterators
+		 */
 		@Autor("Shahin")
 		public Iterator(){
 			this.current = getFirst();
 		}
 		/*
-		 * überprüft ob es noch ein nicht 
-		 * zurückgebenes Element gibt
+		 * ueberprueft ob es noch ein nicht 
+		 * zurueckgebenes Element gibt
 		 */
 		@Autor("Shahin")
 		public boolean hasNext(){
 			return current != null;
 		}
 		/*
-		 * gibt das nächste Element aus
+		 * gibt das naechste Element aus
 		 * falls es noch eines gibt, ansonsten
 		 * null
 		 */
