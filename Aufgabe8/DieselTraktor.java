@@ -11,4 +11,17 @@ public class DieselTraktor extends Traktor {
 	public DieselTraktor(int nummer, Ausruestung ausruestung) {
 		super(nummer, ausruestung);
 	}
+
+	// Verbrauch ist immer >= 0
+	private int verbrauch = 0;
+
+	// Rueckgabe des Dieselverbrauchs (>=0)
+	public int getVerbrauch() {
+		return verbrauch;
+	}
+
+	// Erhoehung des Verbrauchs um delta
+	public void incVerbrauch(int delta) {
+		this.verbrauch += delta;
+	}
 }
