@@ -1,5 +1,5 @@
 
-@Autor("Undefined")
+@Autor("Martin")
 public class DieselTraktor extends Traktor {
 
 	/**

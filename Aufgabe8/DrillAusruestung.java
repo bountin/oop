@@ -15,6 +15,7 @@ public class DrillAusruestung extends Ausruestung{
 	/**
 	 * Rueckgabe der Anzahl der Saescharen (>= 0)
 	 */
+	@Autor("Martin")
 	public int getSaeschare_anzahl() {
 		return saeschare_anzahl;
 	}
