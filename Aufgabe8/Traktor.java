@@ -17,6 +17,15 @@ abstract public class Traktor implements HofIdentifiable{
 	 */
 	private int betriebsdauer = 0;
 
+	// Verbrauch ist immer >= 0
+	protected double verbrauch = 0;
+
+	// Rueckgabe des Dieselverbrauchs (>=0)
+	@Autor("Martin")
+	public double getVerbrauch() {
+		return verbrauch;
+	}
+
 	/**
 	 * Ausruestung muss eine gueltige ausruestung sein und != null
 	 * Nummer muss > 0 sein
@@ -67,7 +76,7 @@ abstract public class Traktor implements HofIdentifiable{
 	public Ausruestung getAusruestung() {
 		return ausruestung;
 	}
-	
+
 	/*
 	 * (non-Javadoc)
 	 * @see HofIdentifiable#getIdentifier()
