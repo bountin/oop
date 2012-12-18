@@ -8,6 +8,10 @@ public class Keksdose {
 		kekse = new LinkedList<Keks>();
 	}
 	
+	public void add(Keks k){
+		kekse.add(k);
+	}
+	
 	/**
 	 * ANGABE:
 	 * Eine Methode inhalt für eine Keksdose, die Beschreibungen der 

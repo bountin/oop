@@ -13,6 +13,22 @@ public class Position {
 		this.fuellung = fuellung;
 	}
 	
+	public int getAnzahl() {
+		return anzahl;
+	}
+
+	public String getForm() {
+		return form;
+	}
+
+	public String getTeig() {
+		return teig;
+	}
+
+	public String getFuellung() {
+		return fuellung;
+	}
+
 	public String toString(){
 		if(fuellung == null){
 			return (anzahl+" Einzelkekse der Form: "+ form +" aus Teig des Typs: "+

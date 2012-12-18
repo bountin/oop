@@ -10,8 +10,6 @@ public class Doppelkeksmaschine {
 			return new DoppelMondKeks(k.getTeig(), fuellung);
 		}else if(k instanceof EinzelWeihnachtsmannKeks){
 			return new DoppelWeihnachtsmannKeks(k.getTeig(), fuellung);
-		}else return null;
-			
-		
+		}else return null; //Kann eigentlich nicht passieren! 
 	}
 }
