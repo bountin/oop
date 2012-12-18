@@ -54,9 +54,13 @@ public class Baeckerei {
 				System.out.println("Ungültige Eingabe in der letzten Bestellung!");
 			}else{
 				if(p.getFuellung() != null){
-					kd.add(doppelBacken(p.getForm(),p.getTeig(),p.getFuellung()));
+					for(int j = 0; j<p.getAnzahl(); j++){
+						kd.add(doppelBacken(p.getForm(),p.getTeig(),p.getFuellung()));
+					}
 				}else{
-					kd.add(einzelBacken(p.getForm(),p.getTeig()));
+					for(int j = 0; j<p.getAnzahl(); j++){
+						kd.add(einzelBacken(p.getForm(),p.getTeig()));
+					}
 				}
 			}
 		}
