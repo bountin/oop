@@ -1,11 +1,17 @@
 
 public class Doppelkeksmaschine {
-
-	public Doppelkeksmaschine() {
-		// TODO Auto-generated constructor stub
-	}
-
+	
 	public Keks backe(Keks k, String fuellung){
-		return null;
+		if(k instanceof DoppelKeks){
+			return k;
+		}else if(k instanceof EinzelRundKeks){
+			return new DoppelRundKeks(k.getTeig(), fuellung);
+		}else if(k instanceof EinzelMondKeks){
+			return new DoppelMondKeks(k.getTeig(), fuellung);
+		}else if(k instanceof EinzelWeihnachtsmannKeks){
+			return new DoppelWeihnachtsmannKeks(k.getTeig(), fuellung);
+		}else return null;
+			
+		
 	}
 }
