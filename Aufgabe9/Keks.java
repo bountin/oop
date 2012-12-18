@@ -5,4 +5,10 @@ public abstract class Keks {
 	public String getTeig() {
 		return teig;
 	}
+
+	@Override
+	public abstract int hashCode();
+
+	@Override
+	public abstract boolean equals(Object obj);
 }

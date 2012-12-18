@@ -29,4 +29,8 @@ public class Bestellung {
 	public Iterator<Position> iterator(){
 		return pos.iterator();
 	}
+	
+	public void addPosition(Position p){
+		pos.add(p);
+	}
 }

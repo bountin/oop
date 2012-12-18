@@ -13,7 +13,7 @@ public class Keksdose {
 			int i = kekse.get(k).intValue() +1;
 			kekse.put(k, i);
 		}else{
-			kekse.put(k, 0);
+			kekse.put(k, 1);
 		}
 	}
 	

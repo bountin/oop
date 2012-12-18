@@ -5,5 +5,4 @@ public class DoppelMondKeks extends DoppelKeks{
 		this.teig = teig;
 		this.fuellung = fuellung;
 	}
-
 }
