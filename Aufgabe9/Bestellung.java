@@ -1,3 +1,6 @@
+import java.util.Iterator;
+import java.util.LinkedList;
+
 /**
  * ANGABE:
  * "Eine Bestellung ist eine Liste von Positionen, die jeweils die Anzahl, 
@@ -6,8 +9,10 @@
  */
 public class Bestellung {
 
+	private LinkedList<Position> pos;
+	
 	public Bestellung() {
-		// TODO Auto-generated constructor stub
+		this.pos = new LinkedList<Position>();
 	}
 
 	/**
@@ -15,5 +20,13 @@ public class Bestellung {
 	 * "Eine Methode drucke für eine Bestellung,
 	 *  die alle Positionen in der Standardausgabe auflistet." 
 	 */
-	public void drucke(){}
+	public void drucke(){
+		for(Position p: pos){
+			System.out.println(p.toString());
+		}
+	}
+	
+	public Iterator<Position> iterator(){
+		return pos.iterator();
+	}
 }

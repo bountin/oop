@@ -1,8 +1,6 @@
 
-public class Formmaschine {
+public abstract class Formmaschine extends Backmaschine{
 
-	public Formmaschine() {
-		// TODO Auto-generated constructor stub
-	}
-
+	public abstract Keks backe();
+	
 }
