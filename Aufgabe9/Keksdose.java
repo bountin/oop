@@ -16,9 +16,8 @@ public class Keksdose {
 	public void inhalt(){
 		if(kekse.size() == 0){
 			System.out.println("Keine Kekse in dieser Dose =( !!!");
-		}
-		for(Keks k: kekse){
-			System.out.println("");
+		}else{
+			//TODO: restliche Implementierung
 		}
 	}
 }
