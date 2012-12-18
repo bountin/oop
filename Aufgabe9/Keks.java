@@ -5,6 +5,4 @@ public abstract class Keks {
 	public String getTeig() {
 		return teig;
 	}
-	
-	
 }
