@@ -2,16 +2,16 @@
 public class Test {
 
 	public static void main(String args[]){
-		String r = "rund";
-		String m = "mond";
-		String w = "weihnachtsmann";
+		Form r = Form.RUND;
+		Form m = Form.MOND;
+		Form w = Form.WEIHNACHTSMANN;
 		
-		String mu = "muerb";
-		String zi = "zimtstern";
-		String sc = "schokolade";
+		Teig mu = Teig.MUERB;
+		Teig zi = Teig.ZIMTSTERN;
+		Teig sc = Teig.SCHOKOLADE;
 		
-		String mar = "marmelade";
-		String sch = "schokolade";
+		Fuellung mar = Fuellung.MARMELADE;
+		Fuellung sch = Fuellung.SCHOKOLADE;
 		
 		Position p1 = new Position(11, r, mu, null);
 		Position p2 = new Position(5, r, zi, sch);

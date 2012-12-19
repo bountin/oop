@@ -1,7 +1,7 @@
 
 public class DoppelWeihnachtsmannKeks extends DoppelKeks{
 
-	public DoppelWeihnachtsmannKeks(String teig, String fuellung) {
+	public DoppelWeihnachtsmannKeks(Teig teig, Fuellung fuellung) {
 		this.teig = teig;
 		this.fuellung = fuellung;
 	}

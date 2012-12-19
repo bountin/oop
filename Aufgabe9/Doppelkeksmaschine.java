@@ -1,7 +1,7 @@
 
 public class Doppelkeksmaschine {
 	
-	public Keks backe(Keks k, String fuellung){
+	public Keks backe(Keks k, Fuellung fuellung){
 		if(k instanceof DoppelKeks){
 			return k;
 		}else if(k instanceof EinzelRundKeks){

@@ -1,7 +1,7 @@
 
 public class EinzelWeihnachtsmannKeks extends EinzelKeks{
 
-	public EinzelWeihnachtsmannKeks(String teig) {
+	public EinzelWeihnachtsmannKeks(Teig teig) {
 		this.teig = teig;
 	}
 

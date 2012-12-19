@@ -2,7 +2,7 @@
 public class Rundmaschine extends Formmaschine{
 	
 	@Override
-	public Keks backe(String teig) {
+	public Keks backe(Teig teig) {
 		return new EinzelRundKeks(teig);
 	}
 

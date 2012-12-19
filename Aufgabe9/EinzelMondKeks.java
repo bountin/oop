@@ -1,7 +1,7 @@
 
 public class EinzelMondKeks extends EinzelKeks{
 
-	public EinzelMondKeks(String teig) {
+	public EinzelMondKeks(Teig teig) {
 		this.teig = teig;
 	}
 

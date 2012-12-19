@@ -15,21 +15,21 @@ public class Baeckerei {
 		this.fm = fm;
 	}
 	
-	private Keks einzelBacken(String form, String teig){		
+	private Keks einzelBacken(Form form, Teig teig){		
 		setMaschine(form);
 		return fm.backe(teig);
 	}
 	
-	private Keks doppelBacken(String form, String teig, String fuellung){
+	private Keks doppelBacken(Form form, Teig teig, Fuellung fuellung){
 		return dkm.backe(einzelBacken(form, teig), fuellung);
 	}
 	
-	private void setMaschine(String form){
-		if(form.equals("rund")){
+	private void setMaschine(Form form){
+		if(form == Form.RUND){
 			set(new Rundmaschine());
-		}else if( form.equals("mond")){
+		}else if(form == Form.MOND){
 			set(new Mondmaschine());
-		}else if( form.equals("weihnachtsmann")){
+		}else if(form == Form.WEIHNACHTSMANN){
 			set(new Weihnachtsmannmaschine());
 		}
 	}
@@ -38,11 +38,7 @@ public class Baeckerei {
 		if(p.getForm() == null || p.getTeig() == null || p.getAnzahl()<1) {
 			return false;
 		}
-		return ((p.getForm().equals("rund") || p.getForm().equals("mond") ||
-				p.getForm().equals("weihnachtsmann")) && (p.getTeig().equals("muerb")||
-				p.getTeig().equals("zimtstern")|| p.getTeig().equals("schokolade")) &&
-				(p.getFuellung() == null || p.getFuellung().equals("marmelade") || 
-				p.getFuellung().equals("schokolade")));
+		return true;
 	}
 	
 	public Keksdose bestellungBearbeiten(Bestellung bestellung){

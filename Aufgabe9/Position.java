@@ -2,11 +2,11 @@
 public class Position {
 
 	private int anzahl;
-	private String form;
-	private String teig;
-	private String fuellung;
+	private Form form;
+	private Teig teig;
+	private Fuellung fuellung;
 	
-	public Position(int anzahl, String form, String teig, String fuellung) {
+	public Position(int anzahl, Form form, Teig teig, Fuellung fuellung) {
 		this.anzahl = anzahl;
 		this.form = form;
 		this.teig = teig;
@@ -17,18 +17,19 @@ public class Position {
 		return anzahl;
 	}
 
-	public String getForm() {
+	public Form getForm() {
 		return form;
 	}
 
-	public String getTeig() {
+	public Teig getTeig() {
 		return teig;
 	}
 
-	public String getFuellung() {
+	public Fuellung getFuellung() {
 		return fuellung;
 	}
 
+    @Override
 	public String toString(){
 		if(fuellung == null){
 			return (anzahl+" Einzelkekse der Form: "+ form +" aus Teig des Typs: "+

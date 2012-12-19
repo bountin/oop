@@ -2,7 +2,7 @@
 public class Weihnachtsmannmaschine extends Formmaschine{
 
 	@Override
-	public Keks backe(String teig) {
+	public Keks backe(Teig teig) {
 		return new EinzelWeihnachtsmannKeks(teig);
 	}
 

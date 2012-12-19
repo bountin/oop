@@ -1,8 +1,8 @@
 
 public abstract class Keks {
-	protected String teig;
+	protected Teig teig;
 
-	public String getTeig() {
+	public Teig getTeig() {
 		return teig;
 	}
 

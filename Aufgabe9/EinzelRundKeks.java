@@ -1,7 +1,7 @@
 
 public class EinzelRundKeks extends EinzelKeks{
 
-	public EinzelRundKeks(String teig) {
+	public EinzelRundKeks(Teig teig) {
 		this.teig = teig;
 	}
 

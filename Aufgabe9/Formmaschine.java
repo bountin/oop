@@ -1,6 +1,6 @@
 
 public abstract class Formmaschine{
 
-	public abstract Keks backe(String teig);
+	public abstract Keks backe(Teig teig);
 	
 }

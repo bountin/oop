@@ -1,7 +1,7 @@
 
 public class DoppelMondKeks extends DoppelKeks{
 
-	public DoppelMondKeks(String teig, String fuellung) {
+	public DoppelMondKeks(Teig teig, Fuellung fuellung) {
 		this.teig = teig;
 		this.fuellung = fuellung;
 	}
